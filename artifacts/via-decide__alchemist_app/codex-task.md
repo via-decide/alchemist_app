@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add full-text search system to enable searching across entire EPUB content with result navigation.
+Add bookmark system to allow users to save, view, and navigate to specific reading positions.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not block UI
+- Max 1 new file - No external dependencies - Must not affect performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.

@@ -1,9 +1,9 @@
-Branch: simba/add-full-text-search-system-to-enable-searching-
-Title: Add full-text search system to enable searching across entire EPUB co...
+Branch: simba/add-bookmark-system-to-allow-users-to-save-view-
+Title: Add bookmark system to allow users to save, view, and navigate to spe...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add full-text search system to enable searching across entire EPUB content with result navigation.
+- Goal: Add bookmark system to allow users to save, view, and navigate to specific reading positions.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
