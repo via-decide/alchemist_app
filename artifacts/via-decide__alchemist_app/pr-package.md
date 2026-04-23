@@ -1,9 +1,9 @@
-Branch: simba/add-complete-metadata-and-cover-image-system-to-
-Title: Add complete metadata and cover image system to make EPUB exports ful...
+Branch: simba/add-epub-debug-and-inspection-mode-to-visualize-
+Title: Add EPUB debug and inspection mode to visualize structure, validate i...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add complete metadata and cover image system to make EPUB exports fully publish-ready and compatible with Apple Books and other platforms.
+- Goal: Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
