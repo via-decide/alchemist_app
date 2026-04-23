@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
+Add deterministic build and versioning system to ensure EPUB exports are reproducible and consistent across runs.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Debug mode must not affect production export - Output readable and structured
+- Max 1 new file - No external dependencies - Hash computation <50ms - Must not affect EPUB functionality
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
