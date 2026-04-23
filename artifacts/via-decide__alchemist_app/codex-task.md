@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add complete metadata and cover image system to make EPUB exports fully publish-ready and compatible with Apple Books and other platforms.
+Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Metadata generation <10ms - Must comply with EPUB3 spec
+- Max 1 new file - No external dependencies - Debug mode must not affect production export - Output readable and structured
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
