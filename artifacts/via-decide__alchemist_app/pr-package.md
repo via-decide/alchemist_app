@@ -1,9 +1,9 @@
-Branch: simba/rebuild-epub-export-pipeline-to-generate-fully-c
-Title: Rebuild EPUB export pipeline to generate fully compliant EPUB3 files ...
+Branch: simba/add-image-normalization-and-embedding-pipeline-t
+Title: Add image normalization and embedding pipeline to ensure all images r...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Rebuild EPUB export pipeline to generate fully compliant EPUB3 files with proper image support and cross-reader compatibility (including iOS Apple Books).
+- Goal: Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
