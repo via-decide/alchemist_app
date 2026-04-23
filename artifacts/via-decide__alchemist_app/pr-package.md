@@ -1,9 +1,9 @@
-Branch: simba/add-image-normalization-and-embedding-pipeline-t
-Title: Add image normalization and embedding pipeline to ensure all images r...
+Branch: simba/add-epub-validation-and-auto-fix-layer-to-ensure
+Title: Add EPUB validation and auto-fix layer to ensure all exported files a...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
+- Goal: Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
