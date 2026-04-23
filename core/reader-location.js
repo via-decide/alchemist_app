@@ -487,6 +487,57 @@ export class LocationManager {
     }
 
     /**
+     * Retrieves the current reading location details.
+     * @returns {Object}
+     */
+    getCurrentLocation() {
+        if (!this.currentLocation) {
+            return { chapterIndex: 0, pageIndex: 0, location: 'Ch. 1, Pg. 1' };
+        }
+        return {
+            chapterIndex: this.currentLocation.chapterIndex,
+            pageIndex: this.currentLocation.pageIndex,
+            location: `Ch. ${this.currentLocation.chapterIndex + 1}, Pg. ${this.currentLocation.pageIndex + 1}`
+        };
+    }
+
+    /**
+     * Validates if a specific chapter and page index exist within the book.
+     * @param {number} chapterIndex 
+     * @param {number} pageIndex 
+     * @returns {boolean}
+     */
+    validateLocation(chapterIndex, pageIndex) {
+        if (chapterIndex < 0 || chapterIndex >= this.metadata.totalChapters) {
+            return false;
+        }
+        if (this.metadata.hasPrecisePageMapping()) {
+            const chapterPages = this.metadata.chapterPageMap[chapterIndex];
+            return pageIndex >= 0 && pageIndex < chapterPages;
+        }
+        // Fallback validation if no precise mapping
+        return pageIndex >= 0;
+    }
+
+    /**
+     * Heuristic for recalculating location after a reflow (zoom/resize).
+     * @param {Object} oldLocation - { chapterIndex, pageIndex }
+     * @returns {Object} Updated location
+     */
+    getLocationAfterReflow(oldLocation) {
+        // Basic implementation: maintain chapter, clamp page to new chapter boundaries
+        const chapterIndex = oldLocation.chapterIndex;
+        let pageIndex = oldLocation.pageIndex;
+
+        if (this.metadata.hasPrecisePageMapping()) {
+            const maxPage = this.metadata.chapterPageMap[chapterIndex] - 1;
+            pageIndex = Math.min(pageIndex, Math.max(0, maxPage));
+        }
+
+        return { chapterIndex, pageIndex };
+    }
+
+    /**
      * Subscribe to location or progress events.
      * @param {string} eventName - 'reader:location-changed', 'reader:progress-updated', etc.
      * @param {Function} callback 
