@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-complete-metadata-and-cover-image-system-to-",
+  "branch": "simba/add-epub-debug-and-inspection-mode-to-visualize-",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-metadata.js"
+    "core/epub-debug.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-metadata.js",
-  "synthesized_size": 26112
+  "synthesized_file": "core/epub-debug.js",
+  "synthesized_size": 25463
 }
