@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
+Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
 
 RULES
 1. Audit touched files first and identify regressions.
