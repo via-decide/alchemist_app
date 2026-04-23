@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Rebuild EPUB export pipeline to generate fully compliant EPUB3 files with proper image support and cross-reader compatibility (including iOS Apple Books).
+Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must produce EPUB3 compliant output - Images must load without external URLs (fully embedded)
+- Max 1 new file - No external dependencies - Image processing must not block export (>100ms per image) - Must be compatible with existing EPUB structure
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
