@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add text selection, highlighting, and notes system to enable annotations similar to Kindle.
+Add full-text search system to enable searching across entire EPUB content with result navigation.
 
 RULES
 1. Audit touched files first and identify regressions.
