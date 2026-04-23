@@ -1,9 +1,9 @@
-Branch: simba/add-epub-parsing-and-rendering-engine-to-enable-
-Title: Add EPUB parsing and rendering engine to enable in-app reading of EPU...
+Branch: simba/add-reading-location-progress-tracking-and-resum
+Title: Add reading location, progress tracking, and resume system to persist...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
+- Goal: Add reading location, progress tracking, and resume system to persist and restore user position accurately.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
