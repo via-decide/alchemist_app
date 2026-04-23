@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
+Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
 
 RULES
 1. Audit touched files first and identify regressions.

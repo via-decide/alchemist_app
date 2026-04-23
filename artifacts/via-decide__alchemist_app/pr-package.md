@@ -1,9 +1,9 @@
-Branch: simba/add-atomic-export-system-using-staging-and-commi
-Title: Add atomic export system using staging and commit mechanism to ensure...
+Branch: simba/add-epub-parsing-and-rendering-engine-to-enable-
+Title: Add EPUB parsing and rendering engine to enable in-app reading of EPU...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
+- Goal: Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests

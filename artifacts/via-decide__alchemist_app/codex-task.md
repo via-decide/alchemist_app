@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
+Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Staging cleanup must be reliable - Must not affect performance significantly
+- Max 1 new file - No external dependencies - Must support images and basic formatting
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
