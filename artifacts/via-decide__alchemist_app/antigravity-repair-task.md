@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add batch EPUB export system with job queue and isolation to support multiple book exports reliably.
+Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
 
 RULES
 1. Audit touched files first and identify regressions.
