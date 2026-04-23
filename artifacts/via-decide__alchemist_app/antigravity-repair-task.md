@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add font embedding system to ensure consistent typography across all EPUB readers including Apple Books.
+Add complete metadata and cover image system to make EPUB exports fully publish-ready and compatible with Apple Books and other platforms.
 
 RULES
 1. Audit touched files first and identify regressions.
