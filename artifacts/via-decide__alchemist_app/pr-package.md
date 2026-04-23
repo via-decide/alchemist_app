@@ -1,9 +1,9 @@
-Branch: simba/add-batch-epub-export-system-with-job-queue-and-
-Title: Add batch EPUB export system with job queue and isolation to support ...
+Branch: simba/add-checkpointing-and-resumable-export-system-to
+Title: Add checkpointing and resumable export system to ensure EPUB generati...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add batch EPUB export system with job queue and isolation to support multiple book exports reliably.
+- Goal: Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
