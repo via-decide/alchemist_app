@@ -1,9 +1,9 @@
-Branch: simba/add-font-embedding-system-to-ensure-consistent-t
-Title: Add font embedding system to ensure consistent typography across all ...
+Branch: simba/add-complete-metadata-and-cover-image-system-to-
+Title: Add complete metadata and cover image system to make EPUB exports ful...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add font embedding system to ensure consistent typography across all EPUB readers including Apple Books.
+- Goal: Add complete metadata and cover image system to make EPUB exports fully publish-ready and compatible with Apple Books and other platforms.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
