@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-robust-table-of-contents-toc-and-navigation-",
+  "branch": "simba/add-epub-styling-system-with-css-and-layout-norm",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-toc.js"
+    "core/epub-style.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-toc.js",
-  "synthesized_size": 18956
+  "synthesized_file": "core/epub-style.js",
+  "synthesized_size": 13867
 }
