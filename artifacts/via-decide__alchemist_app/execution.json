@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-atomic-export-system-using-staging-and-commi",
+  "branch": "simba/add-epub-parsing-and-rendering-engine-to-enable-",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-atomic.js"
+    "core/epub-reader.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-atomic.js",
-  "synthesized_size": 24917
+  "synthesized_file": "core/epub-reader.js",
+  "synthesized_size": 27083
 }
