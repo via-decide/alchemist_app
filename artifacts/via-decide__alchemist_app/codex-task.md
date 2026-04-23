@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add reading location, progress tracking, and resume system to persist and restore user position accurately.
+Add text selection, highlighting, and notes system to enable annotations similar to Kindle.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not affect performance
+- Max 1 new file - No external dependencies - Must not break rendering performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
