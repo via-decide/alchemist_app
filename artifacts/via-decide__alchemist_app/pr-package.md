@@ -1,9 +1,9 @@
-Branch: simba/add-robust-table-of-contents-toc-and-navigation-
-Title: Add robust Table of Contents (TOC) and navigation system using EPUB3 ...
+Branch: simba/add-epub-styling-system-with-css-and-layout-norm
+Title: Add EPUB styling system with CSS and layout normalization to ensure c...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
+- Goal: Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
