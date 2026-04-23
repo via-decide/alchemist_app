@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add full-text search system to enable searching across entire EPUB content with result navigation.
+Add bookmark system to allow users to save, view, and navigate to specific reading positions.
 
 RULES
 1. Audit touched files first and identify regressions.
