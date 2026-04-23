@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-font-embedding-system-to-ensure-consistent-t",
+  "branch": "simba/add-complete-metadata-and-cover-image-system-to-",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-fonts.js"
+    "core/epub-metadata.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-fonts.js",
-  "synthesized_size": 18341
+  "synthesized_file": "core/epub-metadata.js",
+  "synthesized_size": 26112
 }
