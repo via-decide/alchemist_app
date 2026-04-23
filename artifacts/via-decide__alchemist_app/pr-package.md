@@ -1,9 +1,9 @@
-Branch: simba/add-epub-debug-and-inspection-mode-to-visualize-
-Title: Add EPUB debug and inspection mode to visualize structure, validate i...
+Branch: simba/add-deterministic-build-and-versioning-system-to
+Title: Add deterministic build and versioning system to ensure EPUB exports ...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
+- Goal: Add deterministic build and versioning system to ensure EPUB exports are reproducible and consistent across runs.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests

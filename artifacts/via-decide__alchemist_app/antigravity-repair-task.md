@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
+Add deterministic build and versioning system to ensure EPUB exports are reproducible and consistent across runs.
 
 RULES
 1. Audit touched files first and identify regressions.
