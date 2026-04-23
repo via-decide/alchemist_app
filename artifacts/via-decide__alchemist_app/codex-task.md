@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
+Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Validation must complete <100ms - Must not alter valid EPUBs unnecessarily
+- Max 1 new file - No external dependencies - TOC generation <50ms - Must integrate with validation layer
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
