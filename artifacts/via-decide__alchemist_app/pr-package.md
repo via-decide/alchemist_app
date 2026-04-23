@@ -1,9 +1,9 @@
-Branch: simba/add-epub-validation-and-auto-fix-layer-to-ensure
-Title: Add EPUB validation and auto-fix layer to ensure all exported files a...
+Branch: simba/add-robust-table-of-contents-toc-and-navigation-
+Title: Add robust Table of Contents (TOC) and navigation system using EPUB3 ...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
+- Goal: Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests

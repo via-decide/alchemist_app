@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
+Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
 
 RULES
 1. Audit touched files first and identify regressions.
