@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add complete metadata and cover image system to make EPUB exports fully publish-ready and compatible with Apple Books and other platforms.
+Add EPUB debug and inspection mode to visualize structure, validate internal links, and compare outputs for fast issue diagnosis.
 
 RULES
 1. Audit touched files first and identify regressions.
