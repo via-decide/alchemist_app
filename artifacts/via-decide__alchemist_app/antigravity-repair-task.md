@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
+Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
 
 RULES
 1. Audit touched files first and identify regressions.

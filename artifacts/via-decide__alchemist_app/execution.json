@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-image-normalization-and-embedding-pipeline-t",
+  "branch": "simba/add-epub-validation-and-auto-fix-layer-to-ensure",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-images.js"
+    "core/epub-validate.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-images.js",
-  "synthesized_size": 21329
+  "synthesized_file": "core/epub-validate.js",
+  "synthesized_size": 26707
 }

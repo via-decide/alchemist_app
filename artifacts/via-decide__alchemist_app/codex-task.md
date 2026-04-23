@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
+Add EPUB validation and auto-fix layer to ensure all exported files are fully compliant and work across all major readers.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Image processing must not block export (>100ms per image) - Must be compatible with existing EPUB structure
+- Max 1 new file - No external dependencies - Validation must complete <100ms - Must not alter valid EPUBs unnecessarily
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
