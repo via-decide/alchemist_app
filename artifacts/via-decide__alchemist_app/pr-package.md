@@ -1,9 +1,9 @@
-Branch: simba/add-deterministic-build-and-versioning-system-to
-Title: Add deterministic build and versioning system to ensure EPUB exports ...
+Branch: simba/add-batch-epub-export-system-with-job-queue-and-
+Title: Add batch EPUB export system with job queue and isolation to support ...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add deterministic build and versioning system to ensure EPUB exports are reproducible and consistent across runs.
+- Goal: Add batch EPUB export system with job queue and isolation to support multiple book exports reliably.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
