@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add text selection, highlighting, and notes system to enable annotations similar to Kindle.
+Add full-text search system to enable searching across entire EPUB content with result navigation.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not break rendering performance
+- Max 1 new file - No external dependencies - Must not block UI
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
@@ -17,7 +17,7 @@ PROCESS (MANDATORY)
 
 REPO AUDIT CONTEXT
 - Description: 
-- Primary language: HTML
+- Primary language: JavaScript
 - README snippet:
 # ChemBook Auto Publisher Deterministic book production engine for KDP-ready EPUB and paperback PDF output. ## Quick start ```bash python3 -m venv .venv source .venv/bin/activate pip install -r requirements.txt make publish ``` Outputs: - `build/epub/book.epub` - `build/pdf/book_print.pdf` - `b
 
