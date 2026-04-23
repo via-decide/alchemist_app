@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
+Add reading location, progress tracking, and resume system to persist and restore user position accurately.
 
 RULES
 1. Audit touched files first and identify regressions.

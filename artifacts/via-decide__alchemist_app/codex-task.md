@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add EPUB parsing and rendering engine to enable in-app reading of EPUB files.
+Add reading location, progress tracking, and resume system to persist and restore user position accurately.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must support images and basic formatting
+- Max 1 new file - No external dependencies - Must not affect performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
