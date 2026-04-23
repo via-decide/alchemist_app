@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add deterministic build and versioning system to ensure EPUB exports are reproducible and consistent across runs.
+Add batch EPUB export system with job queue and isolation to support multiple book exports reliably.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Hash computation <50ms - Must not affect EPUB functionality
+- Max 1 new file - No external dependencies - Must not interfere with single export mode - Memory usage controlled per job
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
