@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
+Add font embedding system to ensure consistent typography across all EPUB readers including Apple Books.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - CSS must be lightweight - Must not break XHTML validity
+- Max 1 new file - No external dependencies - Font embedding must not break EPUB validation - File size increase must be controlled
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.

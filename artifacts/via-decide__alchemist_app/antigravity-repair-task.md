@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
+Add font embedding system to ensure consistent typography across all EPUB readers including Apple Books.
 
 RULES
 1. Audit touched files first and identify regressions.
