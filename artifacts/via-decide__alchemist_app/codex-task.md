@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
+Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - TOC generation <50ms - Must integrate with validation layer
+- Max 1 new file - No external dependencies - CSS must be lightweight - Must not break XHTML validity
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.

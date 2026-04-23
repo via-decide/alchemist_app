@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add robust Table of Contents (TOC) and navigation system using EPUB3 nav.xhtml with NCX fallback for full cross-reader compatibility.
+Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
 
 RULES
 1. Audit touched files first and identify regressions.
