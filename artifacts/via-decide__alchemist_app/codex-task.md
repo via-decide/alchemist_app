@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
+Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Checkpoint overhead <10ms - Must not affect normal export performance
+- Max 1 new file - No external dependencies - Staging cleanup must be reliable - Must not affect performance significantly
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
