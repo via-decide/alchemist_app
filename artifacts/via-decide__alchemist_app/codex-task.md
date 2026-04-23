@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add batch EPUB export system with job queue and isolation to support multiple book exports reliably.
+Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not interfere with single export mode - Memory usage controlled per job
+- Max 1 new file - No external dependencies - Checkpoint overhead <10ms - Must not affect normal export performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
