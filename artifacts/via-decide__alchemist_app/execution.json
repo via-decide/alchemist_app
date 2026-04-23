@@ -1,17 +1,17 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/add-deterministic-build-and-versioning-system-to",
+  "branch": "simba/add-batch-epub-export-system-with-job-queue-and-",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
     "pr-package.md",
     "execution.json",
-    "core/epub-version.js"
+    "core/epub-batch.js"
   ],
   "files_to_modify": [],
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
-  "synthesized_file": "core/epub-version.js",
-  "synthesized_size": 19492
+  "synthesized_file": "core/epub-batch.js",
+  "synthesized_size": 21762
 }
