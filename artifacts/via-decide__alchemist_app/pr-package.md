@@ -1,9 +1,9 @@
-Branch: simba/add-epub-styling-system-with-css-and-layout-norm
-Title: Add EPUB styling system with CSS and layout normalization to ensure c...
+Branch: simba/add-font-embedding-system-to-ensure-consistent-t
+Title: Add font embedding system to ensure consistent typography across all ...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add EPUB styling system with CSS and layout normalization to ensure consistent typography, spacing, and image rendering across all readers.
+- Goal: Add font embedding system to ensure consistent typography across all EPUB readers including Apple Books.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
