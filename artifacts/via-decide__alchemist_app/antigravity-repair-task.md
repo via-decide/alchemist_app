@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Rebuild EPUB export pipeline to generate fully compliant EPUB3 files with proper image support and cross-reader compatibility (including iOS Apple Books).
+Add image normalization and embedding pipeline to ensure all images render correctly across EPUB readers and devices.
 
 RULES
 1. Audit touched files first and identify regressions.
