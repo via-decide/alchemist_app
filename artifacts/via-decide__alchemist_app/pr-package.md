@@ -1,9 +1,9 @@
-Branch: simba/add-checkpointing-and-resumable-export-system-to
-Title: Add checkpointing and resumable export system to ensure EPUB generati...
+Branch: simba/add-atomic-export-system-using-staging-and-commi
+Title: Add atomic export system using staging and commit mechanism to ensure...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add checkpointing and resumable export system to ensure EPUB generation can recover from interruptions without losing progress.
+- Goal: Add atomic export system using staging and commit mechanism to ensure only fully valid EPUB files are written to final output.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
