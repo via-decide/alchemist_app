@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add reading location, progress tracking, and resume system to persist and restore user position accurately.
+Add text selection, highlighting, and notes system to enable annotations similar to Kindle.
 
 RULES
 1. Audit touched files first and identify regressions.

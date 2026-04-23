@@ -1,9 +1,9 @@
-Branch: simba/add-reading-location-progress-tracking-and-resum
-Title: Add reading location, progress tracking, and resume system to persist...
+Branch: simba/add-text-selection-highlighting-and-notes-system
+Title: Add text selection, highlighting, and notes system to enable annotati...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add reading location, progress tracking, and resume system to persist and restore user position accurately.
+- Goal: Add text selection, highlighting, and notes system to enable annotations similar to Kindle.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
