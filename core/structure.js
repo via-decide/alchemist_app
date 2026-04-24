@@ -1,100 +1,70 @@
 /**
- * Document Structure Engine (core/structure.js)
- * Automatically detects headings and generates proper EPUB navigation (TOC + nav map).
+ * @file structure.js
+ * @description Refactored Document Structure Engine for EPUB-compliant navigation (TOC + nav.xhtml)
  */
 
 const { parse } = require('htmlparser2');
 const fs = require('fs');
 const path = require('path');
 
-// Content Parser
-function scanContentBlocks(html) {
-  const parser = new parse.Parser({
-    onopentag: (name, attribs) => {
-      if (name === 'h1' || name === 'h2' || name === 'h3') {
-        // Detect heading levels
-        const headingLevel = getHeadingLevel(name);
-        return { headingLevel };
+class StructureEngine {
+  /**
+   * @constructor
+   */
+  constructor() {}
+
+  /**
+   * Parse HTML document and extract headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml)
+   *
+   * @param {string} htmlContent - HTML content to parse
+   * @returns {{ toc: string[], navXhtml: string }}
+   */
+  async parseStructure(htmlContent) {
+    const parser = new parse.Parser({
+      onopentag: (name, attribs) => {
+        if (name === 'h1' || name === 'h2' || name === 'h3' || name === 'h4' || name === 'h5' || name === 'h6') {
+          this.headings.push({ level: name, text: attribs.title });
+        }
+      },
+    });
+
+    const headings = [];
+    let currentLevel = 0;
+    let toc = [];
+
+    parser.write(htmlContent);
+    parser.end();
+
+    // Build hierarchy
+    for (const heading of this.headings) {
+      while (currentLevel < heading.level.match(/^h(\d+)$/) ? parseInt($1) : 0) {
+        toc.push({ text: '', level: currentLevel });
+        currentLevel++;
       }
-    },
-  });
+      toc.push({ text: heading.text, level: heading.level });
+    }
 
-  parser.write(html);
-  parser.end();
+    // Generate EPUB-compliant navigation (TOC + nav.xhtml)
+    const navXhtml = `
+      <nav id="toc">
+        <h2>Table of Contents</h2>
+        ${toc.map((item) => `<a href="#${item.text.replace(/\s+/g, '-').toLowerCase()}">${item.text}</a>`).join('')}
+      </nav>
+    `;
 
-  return parser.results;
-}
+    return { toc, navXhtml };
+  }
 
-// Heading Level Detection
-function getHeadingLevel(tagName) {
-  switch (tagName) {
-    case 'h1':
-      return 1;
-    case 'h2':
-      return 2;
-    case 'h3':
-      return 3;
-    default:
-      // Fallback detection using text patterns
-      const headingText = parser.results[0].attribs.text;
-      if (headingText.includes('Chapter')) {
-        return 1;
-      } else if (headingText.includes('Section')) {
-        return 2;
-      } else if (headingText.includes('Subsection')) {
-        return 3;
-      }
-      return null;
+  /**
+   * @returns {string[]}
+   */
+  get headings() {
+    return this._headings;
+  }
+
+  set headings(value) {
+    this._headings = value;
   }
 }
 
-// EPUB Navigation Generation
-function generateEPUBNavigation(contentBlocks) {
-  const toc = [];
-  let currentLevel = 0;
-
-  contentBlocks.forEach((block) => {
-    const headingLevel = block.headingLevel;
-    if (headingLevel > currentLevel) {
-      // New level, add to TOC and nav map
-      toc.push({ text: block.attribs.text, level: headingLevel });
-      currentLevel = headingLevel;
-    } else if (headingLevel < currentLevel) {
-      // Backtracking, remove from TOC and nav map
-      while (currentLevel > headingLevel) {
-        toc.pop();
-        currentLevel--;
-      }
-    }
-  });
-
-  return { toc, navMap: generateNavMap(toc) };
-}
-
-// Nav Map Generation
-function generateNavMap(toc) {
-  const navMap = [];
-
-  toc.forEach((entry) => {
-    navMap.push({ text: entry.text, level: entry.level });
-  });
-
-  return navMap;
-}
-
-// Main Function
-async function main() {
-  // Load HTML content from file or database
-  const html = fs.readFileSync('content.html', 'utf8');
-
-  // Scan content blocks and detect headings
-  const contentBlocks = scanContentBlocks(html);
-
-  // Generate EPUB navigation (TOC + nav map)
-  const epubNavigation = generateEPUBNavigation(contentBlocks);
-
-  // Output EPUB navigation as JSON
-  console.log(JSON.stringify(epubNavigation, null, 2));
-}
-
-main();
+module.exports = StructureEngine;
