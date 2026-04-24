@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not affect performance
+- Max 1 new file (core/structure.js) - Do NOT modify existing content generation logic - No external dependencies - Must not break existing EPUB export
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.

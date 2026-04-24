@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
 
 RULES
 1. Audit touched files first and identify regressions.
