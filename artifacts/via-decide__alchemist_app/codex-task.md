@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
+Refactor Reading Progress Engine (core/reading-progress.js) to support multi-book tracking, proper storage integration, and safe performance behavior.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Save operation <5ms - Must not affect reader performance
+- Max 1 new file - No external dependencies - Save <5ms - Must not degrade reader performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
