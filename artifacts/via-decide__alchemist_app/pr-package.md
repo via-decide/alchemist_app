@@ -1,9 +1,9 @@
-Branch: simba/refactor-document-structure-engine-corestructure
-Title: Refactor Document Structure Engine (core/structure.js) to correctly p...
+Branch: simba/implement-a-reading-progress-location-engine-cor
+Title: Implement a Reading Progress & Location Engine (core/reading-progress...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
+- Goal: Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
