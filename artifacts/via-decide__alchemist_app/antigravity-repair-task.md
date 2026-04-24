@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
+Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
 
 RULES
 1. Audit touched files first and identify regressions.
