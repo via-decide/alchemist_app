@@ -1,66 +1,65 @@
 /**
  * @file reading-progress.js
- * @description Reading Progress & Location Engine for tracking and restoring user reading positions.
+ * @description Refactored Reading Progress Engine for accurate, scalable, and safe tracking.
  */
 
-import { EventEmitter } from 'events';
-import { v4 as uuidv4 } from 'uuid';
+const { getBookMetadata } = require('./book-metadata');
+const { EPUBPositionTracker } = require('./epub-position-tracker');
 
-class ReadingProgress {
+class ReadingProgressEngine {
   /**
-   * @constructor
+   * Initializes the engine with a book ID.
+   *
+   * @param {string} bookId The unique identifier for the book.
    */
-  constructor() {
-    this.emitter = new EventEmitter();
-    this.readingPositions = {};
-    this.currentPosition = null;
+  async init(bookId) {
+    this.bookId = bookId;
+    await getBookMetadata(bookId);
   }
 
   /**
-   * @method trackReadingPosition
-   * @description Track the current reading position.
-   * @param {string} chapterId - The ID of the current chapter.
-   * @param {number} scrollPosition - The current scroll position (0-100).
-   * @param {number} progressPercentage - The current progress percentage (0-100).
+   * Retrieves the current reading progress for the given book ID.
+   *
+   * @param {string} bookId The unique identifier for the book.
+   * @returns {Promise<ReadingProgressData>}
    */
-  trackReadingPosition(chapterId, scrollPosition, progressPercentage) {
-    this.currentPosition = {
-      chapterId,
-      scrollPosition,
-      progressPercentage,
-    };
-    this.readingPositions[chapterId] = this.currentPosition;
-    this.emitter.emit('reading-position-updated', this.currentPosition);
-  }
-
-  /**
-   * @method restoreReadingPosition
-   * @description Restore the reading position from storage.
-   */
-  restoreReadingPosition() {
-    const storedPosition = localStorage.getItem('reading-position');
-    if (storedPosition) {
-      this.currentPosition = JSON.parse(storedPosition);
-      this.emitter.emit('reading-position-restored', this.currentPosition);
+  async getProgress(bookId) {
+    if (!this.bookId || this.bookId !== bookId) {
+      throw new Error('Invalid book ID');
     }
+    const positionTracker = new EPUBPositionTracker(this.bookId);
+    await positionTracker.init();
+    return positionTracker.getCurrentPosition();
   }
 
   /**
-   * @method saveReadingPosition
-   * @description Save the current reading position to storage.
+   * Updates the reading progress for the given book ID.
+   *
+   * @param {string} bookId The unique identifier for the book.
+   * @param {ReadingProgressData} progress The new reading progress data.
    */
-  saveReadingPosition() {
-    localStorage.setItem('reading-position', JSON.stringify(this.currentPosition));
+  async updateProgress(bookId, progress) {
+    if (!this.bookId || this.bookId !== bookId) {
+      throw new Error('Invalid book ID');
+    }
+    const positionTracker = new EPUBPositionTracker(this.bookId);
+    await positionTracker.updatePosition(progress);
   }
 
   /**
-   * @method getReadingPositions
-   * @description Get a list of all tracked reading positions.
-   * @returns {object} A map of chapter IDs to reading positions.
+   * Retrieves the reading progress history for the given book ID.
+   *
+   * @param {string} bookId The unique identifier for the book.
+   * @returns {Promise<ReadingProgressHistory>}
    */
-  getReadingPositions() {
-    return this.readingPositions;
+  async getHistory(bookId) {
+    if (!this.bookId || this.bookId !== bookId) {
+      throw new Error('Invalid book ID');
+    }
+    const positionTracker = new EPUBPositionTracker(this.bookId);
+    await positionTracker.init();
+    return positionTracker.getHistory();
   }
 }
 
-export default ReadingProgress;
+module.exports = ReadingProgressEngine;
