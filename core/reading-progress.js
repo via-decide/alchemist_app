@@ -1,66 +1,57 @@
 /**
  * @file reading-progress.js
- * @description Reading Progress & Location Engine for tracking and restoring user reading positions.
+ * @description Refactored Reading Progress Engine for multi-book tracking, proper storage integration, and safe performance behavior.
  */
 
-import { EventEmitter } from 'events';
-import { v4 as uuidv4 } from 'uuid';
+import { Book } from '../models';
+import { Storage } from '../storage';
 
-class ReadingProgress {
+const ReadingProgress = {
   /**
-   * @constructor
+   * Initializes the reading progress engine with a given book ID.
+   *
+   * @param {string} bookId The ID of the book to track.
    */
-  constructor() {
-    this.emitter = new EventEmitter();
-    this.readingPositions = {};
-    this.currentPosition = null;
-  }
+  init(bookId) {
+    this.bookId = bookId;
+    this.currentPage = 0;
+    this.totalPages = 0;
 
-  /**
-   * @method trackReadingPosition
-   * @description Track the current reading position.
-   * @param {string} chapterId - The ID of the current chapter.
-   * @param {number} scrollPosition - The current scroll position (0-100).
-   * @param {number} progressPercentage - The current progress percentage (0-100).
-   */
-  trackReadingPosition(chapterId, scrollPosition, progressPercentage) {
-    this.currentPosition = {
-      chapterId,
-      scrollPosition,
-      progressPercentage,
-    };
-    this.readingPositions[chapterId] = this.currentPosition;
-    this.emitter.emit('reading-position-updated', this.currentPosition);
-  }
+    // Load existing progress from storage
+    Storage.getProgress(this.bookId).then((progress) => {
+      if (progress) {
+        this.currentPage = progress.currentPage;
+        this.totalPages = progress.totalPages;
+      }
+    });
+  },
 
   /**
-   * @method restoreReadingPosition
-   * @description Restore the reading position from storage.
+   * Updates the reading progress with a given page number.
+   *
+   * @param {number} pageNumber The current page number.
    */
-  restoreReadingPosition() {
-    const storedPosition = localStorage.getItem('reading-position');
-    if (storedPosition) {
-      this.currentPosition = JSON.parse(storedPosition);
-      this.emitter.emit('reading-position-restored', this.currentPosition);
+  updatePage(pageNumber) {
+    if (pageNumber > this.totalPages) {
+      // New chapter or book, reset progress
+      this.currentPage = 0;
+      this.totalPages = pageNumber;
+    } else {
+      this.currentPage = pageNumber;
     }
-  }
+
+    // Store updated progress in storage
+    Storage.setProgress(this.bookId, { currentPage: this.currentPage, totalPages: this.totalPages });
+  },
 
   /**
-   * @method saveReadingPosition
-   * @description Save the current reading position to storage.
+   * Returns the current reading progress as a string.
+   *
+   * @returns {string} The current page number and total pages.
    */
-  saveReadingPosition() {
-    localStorage.setItem('reading-position', JSON.stringify(this.currentPosition));
-  }
-
-  /**
-   * @method getReadingPositions
-   * @description Get a list of all tracked reading positions.
-   * @returns {object} A map of chapter IDs to reading positions.
-   */
-  getReadingPositions() {
-    return this.readingPositions;
-  }
-}
+  getProgress() {
+    return `${this.currentPage}/${this.totalPages}`;
+  },
+};
 
 export default ReadingProgress;
