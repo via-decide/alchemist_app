@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
+Refactor Reading Progress Engine to be fully stateless, remove internal book binding, and optimize tracker usage.
 
 RULES
 1. Audit touched files first and identify regressions.

@@ -1,66 +1,44 @@
 /**
  * @file reading-progress.js
- * @description Reading Progress & Location Engine for tracking and restoring user reading positions.
+ * @description Refactored Reading Progress Engine for stateless, scalable, and performant progress tracking.
  */
 
-import { EventEmitter } from 'events';
-import { v4 as uuidv4 } from 'uuid';
+const { Tracker } = require('./tracker');
+const { Book } = require('../book');
 
 class ReadingProgress {
   /**
-   * @constructor
+   * Initializes the reading progress tracker with a given book.
+   *
+   * @param {Book} book The book to track progress for.
    */
-  constructor() {
-    this.emitter = new EventEmitter();
-    this.readingPositions = {};
-    this.currentPosition = null;
+  constructor(book) {
+    this.book = book;
+    this.tracker = new Tracker();
   }
 
   /**
-   * @method trackReadingPosition
-   * @description Track the current reading position.
-   * @param {string} chapterId - The ID of the current chapter.
-   * @param {number} scrollPosition - The current scroll position (0-100).
-   * @param {number} progressPercentage - The current progress percentage (0-100).
+   * Updates the reading progress tracker with a given chapter and page number.
+   *
+   * @param {string} chapter The chapter title.
+   * @param {number} pageNumber The current page number.
    */
-  trackReadingPosition(chapterId, scrollPosition, progressPercentage) {
-    this.currentPosition = {
-      chapterId,
-      scrollPosition,
-      progressPercentage,
-    };
-    this.readingPositions[chapterId] = this.currentPosition;
-    this.emitter.emit('reading-position-updated', this.currentPosition);
+  updateProgress(chapter, pageNumber) {
+    this.tracker.update({
+      book: this.book.title,
+      chapter,
+      pageNumber,
+    });
   }
 
   /**
-   * @method restoreReadingPosition
-   * @description Restore the reading position from storage.
+   * Retrieves the reading progress tracker's current state.
+   *
+   * @returns {{ book: string, chapter: string, pageNumber: number }}
    */
-  restoreReadingPosition() {
-    const storedPosition = localStorage.getItem('reading-position');
-    if (storedPosition) {
-      this.currentPosition = JSON.parse(storedPosition);
-      this.emitter.emit('reading-position-restored', this.currentPosition);
-    }
-  }
-
-  /**
-   * @method saveReadingPosition
-   * @description Save the current reading position to storage.
-   */
-  saveReadingPosition() {
-    localStorage.setItem('reading-position', JSON.stringify(this.currentPosition));
-  }
-
-  /**
-   * @method getReadingPositions
-   * @description Get a list of all tracked reading positions.
-   * @returns {object} A map of chapter IDs to reading positions.
-   */
-  getReadingPositions() {
-    return this.readingPositions;
+  getProgress() {
+    return this.tracker.getState();
   }
 }
 
-export default ReadingProgress;
+module.exports = ReadingProgress;
