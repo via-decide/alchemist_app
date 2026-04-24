@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
+Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
 
 CONSTRAINTS
-- Max 1 new file - Do NOT break existing export flow - No external dependencies beyond htmlparser2 - Processing <20ms per document
+- Max 1 new file - No external dependencies - Save operation <5ms - Must not affect reader performance
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
