@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
+Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
 
 RULES
 1. Audit touched files first and identify regressions.
