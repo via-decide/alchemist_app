@@ -1,9 +1,9 @@
-Branch: simba/implement-a-reading-progress-location-engine-cor
-Title: Implement a Reading Progress & Location Engine (core/reading-progress...
+Branch: simba/refactor-reading-progress-engine-corereading-pro
+Title: Refactor Reading Progress Engine (core/reading-progress.js) to suppor...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Implement a Reading Progress & Location Engine (core/reading-progress.js) to track and restore user reading positions.
+- Goal: Refactor Reading Progress Engine (core/reading-progress.js) to support multi-book tracking, proper storage integration, and safe performance behavior.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
