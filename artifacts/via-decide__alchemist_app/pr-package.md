@@ -1,9 +1,9 @@
-Branch: simba/add-bookmark-system-to-allow-users-to-save-view-
-Title: Add bookmark system to allow users to save, view, and navigate to spe...
+Branch: simba/implement-a-document-structure-engine-corestruct
+Title: Implement a Document Structure Engine (core/structure.js) to automati...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+- Goal: Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
