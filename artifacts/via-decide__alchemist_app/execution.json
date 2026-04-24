@@ -1,7 +1,7 @@
 {
   "repo": "via-decide/alchemist_app",
   "mode": "codex_then_antigravity",
-  "branch": "simba/implement-a-reading-progress-location-engine-cor",
+  "branch": "simba/refactor-reading-progress-engine-to-be-fully-sta",
   "files_to_create": [
     "codex-task.md",
     "antigravity-repair-task.md",
@@ -13,5 +13,5 @@
   "codex_prompt_path": "codex-task.md",
   "repair_prompt_path": "antigravity-repair-task.md",
   "synthesized_file": "core/reading-progress.js",
-  "synthesized_size": 1905
+  "synthesized_size": 1058
 }
