@@ -1,9 +1,9 @@
-Branch: simba/implement-a-document-structure-engine-corestruct
-Title: Implement a Document Structure Engine (core/structure.js) to automati...
+Branch: simba/refactor-document-structure-engine-corestructure
+Title: Refactor Document Structure Engine (core/structure.js) to correctly p...
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
+- Goal: Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
 
 ## Testing Checklist
 - [ ] Run unit/integration tests
