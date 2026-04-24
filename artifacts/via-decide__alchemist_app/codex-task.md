@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Implement a Document Structure Engine (core/structure.js) to automatically detect headings and generate proper EPUB navigation (TOC + nav map).
+Refactor Document Structure Engine (core/structure.js) to correctly parse headings, build hierarchy, and generate EPUB-compliant navigation (TOC + nav.xhtml).
 
 CONSTRAINTS
-- Max 1 new file (core/structure.js) - Do NOT modify existing content generation logic - No external dependencies - Must not break existing EPUB export
+- Max 1 new file - Do NOT break existing export flow - No external dependencies beyond htmlparser2 - Processing <20ms per document
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
