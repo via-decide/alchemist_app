@@ -1,0 +1,4 @@
+[
+  {"id":"A_0001","set":"SET_A","dom":"Physical Chemistry","q":"What is the effect of a catalyst on activation energy and enthalpy change?","correct":"Activation energy decreases and enthalpy remains constant","l":"Activation energy decreases and enthalpy decreases","r":"Activation energy remains constant and enthalpy remains constant","logic":"Catalysts lower activation energy by changing pathway, not state-function enthalpy."},
+  {"id":"A_0002","set":"SET_A","dom":"Physical Chemistry","q":"When is a reaction spontaneous at all temperatures?","correct":"Delta H is negative and Delta S is positive","l":"Delta H is positive and Delta S is negative","r":"Delta H is negative and Delta S is negative","logic":"From Delta G = Delta H - TDelta S, this sign combination keeps Delta G negative for all T."}
+]

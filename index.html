@@ -93,6 +93,10 @@ body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font
   <div class="log-line active" id="log-3">> ...</div>
 </div>
 
+
+<div id="vault-list" style="position:fixed;right:12px;top:120px;width:260px;max-height:40vh;overflow:auto;background:#111;border:1px solid #333;padding:8px;font-size:12px;z-index:200"></div>
+<div id="vault-detail" style="position:fixed;right:12px;top:calc(120px + 42vh);width:260px;max-height:38vh;overflow:auto;background:#111;border:1px solid #333;padding:8px;font-size:12px;z-index:200"></div>
+
 <div id="stack">
   <div class="card">
     <div class="card-q" style="font-family:var(--font-code); font-size:0.9rem; color:#666; font-style:normal;">LOADING STATIC CORE...</div>
@@ -655,8 +659,20 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, "Δ");
 
 // ✅ FIXED MAPPING LOGIC
+let ACTIVE = null;
+const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED'); } };
+function renderList(){ const c=document.getElementById('vault-list'); c.innerHTML=''; VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.textContent=item.q; div.style.cursor='pointer'; div.onclick=()=>selectItem(index); c.appendChild(div); }); }
+function selectItem(index){ ACTIVE = VAULT[index]; renderDetail(); }
+function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p>`; }
+function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
+function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
 async function init() {
   log("SYSTEM BOOT", "active");
+  await loadVault();
+  if(!Array.isArray(VAULT)||!VAULT.length){ return; }
+  RAW_DATA = VAULT.map((d,i) => ({ id: d.id || `VAULT_${i+1}`, set: d.set || 'MASTER', dom: d.dom || 'GEN', q: d.q, u: d.correct, l: d.l || 'Option B', r: d.r || 'Option C', correct: 'UP', logic: d.logic, hint: d.hint, trap: d.trap }));
+  log(`VAULT DATA LOADED (${RAW_DATA.length})`, "active");
+  return begin();
   RAW_DATA = INJECTED_DATA.map(d => ({
     id: d.Question_ID,
     set: d.Set_Code || "DEFAULT",
@@ -676,6 +692,7 @@ async function init() {
   ALCHEMIST.ui=AlchemistUIIntegration.create({sessionEngine:ALCHEMIST.session,ingestionEngine:ALCHEMIST.ingestion}); ALCHEMIST.ui.connectSelection(document); ALCHEMIST.ui.connectSessionEnd(document);
   begin();
 }
+window.addEventListener('DOMContentLoaded', loadVault);
 init();
 </script>
 </body>
