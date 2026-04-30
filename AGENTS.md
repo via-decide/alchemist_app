@@ -30,3 +30,24 @@ Before any code change, print:
 - AGENTS.md ✓
 - instructions.md ✓
 - session.md ✓"
+
+════════════════════════════════════════════
+INSTRUCTION PRIORITY STACK
+════════════════════════════════════════════
+
+Codex MUST follow instructions in this order:
+
+1. TASK PROMPT (highest priority)
+2. PR-SPECIFIC .md FILES
+3. .codex/session.md
+4. .codex/instructions.md
+5. AGENTS.md (base rules)
+
+If conflict occurs:
+
+→ higher priority overrides lower
+
+If ambiguity remains:
+
+→ STOP
+→ request clarification
