@@ -93,6 +93,10 @@ body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font
   <div class="log-line active" id="log-3">> ...</div>
 </div>
 
+
+<div id="export-ui" style="position:fixed;right:12px;bottom:12px;z-index:9999;display:flex;gap:8px;">
+  <button id="export-epub-btn">Export EPUB</button><button id="export-pdf-btn">Export PDF</button>
+</div>
 <div id="stack">
   <div class="card">
     <div class="card-q" style="font-family:var(--font-code); font-size:0.9rem; color:#666; font-style:normal;">LOADING STATIC CORE...</div>
@@ -677,6 +681,8 @@ async function init() {
   begin();
 }
 init();
+(function bindExportUI(){const epubBtn=document.getElementById("export-epub-btn"),pdfBtn=document.getElementById("export-pdf-btn"),getData=()=>SESSION_ALL.length?SESSION_ALL:RAW_DATA;if(pdfBtn)pdfBtn.addEventListener("click",()=>exportSessionPDF(getData(),CURRENT_SES_ID||"SESSION_TEST"));if(epubBtn)epubBtn.addEventListener("click",()=>{const fn=window.runExportEPUB||window.exportSessionEPUB||window.exportEPUB;if(typeof fn==="function")fn(getData());else console.log("EXPORT_NOT_CONNECTED");});})();
+
 </script>
 </body>
     </html>
