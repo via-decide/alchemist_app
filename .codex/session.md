@@ -1,18 +1,22 @@
-# CODEX Session Layer (Dynamic)
+# CODEX Session Context
 
-## Current Focus
-System: ALCHEMIST
+## Active Focus
+System: Alchemist bootstrap reliability
 
-## Active Modules
-- session engine
-- block system
-- ingestion
-- UI integration
-- publish flow
+## Session Persistence Rule
+- Read this file first as active context for task execution
+- Do not override session context unless a task explicitly updates it
 
-## Strict Rule
-DO NOT BREAK SWIPE UI.
+## Current Mission
+Enforce deterministic instruction loading and prevent stateless execution drift.
 
-## Session Notes
-- This file is task-editable and should be updated per mission focus.
-- Use as the highest-priority context after global/system rules load.
+## Guarded Areas
+- Preserve swipe UI core behavior
+- Keep logic changes in integration-safe layers
+
+## Task Start Confirmation
+Required output before code changes:
+"BOOTSTRAP LOADED:
+- AGENTS.md ✓
+- instructions.md ✓
+- session.md ✓"

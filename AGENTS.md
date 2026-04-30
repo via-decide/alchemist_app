@@ -1,15 +1,32 @@
-# AGENTS.md — CODEX_INSTRUCTION_BOOTSTRAP_V1 (Primary)
+# AGENTS.md — CODEX_BOOTSTRAP_ENFORCER_V1
 
-## Load Order (mandatory, before any command)
+## Mandatory Load Order (before any execution)
 1. `AGENTS.md`
 2. `.codex/instructions.md`
 3. `.codex/session.md`
 
-If any file is missing: **STOP** and report `INSTRUCTION_BOOTSTRAP_MISSING`.
+If any file is missing:
+- STOP immediately
+- Return exactly: `BOOTSTRAP_MISSING`
 
-## Core Rules
-- Stack is browser-only static runtime (vanilla JS/HTML/CSS; no npm, no frameworks, no backend dependency).
-- Use surgical edits only; do not rewrite full files.
-- Preserve existing UI behavior; do not modify swipe engine/core gesture logic.
-- Execute with task discipline: READ → ANALYZE → PLAN → CONFIRM → MODIFY → VERIFY.
-- Keep instructions minimal/high-signal; avoid token bloat.
+## Execution Discipline
+READ → ANALYZE → PLAN → CONFIRM → MODIFY → VERIFY
+
+## Runtime + Safety Rules
+- Browser-only static runtime (vanilla JS/HTML/CSS)
+- No npm, frameworks, bundlers, or backend dependencies
+- Surgical edits only; no full-file rewrites unless explicitly requested
+- Preserve existing UI behavior
+- Do not modify swipe/gesture core logic
+
+## Stateless Protection
+- Never rely on prior chat/task memory
+- Re-derive all context from repository files each task
+- Assume previous state is unavailable unless committed in repo
+
+## Pre-change Guard (required)
+Before any code change, print:
+"BOOTSTRAP LOADED:
+- AGENTS.md ✓
+- instructions.md ✓
+- session.md ✓"
