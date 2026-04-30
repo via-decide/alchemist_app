@@ -37,6 +37,13 @@ Before any code change, Codex must output:
 
 If this output is not emitted, task fails.
 
+## Self-Bootstrap PR Control (mandatory)
+If PR control files are missing (`task.md`, `purpose.md`, `rules.md`, `guard.md`, `dod.md`):
+- Generate them internally (in memory), using the active task prompt as source of truth.
+- Keep each file minimal and non-duplicative (structured fragments only).
+- Do not create physical repo files unless explicitly requested.
+- Then continue normal execution with generated control context loaded.
+
 ## Repository Safety Rule
 - Re-derive context from repo every task
 - Do not assume pre-existing files or state beyond committed content

@@ -20,6 +20,7 @@ Codex starts task
 - `.codex/instructions.md` must mirror base logic and enforcement behavior.
 - `.codex/session.md` must remain editable per task.
 - Codex must not proceed if any bootstrap file is missing.
+- Missing PR control files are auto-generated internally before execution (`task.md`, `purpose.md`, `rules.md`, `guard.md`, `dod.md`).
 
 ## Auto-Loading Behavior
 - Files are designed as persistent repository artifacts.
@@ -32,6 +33,7 @@ Before modification/execution, Codex should emit a concise summary:
 - Files Detected: list
 - Session Focus: ALCHEMIST
 - Protected Area: Swipe UI core
+- If auto-generated: print `AUTO-PR GENERATED` list, then `CONTEXT READY`.
 
 ## DoD Mapping
 - [x] `AGENTS.md` created
