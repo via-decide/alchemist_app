@@ -1,33 +1,35 @@
-# CODEX Instruction Layer — Full Rules
+# CODEX Bootstrap Instructions — ENFORCER_V1
 
 ## Bootstrap Contract
-Codex must load and enforce these files in order before execution:
-1. `AGENTS.md` (global guardrails)
-2. `.codex/instructions.md` (full protocol)
+At task start, verify in this exact order:
+1. `AGENTS.md`
+2. `.codex/instructions.md`
+3. `.codex/session.md`
+
+If any file is missing:
+- abort execution
+- return exactly: `BOOTSTRAP_MISSING`
+
+## Anti-Refresh Strategy
+- Critical rules must live in repository files
+- No reliance on chat memory
+- No reliance on previous task state
+
+## Instruction Priority
+1. `AGENTS.md` (global)
+2. `.codex/instructions.md` (detailed)
 3. `.codex/session.md` (active focus)
 
-Missing file behavior:
-- Abort execution.
-- Emit: `INSTRUCTION_BOOTSTRAP_MISSING`.
+## Execution Guard
+Before any code modification, output exactly:
+"BOOTSTRAP LOADED:
+- AGENTS.md ✓
+- instructions.md ✓
+- session.md ✓"
 
-## Execution Protocol (mandatory)
-READ → ANALYZE → PLAN → CONFIRM → MODIFY → VERIFY
+If guard cannot be emitted, fail task.
 
-## Repository Constraints
-- Browser-only runtime (vanilla JS, HTML, CSS).
-- No frameworks, package managers, bundlers, or backend coupling.
-- Static deployment compatible.
-- No broad refactors or full-file rewrites.
-- UI safety first; swipe/gesture core is protected.
-
-## Task Economy + Session Rules
-- Prefer smallest valid change set.
-- Keep outputs deterministic and high-signal.
-- Respect active session focus in `.codex/session.md`.
-- If session constraints conflict with task safety, stop and report conflict.
-
-## Enforcement Check (pre-execution)
-Codex must print a concise “Rules Loaded” summary with:
-- detected files
-- active module focus
-- protected UI areas
+## Repository Safety Rule
+- Do not assume previous state
+- Do not assume file existence unless present in repo
+- Always re-derive context from repository contents
