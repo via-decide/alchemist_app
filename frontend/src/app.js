@@ -1,5 +1,16 @@
 const { useEffect, useState } = React;
 
+function initiatePayment() {
+  fetch('/api/create-checkout-session', { method: 'POST' })
+    .then(res => res.json())
+    .then(data => {
+      window.location.href = data.url;
+    });
+}
+
+window.initiatePayment = initiatePayment;
+
+
 function Dashboard() {
   const [runs, setRuns] = useState([]);
   const [forecast] = useState({
