@@ -8,6 +8,12 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="kernel/alchemist/block-system.js"></script>
+<script src="kernel/alchemist/session-engine.js"></script>
+<script src="kernel/alchemist/ingestion-engine.js"></script>
+<script src="kernel/alchemist/session-review.js"></script>
+<script src="kernel/alchemist/ui-integration.js"></script>
+<script src="kernel/alchemist/ui-activation.js"></script>
 
 <style>
 /* KINETIC VISUAL CORE */
@@ -5931,7 +5937,9 @@ const INJECTED_DATA =
 // --- STATE ---
 let RAW_DATA = [], POOL = [], WRONG = [], SESSION_ALL = [];
 let SET_CURSOR = 0, ACTIVE_SET = null, XP = 0, VOLUME_LIMIT = null;
-let ATTEMPTED = new Set(); 
+let ATTEMPTED = new Set();
+let ALCHEMIST = null;
+const emitAlchemy=(name,detail)=>document.dispatchEvent(new CustomEvent(name,{detail})); 
 
 // --- TELEMETRY ---
 let Q_START_TIME = 0;
@@ -6199,6 +6207,7 @@ function nextQ(){
  card(d.q, map, dir=>{
   let picked = null;
   if(dir==="UP") picked = map.up; if(dir==="LEFT") picked = map.left; if(dir==="RIGHT") picked = map.right;
+  emitAlchemy("alchemist:selection",{contentType:"text",payload:{value:`${d.id}:${picked||""}`},sessionName:CURRENT_SES_ID||"UI Session"});
   let cText = d.u; // We hardcoded Correct Answer to 'u' in the map logic below, and d.correct to 'UP'
   // But wait, the display options are shuffled in 'map' (up/left/right).
   // 'picked' holds the TEXT of the option chosen.
@@ -6227,6 +6236,7 @@ function review(){
 }
 
 function report(){
+ emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID});
  if(!CURRENT_SES_ID) generateSessionID();
  const percent = Math.round((XP / SESSION_ALL.length) * 100) || 0;
  card(`SUMMARY\n\n${XP} / ${SESSION_ALL.length} Correct\n(${percent}%)`,{down:"DOWNLOAD PDF", up:"RESTART", left:"MENU"},dir=>{
@@ -6339,6 +6349,8 @@ async function init() {
   })).filter(d => d.id); 
 
   log(`STATIC DATA LOADED (${RAW_DATA.length})`, "active");
+  ALCHEMIST={session:AlchemistSessionEngine.create()}; ALCHEMIST.ingestion=AlchemistIngestionEngine.create({blockSystem:AlchemistBlockSystem,sessionEngine:ALCHEMIST.session}); ALCHEMIST.review=AlchemistSessionReview.create({sessionEngine:ALCHEMIST.session});
+  ALCHEMIST.ui=AlchemistUIIntegration.create({sessionEngine:ALCHEMIST.session,ingestionEngine:ALCHEMIST.ingestion}); ALCHEMIST.ui.connectSelection(document); ALCHEMIST.ui.connectSessionEnd(document);
   begin();
 }
 init();
