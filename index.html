@@ -3226,11 +3226,24 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, "Δ");
 
 // ✅ FIXED MAPPING LOGIC
-let ACTIVE = null;
+let ACTIVE = null, selectedItem = null;
 const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED'); } };
 function renderList(){ const c=document.getElementById('vault-list'); c.innerHTML=''; VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.textContent=item.q; div.style.cursor='pointer'; div.onclick=()=>selectItem(index); c.appendChild(div); }); }
-function selectItem(index){ ACTIVE = VAULT[index]; renderDetail(); }
-function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p>`; }
+function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; renderDetail(); }
+const generateNotes=i=>`# ${i.q}
+
+## Concept
+${i.logic||"No explanation available"}
+
+## Key Points
+- ${i.hint||i.topic||"Core concept"}
+- ${i.set||"Set reference"}
+
+## Summary
+${i.q} → ${i.correct||i.answer||""}`;
+const dl=(n,c,t)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();};
+function exportZAY(item,notes){const z={manifest:{version:"1.0",type:"alchemist"},content:{notes},assets:{},state:{item}};dl('export.zay',JSON.stringify(z,null,2),'application/json');}
+function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf">Export PDF</button><button id="export-epub">Export EPUB</button><button id="export-zay">Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); dl('notes.pdf',window.generatedNotes,'application/pdf');}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); dl('notes.epub',window.generatedNotes,'application/epub+zip');}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); exportZAY(selectedItem,window.generatedNotes);}; }
 function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
 function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
 async function init() {
