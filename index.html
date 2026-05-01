@@ -64,6 +64,32 @@ body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font
 .card-q::-webkit-scrollbar{width:0px;} 
 .card-q sub{font-size:0.7em; vertical-align:-0.3em;} .card-q sup{font-size:0.7em; vertical-align:0.5em;}
 
+/* LIBRARY PANEL (gated by body.lib-open) */
+.lib-toggle{cursor:pointer; color:#888; padding:0 6px; user-select:none;}
+.lib-toggle:hover{color:var(--gold);}
+#vault-list,#vault-detail{display:none;}
+body.lib-open #vault-list,body.lib-open #vault-detail{display:block;}
+#vault-list,#vault-detail{
+  position:fixed; right:12px; width:280px; max-width:calc(100vw - 24px);
+  background:#0a0a0a; border:1px solid #333; border-radius:8px; padding:10px 12px;
+  font-family:var(--font-code); font-size:12px; color:#ccc; z-index:120;
+  box-shadow:0 10px 40px rgba(0,0,0,0.8);
+}
+#vault-list{top:64px; max-height:38vh; overflow:auto;}
+#vault-detail{top:calc(64px + 40vh); max-height:48vh; overflow:auto;}
+.vault-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; color:var(--gold); letter-spacing:1.2px; text-transform:uppercase; font-size:11px;}
+.vault-close{cursor:pointer; color:#888; padding:0 4px;}
+.vault-close:hover{color:var(--red);}
+.vault-row{cursor:pointer; padding:5px 4px; border-bottom:1px solid #1a1a1a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#aaa;}
+.vault-row:hover{color:var(--text-white); background:#141414;}
+#vault-detail h3{margin:6px 0 8px; font-family:var(--font-serif); font-size:14px; color:var(--text-white); white-space:normal;}
+#vault-detail p{margin:6px 0; line-height:1.4; color:#aaa;}
+#vault-detail button{margin:4px 4px 0 0; padding:6px 8px; font-family:var(--font-code); font-size:11px; background:#111; color:#ccc; border:1px solid #333; border-radius:4px; cursor:pointer;}
+#vault-detail button:hover{border-color:var(--gold); color:var(--gold);}
+@media(max-width:480px){
+  #vault-list,#vault-detail{right:8px; left:8px; width:auto;}
+}
+
 /* SWIPE LABELS */
 .swipe-label{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center; 
@@ -81,8 +107,8 @@ body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font
 
 <div id="header">
   <div class="header-meta">
-    <span id="id-ui">VIA.STACK</span> 
-    <span id="xp-ui">0 XP</span>
+    <span id="id-ui">VIA.STACK</span>
+    <span><span id="lib-toggle" class="lib-toggle" title="Open question library">[ LIBRARY ]</span> <span id="xp-ui">0 XP</span></span>
   </div>
   <div class="progress-track"><div id="progress-bar"></div></div>
 </div>
@@ -94,8 +120,8 @@ body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font
 </div>
 
 
-<div id="vault-list" style="position:fixed;right:12px;top:120px;width:260px;max-height:40vh;overflow:auto;background:#111;border:1px solid #333;padding:8px;font-size:12px;z-index:200"></div>
-<div id="vault-detail" style="position:fixed;right:12px;top:calc(120px + 42vh);width:260px;max-height:38vh;overflow:auto;background:#111;border:1px solid #333;padding:8px;font-size:12px;z-index:200"></div>
+<div id="vault-list"></div>
+<div id="vault-detail"></div>
 
 <div id="stack">
   <div class="card">
@@ -3227,7 +3253,14 @@ const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, 
 // ✅ FIXED MAPPING LOGIC
 let ACTIVE = null, selectedItem = null;
 const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED'); } };
-function renderList(){ const c=document.getElementById('vault-list'); c.innerHTML=''; VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.textContent=item.q; div.style.cursor='pointer'; div.onclick=()=>selectItem(index); c.appendChild(div); }); }
+function renderList(){
+  const c=document.getElementById('vault-list'); c.innerHTML='';
+  const head=document.createElement('div'); head.className='vault-head';
+  head.innerHTML=`<span>LIBRARY · ${VAULT.length}</span><span class="vault-close" id="vault-close">×</span>`;
+  c.appendChild(head);
+  VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.className='vault-row'; div.textContent=`${item.id||index+1}  ${item.q}`; div.onclick=()=>selectItem(index); c.appendChild(div); });
+  document.getElementById('vault-close').onclick=()=>document.body.classList.remove('lib-open');
+}
 function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; renderDetail(); }
 const generateNotes=i=>`# ${i.q}
 
@@ -3263,33 +3296,16 @@ function exportZAY(item,structure){
 function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf">Export PDF</button><button id="export-epub">Export EPUB</button><button id="export-zay">Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
 function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
 function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
+document.getElementById('lib-toggle').onclick=()=>{ document.body.classList.toggle('lib-open'); if(document.body.classList.contains('lib-open')&&Array.isArray(VAULT)&&VAULT.length) renderList(); };
+
 async function init() {
   log("SYSTEM BOOT", "active");
   await loadVault();
   if(!Array.isArray(VAULT)||!VAULT.length){ return; }
   RAW_DATA = VAULT.map((d,i) => ({ id: d.id || `VAULT_${i+1}`, set: d.set || 'MASTER', dom: d.dom || 'GEN', q: d.q, u: d.correct, l: d.l || 'Option B', r: d.r || 'Option C', correct: 'UP', logic: d.logic, hint: d.hint, trap: d.trap }));
   log(`VAULT DATA LOADED (${RAW_DATA.length})`, "active");
-  return begin();
-  RAW_DATA = INJECTED_DATA.map(d => ({
-    id: d.Question_ID,
-    set: d.Set_Code || "DEFAULT",
-    dom: d.Domain || "GEN",
-    q: d.Question_Text,
-    u: d.Correct_Answer,      
-    l: d.Distractor_1,
-    r: d.Distractor_2,
-    correct: "UP",            
-    logic: d.Explanation_Short || d.Explanation_Long,
-    hint: d.Topic_Label,
-    trap: d.Trap_Explanation
-  })).filter(d => d.id); 
-
-  log(`STATIC DATA LOADED (${RAW_DATA.length})`, "active");
-  ALCHEMIST={session:AlchemistSessionEngine.create()}; ALCHEMIST.ingestion=AlchemistIngestionEngine.create({blockSystem:AlchemistBlockSystem,sessionEngine:ALCHEMIST.session}); ALCHEMIST.review=AlchemistSessionReview.create({sessionEngine:ALCHEMIST.session});
-  ALCHEMIST.ui=AlchemistUIIntegration.create({sessionEngine:ALCHEMIST.session,ingestionEngine:ALCHEMIST.ingestion}); ALCHEMIST.ui.connectSelection(document); ALCHEMIST.ui.connectSessionEnd(document);
   begin();
 }
-window.addEventListener('DOMContentLoaded', loadVault);
 init();
 </script>
 </body>
