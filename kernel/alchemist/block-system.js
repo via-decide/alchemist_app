@@ -8,7 +8,7 @@
 (function (global) {
   'use strict';
 
-  var SUPPORTED_TYPES = ['text', 'link', 'note', '3d'];
+  var SUPPORTED_TYPES = ['text', 'link', 'note', '3d', 'file'];
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -44,6 +44,12 @@
         href: content.href,
         label: typeof content.label === 'string' ? content.label : ''
       };
+    }
+
+    if (type === 'file') {
+      if (typeof content.name !== 'string' || content.name.trim() === '') fail('BLOCK_FILE_NAME_REQUIRED', 'File blocks require a non-empty content.name string.');
+      if (typeof content.normalizedType !== 'string' || content.normalizedType.trim() === '') fail('BLOCK_FILE_TYPE_REQUIRED', 'File blocks require content.normalizedType.');
+      return { name: content.name, type: content.normalizedType, normalizedType: content.normalizedType };
     }
 
     if (type === '3d') {
