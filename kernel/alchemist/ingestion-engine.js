@@ -30,6 +30,17 @@
     return escapeHtml(trimmed);
   }
 
+  var SUPPORTED_TYPES = ['application/pdf', 'text/plain', 'text/markdown', 'application/epub+zip'];
+
+  function normalizeFilePayload(payload) {
+    var name = sanitizeString(payload.name, 'INGEST_FILE_NAME_REQUIRED');
+    var rawType = typeof payload.type === 'string' ? payload.type.trim().toLowerCase() : '';
+    var fallbackType = name.toLowerCase().endsWith('.epub') ? 'application/epub+zip' : name.toLowerCase().endsWith('.pdf') ? 'application/pdf' : name.toLowerCase().endsWith('.md') ? 'text/markdown' : name.toLowerCase().endsWith('.txt') ? 'text/plain' : '';
+    var normalizedType = rawType || fallbackType;
+    if (!SUPPORTED_TYPES.includes(normalizedType)) fail('INGEST_FILE_TYPE_UNSUPPORTED', 'Unsupported file type: ' + (normalizedType || 'unknown'));
+    return { name: name, type: normalizedType, normalizedType: normalizedType };
+  }
+
   function parseInput(input) {
     if (!input || typeof input !== 'object') fail('INGEST_INPUT_REQUIRED', 'Input object required.');
     if (typeof input.type !== 'string') fail('INGEST_TYPE_REQUIRED', 'Input type is required.');
@@ -49,6 +60,10 @@
           label: typeof payload.label === 'string' ? escapeHtml(payload.label.trim()) : ''
         }
       };
+    }
+
+    if (type === 'file') {
+      return { type: 'file', content: normalizeFilePayload(payload) };
     }
 
     if (type === '3d') {

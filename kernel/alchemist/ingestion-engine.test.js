@@ -41,5 +41,10 @@ function createMemoryStorage() {
   assert.equal(link.block.content.label, '&lt;script&gt;x&lt;/script&gt;');
   assert.equal(sessionEngine.getSession().blocks.length, 2);
 
+  const epub = ingestion.ingest({ type: 'file', payload: { name: 'Book.EPUB', type: '' } });
+  assert.equal(epub.block.content.normalizedType, 'application/epub+zip');
+  assert.equal(sessionEngine.getSession().blocks.length, 3);
+  assert.throws(() => parseInput({ type: 'file', payload: { name: 'x.bin', type: '' } }), (err) => err && err.code === 'INGEST_FILE_TYPE_UNSUPPORTED');
+
   console.log('ingestion-engine tests passed');
 })();
