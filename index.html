@@ -3247,6 +3247,8 @@ function generateSessionID() {
     localStorage.setItem("LAST_SES_ID", CURRENT_SES_ID);
 }
 
+function restoreSession(){ const sid=localStorage.getItem("LAST_SES_ID"); if(sid){ CURRENT_SES_ID=sid; console.log(`SESSION RESTORED: ${sid}`); } const n=localStorage.getItem("SAVED_NOTES"); if(n) window.generatedNotes=n; const it=localStorage.getItem("SAVED_SELECTED_ITEM"); if(it){ try{ selectedItem=JSON.parse(it); ACTIVE=selectedItem; }catch(_){ } } }
+
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
 const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, "Δ");
 
@@ -3277,7 +3279,7 @@ const dl=(n,c,t)=>{const a=document.createElement('a');a.href=URL.createObjectUR
 function buildStructuredContent(item){return{title:item.q||item.question||"Untitled",author:"Alchemist Engine",chapters:[{title:"Concept",content:item.logic||item.explanation||""},{title:"Key Points",content:`\n- Topic: ${item.topic||item.hint||""}\n- Set: ${item.set||""}\n`},{title:"Summary",content:window.generatedNotes||""}]};}
 function buildEPUB(s){return`\n<?xml version="1.0" encoding="UTF-8"?>\n<package><metadata><title>${s.title}</title><creator>${s.author}</creator></metadata><manifest>${s.chapters.map((c,i)=>`<item id="c${i}" href="c${i}.html"/>`).join("")}</manifest><spine>${s.chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join("")}</spine></package>`;}
 function exportEPUB(s){dl((s.title||"notes").replace(/\s+/g,'_')+'.epub',buildEPUB(s),'application/epub+zip');}
-function exportPDF(s){dl((s.title||"notes").replace(/\s+/g,'_')+'.pdf',`\n${s.title}\n\n${s.chapters.map(c=>`\n${c.title}\n\n${c.content}\n`).join("\n")}`,'application/pdf');}
+function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF) return alert('PDF engine unavailable'); const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); d.save((s.title||'notes').replace(/\s+/g,'_')+'.pdf');}
 function exportZAY(item,structure){
   const notes=window.generatedNotes||"";
   const blocks=(structure&&structure.chapters||[]).map(c=>({type:"text",title:c.title,body:c.content}));
@@ -3293,13 +3295,14 @@ function exportZAY(item,structure){
   };
   dl(`${item.id||"asset"}.zay`,JSON.stringify(z,null,2),'application/json');
 }
-function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf">Export PDF</button><button id="export-epub">Export EPUB</button><button id="export-zay">Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
+function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf" ${window.generatedNotes?'':'disabled'}>Export PDF</button><button id="export-epub" ${window.generatedNotes?'':'disabled'}>Export EPUB</button><button id="export-zay" ${window.generatedNotes?'':'disabled'}>Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem); localStorage.setItem('SAVED_NOTES',window.generatedNotes); localStorage.setItem('SAVED_SELECTED_ITEM',JSON.stringify(selectedItem)); ['export-pdf','export-epub','export-zay'].forEach(id=>document.getElementById(id).disabled=false);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
 function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
 function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
 document.getElementById('lib-toggle').onclick=()=>{ document.body.classList.toggle('lib-open'); if(document.body.classList.contains('lib-open')&&Array.isArray(VAULT)&&VAULT.length) renderList(); };
 
 async function init() {
   log("SYSTEM BOOT", "active");
+  restoreSession();
   await loadVault();
   if(!Array.isArray(VAULT)||!VAULT.length){ return; }
   RAW_DATA = VAULT.map((d,i) => ({ id: d.id || `VAULT_${i+1}`, set: d.set || 'MASTER', dom: d.dom || 'GEN', q: d.q, u: d.correct, l: d.l || 'Option B', r: d.r || 'Option C', correct: 'UP', logic: d.logic, hint: d.hint, trap: d.trap }));
