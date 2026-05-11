@@ -35,6 +35,20 @@ make publish
 pytest -q
 ```
 
+## Alchemist EPUB Export Engine progress
+
+Mode: BUILD / ARCHITECTURE MODE for notebook-first, citation-governed EPUB publishing.
+
+First implementation target: **Medicinal Chemistry Reasoning System** by **Dharam Daxini**.
+
+Current pipeline commitment:
+
+1. Preserve notebook sequencing as the constitutional truth layer before chapter reconstruction.
+2. Reconstruct chapters into mechanism, structure, medicinal logic, pedagogy, citations, and `IMAGE_SPEC` blocks.
+3. Govern unsupported scientific claims with `[CITATION REQUIRED]` and quantitative claims with `[NUMERICAL VALIDATION REQUIRED]`.
+4. Render Kindle-safe EPUB assets for reaction schemes, SAR panels, spectra, mechanisms, and workflow diagrams.
+5. Validate output through OPF/TOC generation, EPUBCheck when available, Kindle-safe CSS, and metadata consistency.
+
 ## Publishing details
 
 See `docs/publishing_pipeline.md`.
