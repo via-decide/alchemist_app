@@ -38,3 +38,16 @@ pytest -q
 ## Publishing details
 
 See `docs/publishing_pipeline.md`.
+
+## Mode confirmation — Build / Architecture
+
+This repository is operating in **BUILD / ARCHITECTURE MODE** with Codex as the implementation fabric for autonomous system evolution.
+
+Current progress target:
+- define Codex execution contracts (planner, DAG, validation, PR orchestration)
+- support multi-repo worktree-driven execution flows
+- enable JSON-native runtime task packs and validator packs
+- establish architecture-memory + governance guardrails
+
+Submission endpoint for architecture progress updates:
+- https://via-decide.github.io/StudyOS/
