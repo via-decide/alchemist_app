@@ -3264,6 +3264,7 @@ function renderList(){
   document.getElementById('vault-close').onclick=()=>document.body.classList.remove('lib-open');
 }
 function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; renderDetail(); }
+const safeFileName=v=>String(v||'notes').replace(/[\\/:*?"<>|]+/g,' ').trim().replace(/\s+/g,'_')||'notes';
 const generateNotes=i=>`# ${i.q}
 
 ## Concept
@@ -3278,8 +3279,8 @@ ${i.q} → ${i.correct||i.answer||""}`;
 const dl=(n,c,t)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();};
 function buildStructuredContent(item){return{title:item.q||item.question||"Untitled",author:"Alchemist Engine",chapters:[{title:"Concept",content:item.logic||item.explanation||""},{title:"Key Points",content:`\n- Topic: ${item.topic||item.hint||""}\n- Set: ${item.set||""}\n`},{title:"Summary",content:window.generatedNotes||""}]};}
 function buildEPUB(s){return`\n<?xml version="1.0" encoding="UTF-8"?>\n<package><metadata><title>${s.title}</title><creator>${s.author}</creator></metadata><manifest>${s.chapters.map((c,i)=>`<item id="c${i}" href="c${i}.html"/>`).join("")}</manifest><spine>${s.chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join("")}</spine></package>`;}
-function exportEPUB(s){dl((s.title||"notes").replace(/\s+/g,'_')+'.epub',buildEPUB(s),'application/epub+zip');}
-function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF) return alert('PDF engine unavailable'); const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); d.save((s.title||'notes').replace(/\s+/g,'_')+'.pdf');}
+function exportEPUB(s){dl(`${safeFileName(s.title)}.epub`,buildEPUB(s),'application/epub+zip');}
+function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF) return alert('PDF engine unavailable'); const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); d.save(`${safeFileName(s.title)}.pdf`);}
 function exportZAY(item,structure){
   const notes=window.generatedNotes||"";
   const blocks=(structure&&structure.chapters||[]).map(c=>({type:"text",title:c.title,body:c.content}));
@@ -3293,7 +3294,7 @@ function exportZAY(item,structure){
     ui:{layout:"three-panel",flow_view:"svg-graph"},
     state:{overlay_mode:"local",annotations:{},draft_outputs:{}}
   };
-  dl(`${item.id||"asset"}.zay`,JSON.stringify(z,null,2),'application/json');
+  dl(`${safeFileName(item.id||item.q||"asset")}.zay`,JSON.stringify(z,null,2),'application/json');
 }
 function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf" ${window.generatedNotes?'':'disabled'}>Export PDF</button><button id="export-epub" ${window.generatedNotes?'':'disabled'}>Export EPUB</button><button id="export-zay" ${window.generatedNotes?'':'disabled'}>Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem); localStorage.setItem('SAVED_NOTES',window.generatedNotes); localStorage.setItem('SAVED_SELECTED_ITEM',JSON.stringify(selectedItem)); ['export-pdf','export-epub','export-zay'].forEach(id=>document.getElementById(id).disabled=false);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
 function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
