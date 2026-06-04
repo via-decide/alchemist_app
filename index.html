@@ -13,6 +13,10 @@
 <script src="kernel/alchemist/ingestion-engine.js"></script>
 <script src="kernel/alchemist/session-review.js"></script>
 <script src="kernel/alchemist/session-normalizer.js"></script>
+<script src="packages/logic-core/vialogic.js"></script>
+<script src="packages/visual-core/zayvora-visual-engine.js"></script>
+<script src="packages/kernel/alchemist-universe-session.js"></script>
+<script src="packages/zay-format/zay-v2.js"></script>
 <script src="kernel/alchemist/epub-exporter.js"></script>
 <script src="kernel/alchemist/knowledge-book-exporter.js"></script>
 <script src="kernel/alchemist/navigation-state.js"></script>
@@ -2894,6 +2898,7 @@ const emitAlchemy=(name,detail)=>document.dispatchEvent(new CustomEvent(name,{de
 // --- TELEMETRY ---
 let Q_START_TIME = 0;
 let SESSION_LOG = []; 
+let CURRENT_SESSION_MODEL = null;
 
 // --- BACKEND ---
 let USER_MOBILE = localStorage.getItem("USER_MOBILE") || null;
@@ -3140,6 +3145,56 @@ function pushExportFailed(type,filename){
  const payload={type:type, filename:filename||'', failed:true};
  if(NAV && NAV.pushView) NAV.pushView('export-complete', payload); else showExportCompletionPanel(payload);
 }
+
+function buildUniverseSession(data=null, id=null, logic=null){
+ const questions = Array.isArray(data) ? data : SESSION_ALL;
+ const sessionId = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ const envelope = window.AlchemistUniverse && typeof window.AlchemistUniverse.buildSessionEnvelope === "function"
+  ? window.AlchemistUniverse.buildSessionEnvelope(sessionId, questions, SESSION_LOG, { createdAt: new Date().toISOString() })
+  : { sessionId: sessionId, createdAt: new Date().toISOString(), questions: questions, results: SESSION_LOG };
+ if(logic) envelope.logic = logic;
+ return envelope;
+}
+function ensureUniverseSession(data=null, id=null){
+ const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ if(!data && CURRENT_SESSION_MODEL && CURRENT_SESSION_MODEL.sessionId === renderID) return CURRENT_SESSION_MODEL;
+ const session = buildUniverseSession(data, renderID);
+ if(window.AlchemistUniverse && typeof window.AlchemistUniverse.attachLogicToSession === "function") return window.AlchemistUniverse.attachLogicToSession(session);
+ session.logic = {version:"unavailable", evaluatedAt:new Date().toISOString(), unavailable:true, message:"Reasoning engine unavailable.", rulesApplied:[], weakDomains:[], weakConcepts:[], nextActions:[], conceptGraph:{nodes:[],edges:[]}};
+ session.visuals = {engine:"ZayvoraVisualEngine", version:"unavailable", unavailable:true, message:"Visual engine unavailable.", diagrams:[], graphLayout:{}, renderedAt:new Date().toISOString()};
+ return session;
+}
+function formatWeakList(items){
+ const list = Array.isArray(items) ? items : [];
+ return list.length ? list.slice(0,3).map(item=>`${item.name||item}${item.count?` (${item.count})`:""}`).join(", ") : "None";
+}
+function renderReasoningSummaryText(session){
+ const logic = session && session.logic;
+ if(!logic || logic.unavailable) return "REASONING LAYER\nReasoning engine unavailable.";
+ const action = logic.nextActions && logic.nextActions[0] ? logic.nextActions[0].label : "Export Knowledge Book";
+ return `REASONING LAYER\nWeak domains: ${formatWeakList(logic.weakDomains)}\nWeak concepts: ${formatWeakList(logic.weakConcepts)}\nNext action: ${action}`;
+}
+function attachReasoningMapToCard(session){
+ const cardEl = UI.stack && UI.stack.querySelector ? UI.stack.querySelector('.card') : null;
+ if(!cardEl) return;
+ const box = document.createElement('div');
+ box.id = 'reasoning-map';
+ box.setAttribute('aria-label','Reasoning Map');
+ box.style.cssText = 'margin-top:12px;border-top:1px solid #222;padding-top:10px;max-height:30vh;overflow:auto;font-family:var(--font-code);font-size:.72rem;color:#888;pointer-events:none;';
+ box.innerHTML = '<div style="color:#ffd600;margin-bottom:6px;letter-spacing:1px;">REASONING MAP</div><div>Visual engine unavailable.</div>';
+ const q = cardEl.querySelector('.card-q');
+ if(q) q.appendChild(box); else cardEl.appendChild(box);
+ const graph = session && session.logic && session.logic.conceptGraph;
+ if(window.ZayvoraVisualEngine && typeof window.ZayvoraVisualEngine.renderSessionGraph === "function"){
+  try {
+   window.ZayvoraVisualEngine.renderSessionGraph(box, graph, {title:'Reasoning Map'});
+  } catch(error) {
+   box.innerHTML = '<div style="color:#ffd600;margin-bottom:6px;letter-spacing:1px;">REASONING MAP</div><div>Visual graph unavailable. Reasoning summary is still available.</div>';
+  }
+ } else {
+  box.innerHTML = '<div style="color:#ffd600;margin-bottom:6px;letter-spacing:1px;">REASONING MAP</div><div>Visual engine unavailable.</div>';
+ }
+}
 document.getElementById('nav-back').onclick=navGoBack;
 document.getElementById('nav-home').onclick=navGoHome;
 document.getElementById('nav-library').onclick=navGoLibrary;
@@ -3253,7 +3308,7 @@ function startQuiz(){
  let base = RAW_DATA.filter(d=>d.set===ACTIVE_SET);
  base = shuffle(base); 
  if(VOLUME_LIMIT && VOLUME_LIMIT < base.length) base = base.slice(0, VOLUME_LIMIT);
- POOL=base; WRONG=[]; SESSION_ALL=[]; XP=0; ATTEMPTED=new Set();
+ POOL=base; WRONG=[]; SESSION_ALL=[]; XP=0; ATTEMPTED=new Set(); CURRENT_SESSION_MODEL=null;
  CURRENT_SES_ID = null; 
  SESSION_LOG = []; 
  nextQ();
@@ -3301,14 +3356,21 @@ function review(){
 function report(pushNav=true){
  if(pushNav) { navPush("session-review"); emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID}); }
  if(!CURRENT_SES_ID) generateSessionID();
+ CURRENT_SESSION_MODEL = ensureUniverseSession(null, CURRENT_SES_ID);
  const percent = Math.round((XP / SESSION_ALL.length) * 100) || 0;
- card(`SUMMARY\n\n${XP} / ${SESSION_ALL.length} Correct\n(${percent}%)`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
+ const reasoning = renderReasoningSummaryText(CURRENT_SESSION_MODEL);
+ card(`SUMMARY
+
+${XP} / ${SESSION_ALL.length} Correct
+(${percent}%)
+
+${reasoning}`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
     if(dir==="DOWN") showSessionExportMenu();
     if(dir==="UP") startQuiz(); 
     if(dir==="LEFT") navGoHome();
  }, false);
+ attachReasoningMapToCard(CURRENT_SESSION_MODEL);
 }
-
 function showSessionExportMenu(data=null, id=null, back=null, pushNav=true){
     if(pushNav) navPush("export-preview", {data:data||null, id:id||null});
     closeExportCompletionPanel();
@@ -3361,7 +3423,8 @@ function exportSessionPDF(data=null, id=null){
     if(CREDITS < 1) { log("INSUFFICIENT CREDITS", "danger"); return; }
     CREDITS--;
     localStorage.setItem("USER_CREDITS", CREDITS);
-    VAULT.unshift({ id: renderID, date: new Date().toLocaleDateString(), score: XP, total: SESSION_ALL.length, data: [...SESSION_ALL] });
+    const enhancedSession = ensureUniverseSession(renderData, renderID);
+    VAULT.unshift({ id: renderID, date: new Date().toLocaleDateString(), score: XP, total: SESSION_ALL.length, data: [...SESSION_ALL], logic: enhancedSession.logic, visuals: enhancedSession.visuals });
     localStorage.setItem("USER_VAULT", JSON.stringify(VAULT));
  }
 
@@ -3405,7 +3468,7 @@ function exportSessionEPUB(data=null, id=null){
  try {
   const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.SessionEPUBExporter();
   if(!exporter) { log("EPUB ENGINE UNAVAILABLE", "danger"); pushExportFailed("epub", "EPUB engine unavailable"); return; }
-  const book = exporter.build({ sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData });
+  const book = exporter.build(ensureUniverseSession(renderData, renderID));
   dl(book.fileName, book.bytes, window.AlchemistEPUB.EPUB_MIME);
   log("SESSION EPUB EXPORTED", "active");
   pushExportComplete("epub", book.fileName, {id:renderID, data:renderData});
@@ -3422,10 +3485,11 @@ function exportSessionZAY(data=null, id=null){
  try {
   const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.ZAYExporter();
   let filename = `ALCHEMIST_SESSION_${safeFileName(renderID)}.zay`;
-  if(exporter){ const pkg = exporter.build({ sessionId: renderID, questions: renderData }); filename = pkg.fileName; dl(pkg.fileName, pkg.content, pkg.mimeType); }
+  if(exporter){ const pkg = exporter.build(ensureUniverseSession(renderData, renderID)); filename = pkg.fileName; dl(pkg.fileName, pkg.content, pkg.mimeType); }
   else {
    const unique = Array.isArray(renderData) ? renderData.filter((q,i,self)=>i===self.findIndex(t=>(t.id===q.id))) : [];
-   const zay = {meta:{version:"2.0",engine:"zayvora",type:"study-session",created:Date.now(),sessionId:renderID,questionCount:unique.length},content:{blocks:unique.map((q,index)=>({type:"question",title:`Question ${index+1}`,body:{question:cleanPDF(q.q||q.question||"Question unavailable"),answer:cleanPDF(q.u||q.correct||q.answer||"Answer unavailable"),logic:cleanPDF(q.logic||q.explanation||"Logic unavailable")}}))}};
+   const session = ensureUniverseSession(unique, renderID);
+   const zay = window.AlchemistZayFormat && typeof window.AlchemistZayFormat.buildV2Package === "function" ? window.AlchemistZayFormat.buildV2Package(session) : {meta:{version:"2.0",engine:"zayvora",type:"study-session",created:Date.now(),sessionId:renderID,questionCount:unique.length},content:{blocks:unique.map((q,index)=>({type:"question",title:`Question ${index+1}`,body:{question:cleanPDF(q.q||q.question||"Question unavailable"),answer:cleanPDF(q.u||q.correct||q.answer||"Answer unavailable"),logic:cleanPDF(q.logic||q.explanation||"Logic unavailable")}}))}};
    dl(filename,JSON.stringify(zay,null,2),'application/json');
   }
   log("SESSION .ZAY EXPORTED", "active");
@@ -3436,7 +3500,7 @@ function exportSessionZAY(data=null, id=null){
 function exportKnowledgeBook(data=null, id=null){
  const renderData = Array.isArray(data) ? data : SESSION_ALL;
  const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
- const session = { sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData };
+ const session = ensureUniverseSession(renderData, renderID);
  try {
   if(!window.AlchemistKnowledgeBookExporter || typeof window.AlchemistKnowledgeBookExporter.openFormatDialog !== "function") { log("KNOWLEDGE BOOK ENGINE UNAVAILABLE", "danger"); pushExportFailed("knowledge-book", "Knowledge Book exporter unavailable"); return; }
   window.AlchemistKnowledgeBookExporter.openFormatDialog(session);

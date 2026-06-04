@@ -135,6 +135,8 @@
           topic: question.topic
         };
       }),
+      logic: normalized.logic || session && session.logic || null,
+      visuals: normalized.visuals || session && session.visuals || null,
       reflection: base.reflection || {
         totalQuestions: normalized.questions.length,
         topicsCovered: chapters.map(function (chapter) { return chapter.title; }),
@@ -172,6 +174,14 @@
 
   function sectionLine(text) {
     return text + '\n' + new Array(text.length + 1).join('-') + '\n';
+  }
+
+  function listNames(items) {
+    return (Array.isArray(items) ? items : []).map(function (item) { return safeText(item && item.name || item, ''); }).filter(Boolean).join(', ') || 'None';
+  }
+
+  function actionLines(actions, prefix) {
+    return (Array.isArray(actions) ? actions : []).map(function (action) { return (prefix || '- ') + safeText(action.label || action.type, 'Next action') + ' — ' + safeText(action.reason, ''); });
   }
 
   function renderAsText(knowledgeBook) {
@@ -222,6 +232,21 @@
       });
     });
 
+    var logic = book.logic || {};
+    lines.push('## Reasoning Layer');
+    lines.push('Rules Applied: ' + ((logic.rulesApplied || []).join(', ') || 'None'));
+    lines.push('Weak Domains: ' + listNames(logic.weakDomains));
+    lines.push('Weak Concepts: ' + listNames(logic.weakConcepts));
+    lines.push('Suggested Next Actions:');
+    lines = lines.concat(actionLines(logic.nextActions, '- '));
+    if (!logic || logic.unavailable) lines.push('- Reasoning engine unavailable.');
+    lines.push('');
+
+    var visualDiagram = book.visuals && book.visuals.diagrams && book.visuals.diagrams[0] && book.visuals.diagrams[0].content;
+    lines.push('## Visual Map');
+    lines.push(visualDiagram ? safeText(visualDiagram, 'Inline SVG available in HTML/EPUB exports.') : 'Visual graph unavailable. Reasoning summary is still available.');
+    lines.push('');
+
     var reflection = book.reflection || {};
     lines.push('LEARNING REFLECTION');
     lines.push('Total Questions: ' + (reflection.totalQuestions || metadata.questionCount || 0));
@@ -253,6 +278,10 @@
       });
       html += '</section>';
     });
+    var logic = book.logic || {};
+    html += '<section class="reasoning"><h2>Reasoning Layer</h2><p><strong>Rules Applied:</strong> ' + escapeHtml((logic.rulesApplied || []).join(', ') || 'None') + '</p><p><strong>Weak Domains:</strong> ' + escapeHtml(listNames(logic.weakDomains)) + '</p><p><strong>Weak Concepts:</strong> ' + escapeHtml(listNames(logic.weakConcepts)) + '</p><h3>Suggested Next Actions</h3><ul>' + (actionLines(logic.nextActions, '').map(function (line) { return '<li>' + escapeHtml(line) + '</li>'; }).join('') || '<li>' + (logic.unavailable ? 'Reasoning engine unavailable.' : 'Export Knowledge Book') + '</li>') + '</ul></section>';
+    var visualDiagram = book.visuals && book.visuals.diagrams && book.visuals.diagrams[0] && book.visuals.diagrams[0].content;
+    html += '<section class="visual-map"><h2>Visual Map</h2>' + (visualDiagram ? visualDiagram : '<p>Visual graph unavailable. Reasoning summary is still available.</p>') + '</section>';
     var reflection = book.reflection || {};
     html += '<section class="reflection"><h2>Learning Reflection</h2><p><strong>Total Questions:</strong> ' + escapeHtml(reflection.totalQuestions || metadata.questionCount || 0) + '</p><p><strong>Topics Covered:</strong> ' + escapeHtml((reflection.topicsCovered || metadata.topics || []).join(', ') || 'None') + '</p><p><strong>Most Frequent Topic:</strong> ' + escapeHtml(reflection.mostFrequentTopic || 'N/A') + '</p><p><strong>Repeated Concept Count:</strong> ' + escapeHtml(reflection.repeatedConceptCount || reflection.conceptRepetitionCount || 0) + '</p></section>';
     html += '</body></html>';
@@ -264,7 +293,7 @@
     if (!epubApi || typeof epubApi.KnowledgeBookExporter !== 'function') {
       fail('KNOWLEDGE_EPUB_UNAVAILABLE', 'EPUB export requires JSZip. TXT and HTML are available now.');
     }
-    var session = { sessionId: book.metadata.sessionId, createdAt: book.metadata.createdAt, questions: book.questions || [] };
+    var session = { sessionId: book.metadata.sessionId, createdAt: book.metadata.createdAt, questions: book.questions || [], logic: book.logic || null, visuals: book.visuals || null };
     return new epubApi.KnowledgeBookExporter().build(session);
   }
 
