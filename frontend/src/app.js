@@ -1,10 +1,19 @@
 const { useEffect, useState } = React;
 
-function initiatePayment() {
-  fetch('/api/create-checkout-session', { method: 'POST' })
+function initiatePayment(phoneNumber = '') {
+  fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone_number: phoneNumber })
+  })
     .then(res => res.json())
     .then(data => {
+      if (!data.url) throw new Error(data.error || 'Checkout unavailable');
       window.location.href = data.url;
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Payment is unavailable right now.');
     });
 }
 
@@ -20,7 +29,9 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8000/health")
+    const apiBase = window.ALCHEMIST_API_BASE || "";
+    const healthUrl = apiBase ? `${apiBase.replace(/\/$/, "")}/health` : "/api/health";
+    fetch(healthUrl)
       .then(() => setRuns([{ stage: "healthy", timestamp: new Date().toISOString() }]))
       .catch(() => setRuns([{ stage: "offline", timestamp: new Date().toISOString() }]));
   }, []);
