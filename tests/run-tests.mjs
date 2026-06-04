@@ -73,7 +73,9 @@ const kernelTests = [
   'kernel/alchemist/session-review.test.js',
   'kernel/alchemist/navigation-state.test.js',
   'kernel/alchemist/knowledge-book-exporter.test.js',
-  'kernel/alchemist/zay-compiler.test.js'
+  'kernel/alchemist/zay-compiler.test.js',
+  'kernel/alchemist/zay-importer.test.js',
+  'tests/universe-integration.test.js'
 ];
 for (const test of kernelTests) {
   const result = spawnSync('node', [test], { encoding: 'utf8' });
