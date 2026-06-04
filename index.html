@@ -12,6 +12,7 @@
 <script src="kernel/alchemist/session-engine.js"></script>
 <script src="kernel/alchemist/ingestion-engine.js"></script>
 <script src="kernel/alchemist/session-review.js"></script>
+<script src="kernel/alchemist/epub-exporter.js"></script>
 <script src="kernel/alchemist/ui-integration.js"></script>
 <script src="kernel/alchemist/ui-activation.js"></script>
 
@@ -3077,11 +3078,11 @@ function openVault(index){
     const item = VAULT[index];
     log(`ARCHIVE: ${item.id}`, "primary");
     card(`VAULT // ${item.id}\n\nSCORE: ${item.score}/${item.total}\n${item.date}`,
-        { up: "OPEN PDF", left: "PREV", right: "NEXT" }, 
+        { up: "EXPORTS", left: "PREV", right: "NEXT" }, 
         dir => {
             if(dir === "LEFT") openVault(index - 1);
             if(dir === "RIGHT") openVault(index + 1);
-            if(dir === "UP") renderSessionPDF(item.data, item.id);
+            if(dir === "UP") showSessionExportMenu(item.data, item.id, () => openVault(index));
         }, false 
     );
 }
@@ -3158,18 +3159,38 @@ function report(){
  emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID});
  if(!CURRENT_SES_ID) generateSessionID();
  const percent = Math.round((XP / SESSION_ALL.length) * 100) || 0;
- card(`SUMMARY\n\n${XP} / ${SESSION_ALL.length} Correct\n(${percent}%)`,{down:"DOWNLOAD PDF", up:"RESTART", left:"MENU"},dir=>{
-    if(dir==="DOWN") handleDownloadRequest();
+ card(`SUMMARY\n\n${XP} / ${SESSION_ALL.length} Correct\n(${percent}%)`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
+    if(dir==="DOWN") showSessionExportMenu();
     if(dir==="UP") startQuiz(); 
     if(dir==="LEFT") begin();
  }, false);
 }
 
-function handleDownloadRequest(){
+function showSessionExportMenu(data=null, id=null, back=null){
+    const renderData = data || SESSION_ALL;
+    const renderID = id || CURRENT_SES_ID;
+    const count = Array.isArray(renderData) ? renderData.length : 0;
+    card(`SESSION EXPORTS
+
+${renderID || "SESSION"}
+${count} Questions`,{up:"EXPORT PDF", right:"EXPORT EPUB", down:"EXPORT .ZAY", left:"EXPORT KNOWLEDGE BOOK"},dir=>{
+        if(dir==="UP") handleDownloadRequest(data, id);
+        if(dir==="RIGHT") exportSessionEPUB(data, id);
+        if(dir==="DOWN") exportSessionZAY(data, id);
+        if(dir==="LEFT") exportKnowledgeBook(data, id);
+    }, false);
+}
+
+function handleDownloadRequest(data=null, id=null){
     if(!USER_MOBILE){
-        const text = `REGISTERING ACCOUNT.\nLINK MY ID: ${CURRENT_SES_ID}`;
+        const text = `REGISTERING ACCOUNT.
+LINK MY ID: ${id || CURRENT_SES_ID}`;
         const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
-        card(`ACCOUNT REQUIRED\n\nTo save this PDF, you must link your device.\n\nID: ${CURRENT_SES_ID}`,
+        card(`ACCOUNT REQUIRED
+
+To save this PDF, you must link your device.
+
+ID: ${id || CURRENT_SES_ID}`,
             { up: "LINK VIA WHATSAPP", down: "I HAVE LINKED" },
             (dir) => {
                 if(dir === "UP") { window.open(url, '_blank'); }
@@ -3177,14 +3198,14 @@ function handleDownloadRequest(){
                     const mob = prompt("ENTER REGISTERED MOBILE:");
                     if(mob && mob.length >= 10) {
                         localStorage.setItem("USER_MOBILE", mob); USER_MOBILE = mob;
-                        log("IDENTITY LINKED", "active"); report();
-                    } else { log("INVALID INPUT", "normal"); handleDownloadRequest(); }
+                        log("IDENTITY LINKED", "active"); showSessionExportMenu(data, id);
+                    } else { log("INVALID INPUT", "normal"); handleDownloadRequest(data, id); }
                 }
             }, false
         );
         return;
     }
-    exportSessionPDF();
+    exportSessionPDF(data, id);
 }
 
 function exportSessionPDF(data=null, id=null){
@@ -3227,6 +3248,53 @@ function exportSessionPDF(data=null, id=null){
  doc.save(`ALCHEMIST_${renderID}.pdf`);
  if(!data) sendTelemetry(); 
  setTimeout(begin,500);
+}
+
+function renderSessionPDF(data=null, id=null){ exportSessionPDF(data, id); }
+
+function exportSessionEPUB(data=null, id=null){
+ const renderData = Array.isArray(data) ? data : SESSION_ALL;
+ const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ try {
+  const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.SessionEPUBExporter();
+  if(!exporter) { log("EPUB ENGINE UNAVAILABLE", "danger"); return; }
+  const book = exporter.build({ sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData });
+  dl(book.fileName, book.bytes, window.AlchemistEPUB.EPUB_MIME);
+  log("SESSION EPUB EXPORTED", "active");
+ } catch(error) {
+  console.error(error);
+  log("SESSION EPUB EXPORT FAILED", "danger");
+ }
+}
+
+function exportSessionZAY(data=null, id=null){
+ const renderData = Array.isArray(data) ? data : SESSION_ALL;
+ const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ try {
+  const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.ZAYExporter();
+  if(exporter){ const pkg = exporter.build({ sessionId: renderID, questions: renderData }); dl(pkg.fileName, pkg.content, pkg.mimeType); }
+  else {
+   const unique = Array.isArray(renderData) ? renderData.filter((q,i,self)=>i===self.findIndex(t=>(t.id===q.id))) : [];
+   const zay = {meta:{version:"2.0",engine:"zayvora",type:"study-session",created:Date.now(),sessionId:renderID,questionCount:unique.length},content:{blocks:unique.map((q,index)=>({type:"question",title:`Question ${index+1}`,body:{question:cleanPDF(q.q||q.question||"Question unavailable"),answer:cleanPDF(q.u||q.correct||q.answer||"Answer unavailable"),logic:cleanPDF(q.logic||q.explanation||"Logic unavailable")}}))}};
+   dl(`ALCHEMIST_SESSION_${safeFileName(renderID)}.zay`,JSON.stringify(zay,null,2),'application/json');
+  }
+  log("SESSION .ZAY EXPORTED", "active");
+ } catch(error) { console.error(error); log("SESSION .ZAY EXPORT FAILED", "danger"); }
+}
+
+function exportKnowledgeBook(data=null, id=null){
+ const renderData = Array.isArray(data) ? data : SESSION_ALL;
+ const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ try {
+  const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.KnowledgeBookExporter();
+  if(!exporter) { log("KNOWLEDGE BOOK ENGINE UNAVAILABLE", "danger"); return; }
+  const book = exporter.build({ sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData });
+  dl(book.fileName, book.bytes, window.AlchemistEPUB.EPUB_MIME);
+  log("KNOWLEDGE BOOK EXPORTED", "active");
+ } catch(error) {
+  console.error(error);
+  log("KNOWLEDGE BOOK EXPORT FAILED", "danger");
+ }
 }
 
 function sendTelemetry(sid) {
@@ -3277,9 +3345,23 @@ ${i.logic||"No explanation available"}
 ## Summary
 ${i.q} → ${i.correct||i.answer||""}`;
 const dl=(n,c,t)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();};
-function buildStructuredContent(item){return{title:item.q||item.question||"Untitled",author:"Alchemist Engine",chapters:[{title:"Concept",content:item.logic||item.explanation||""},{title:"Key Points",content:`\n- Topic: ${item.topic||item.hint||""}\n- Set: ${item.set||""}\n`},{title:"Summary",content:window.generatedNotes||""}]};}
-function buildEPUB(s){return`\n<?xml version="1.0" encoding="UTF-8"?>\n<package><metadata><title>${s.title}</title><creator>${s.author}</creator></metadata><manifest>${s.chapters.map((c,i)=>`<item id="c${i}" href="c${i}.html"/>`).join("")}</manifest><spine>${s.chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join("")}</spine></package>`;}
-function exportEPUB(s){dl(`${safeFileName(s.title)}.epub`,buildEPUB(s),'application/epub+zip');}
+function buildStructuredContent(item){
+  if(window.AlchemistEPUB && typeof window.AlchemistEPUB.buildQuestionStructuredContent === "function") return window.AlchemistEPUB.buildQuestionStructuredContent(item, window.generatedNotes || "");
+  return{title:item.q||item.question||"Untitled",author:"Alchemist Engine",chapters:[{title:"Concept",content:item.logic||item.explanation||""},{title:"Key Points",content:`
+- Topic: ${item.topic||item.hint||""}
+- Set: ${item.set||""}
+`},{title:"Summary",content:window.generatedNotes||""}]};
+}
+function buildEPUB(s){
+  if(window.AlchemistEPUB){ return new window.AlchemistEPUB.AssetEPUBExporter().build(s).bytes; }
+  return`
+<?xml version="1.0" encoding="UTF-8"?>
+<package><metadata><title>${s.title}</title><creator>${s.author}</creator></metadata><manifest>${s.chapters.map((c,i)=>`<item id="c${i}" href="c${i}.html"/>`).join("")}</manifest><spine>${s.chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join("")}</spine></package>`;
+}
+function exportEPUB(s){
+  if(window.AlchemistEPUB){ const asset = new window.AlchemistEPUB.AssetEPUBExporter().build(s); dl(asset.fileName, asset.bytes, window.AlchemistEPUB.EPUB_MIME); return; }
+  dl(`${safeFileName(s.title)}.epub`,buildEPUB(s),'application/epub+zip');
+}
 function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF) return alert('PDF engine unavailable'); const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); d.save(`${safeFileName(s.title)}.pdf`);}
 function exportZAY(item,structure){
   const notes=window.generatedNotes||"";
