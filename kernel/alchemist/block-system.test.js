@@ -4,7 +4,10 @@ const assert = require('assert');
 const { createBlock, validateBlock, SUPPORTED_TYPES } = require('./block-system.js');
 
 (function runTests() {
-  assert.deepEqual(SUPPORTED_TYPES, ['text', 'link', 'note', '3d']);
+  assert.deepEqual(SUPPORTED_TYPES, ['text', 'link', 'note', '3d', 'file']);
+
+  const file = createBlock('file', { name: 'Book.EPUB', normalizedType: 'application/epub+zip' });
+  assert.deepEqual(file.content, { name: 'Book.EPUB', type: 'application/epub+zip', normalizedType: 'application/epub+zip' });
 
   const text = createBlock('text', { value: 'hello' });
   assert.deepEqual(text, { type: 'text', content: { value: 'hello' } });

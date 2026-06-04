@@ -12,9 +12,17 @@
 <script src="kernel/alchemist/session-engine.js"></script>
 <script src="kernel/alchemist/ingestion-engine.js"></script>
 <script src="kernel/alchemist/session-review.js"></script>
+<script src="kernel/alchemist/session-normalizer.js"></script>
 <script src="kernel/alchemist/epub-exporter.js"></script>
 <script src="kernel/alchemist/ui-integration.js"></script>
 <script src="kernel/alchemist/ui-activation.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
 
 <style>
 /* KINETIC VISUAL CORE */
@@ -3322,7 +3330,7 @@ const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, 
 
 // ✅ FIXED MAPPING LOGIC
 let ACTIVE = null, selectedItem = null;
-const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED'); } };
+const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); if(!res.ok) throw new Error('VAULT_HTTP_'+res.status); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED — OFFLINE CACHE UNAVAILABLE'); } };
 function renderList(){
   const c=document.getElementById('vault-list'); c.innerHTML='';
   const head=document.createElement('div'); head.className='vault-head';

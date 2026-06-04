@@ -391,6 +391,32 @@
     return { fileName: 'ALCHEMIST_SESSION_' + safeFileName(sessionId) + '.zay', mimeType: JSON_MIME, metadata: pkg.meta, content: JSON.stringify(pkg, null, 2), package: pkg };
   };
 
+  function asSession(input) {
+    if (input && typeof input === 'object' && (input.questions || input.data || input.blocks)) return input;
+    return { sessionId: input && input.id || 'SINGLE_QUESTION', questions: [input || {}] };
+  }
+
+  function createFacade() {
+    return {
+      BaseExporter: BaseExporter,
+      PDFExporter: PDFExporter,
+      EPUBExporter: EPUBExporter,
+      ZAYExporter: ZAYExporter,
+      KnowledgeBookExporter: KnowledgeBookExporter,
+      exportSingleQuestionPdf: function (asset) { return new PDFExporter().build(asSession(asset)); },
+      exportSingleQuestionEpub: function (asset) { return new AssetEPUBExporter().build(buildQuestionStructuredContent(asset)); },
+      exportSingleQuestionZay: function (asset) { return new ZAYExporter().build(asSession(asset)); },
+      exportSessionPdf: function (session) { return new PDFExporter().build(session); },
+      exportSessionEpub: function (session) { return new SessionEPUBExporter().build(session); },
+      exportSessionZay: function (session) { return new ZAYExporter().build(session); },
+      exportKnowledgeBook: function (session) { return new KnowledgeBookExporter().build(session); }
+    };
+  }
+
+  var api = { EPUB_MIME: EPUB_MIME, JSON_MIME: JSON_MIME, BaseExporter: BaseExporter, PDFExporter: PDFExporter, EPUBExporter: EPUBExporter, AssetEPUBExporter: AssetEPUBExporter, SessionEPUBExporter: SessionEPUBExporter, ZAYExporter: ZAYExporter, KnowledgeBookExporter: KnowledgeBookExporter, buildQuestionStructuredContent: buildQuestionStructuredContent, buildKnowledgeBookModel: buildKnowledgeBookModel, buildEPUBPackage: buildEPUBPackage, safeFileName: safeFileName, createFacade: createFacade };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  global.AlchemistEPUB = api;
+  global.AlchemistExporters = createFacade();
   var api = { EPUB_MIME: EPUB_MIME, JSON_MIME: JSON_MIME, BaseExporter: BaseExporter, PDFExporter: PDFExporter, EPUBExporter: EPUBExporter, AssetEPUBExporter: AssetEPUBExporter, SessionEPUBExporter: SessionEPUBExporter, ZAYExporter: ZAYExporter, KnowledgeBookExporter: KnowledgeBookExporter, buildQuestionStructuredContent: buildQuestionStructuredContent, buildKnowledgeBookModel: buildKnowledgeBookModel, buildEPUBPackage: buildEPUBPackage, safeFileName: safeFileName };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   global.AlchemistEPUB = api;

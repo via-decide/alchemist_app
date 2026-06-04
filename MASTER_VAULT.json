@@ -189,7 +189,7 @@
     "r": "It involves an ion shifting to an interstitial site",
     "logic": "A Schottky defect occurs when stoichiometric numbers of cations and anions are missing from their lattice sites. This vacancy formation maintains electrical neutrality in the crystal. Since ions are removed from the lattice, the density of the substance decreases.",
     "hint": "Stoichiometric vacancies maintain neutrality.",
-    "trap": "3"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0017",
@@ -201,7 +201,7 @@
     "r": "x/m = kp",
     "logic": "The Freundlich isotherm empirically relates the mass of gas adsorbed per unit mass of adsorbent to the pressure. The equation is represented as x/m = kp^(1/n), where n is a constant usually greater than one. At moderate pressures, this relationship describes the non-linear increase of adsorption with pressure.",
     "hint": "Identify adsorption-pressure relationship.",
-    "trap": "5"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0018",
@@ -213,7 +213,7 @@
     "r": "Delta S system < 0",
     "logic": "The Second Law of Thermodynamics states that the total entropy of an isolated system always increases for a spontaneous process. This total entropy change, Delta S total, is the sum of entropy changes for the system and the surroundings. Therefore, a process is spontaneous only if the total entropy is greater than zero.",
     "hint": "Total entropy must increase for spontaneity.",
-    "trap": "8"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0019",
@@ -225,7 +225,7 @@
     "r": "Actinoid contraction",
     "logic": "Lanthanoid contraction refers to the steady decrease in the size of atoms and ions with increasing atomic number in the lanthanoid series. This effect is caused by the poor shielding of the nuclear charge by 4f electrons. As a result, elements in the 5d series following the lanthanoids have radii similar to those in the 4d series.",
     "hint": "Poor 4f shielding leads to size contraction.",
-    "trap": "10"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0020",
@@ -237,7 +237,7 @@
     "r": "Secondary amine",
     "logic": "The Hoffmann Bromamide Degradation involves the reaction of an amide with bromine in an alkali solution. The reaction mechanism leads to the migration of an alkyl or aryl group from the carbonyl carbon to the nitrogen atom. The final product is a primary amine containing one carbon atom fewer than the starting amide.",
     "hint": "Primary amine product has fewer carbons.",
-    "trap": "5"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0021",
@@ -429,7 +429,7 @@
     "r": "The density decreases proportionally",
     "logic": "Density is defined as the mass of the unit cell divided by its volume. The mass depends on the number of atoms present and their molar mass. Since density equals (z times M) divided by (V times NA), an increase in z directly increases the total mass and thus the density.",
     "hint": "Mass per unit volume increases with atom count.",
-    "trap": "5"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0037",
@@ -441,7 +441,7 @@
     "r": "Reversibility of the process",
     "logic": "Chemisorption involves the formation of strong chemical bonds between the adsorbent and adsorbate. Once the surface sites are occupied by a chemical bond, no further layers can form. Consequently, this process results in a single unimolecular layer, whereas physisorption can form multimolecular layers.",
     "hint": "Chemical bonding limits adsorption to a single layer.",
-    "trap": "3"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0038",
@@ -453,7 +453,7 @@
     "r": "Chromium (Cr)",
     "logic": "Manganese has the electronic configuration [Ar] 3d5 4s2. It can lose or share all seven of its valence electrons. This leads to a wide range of oxidation states from +2 to +7, the highest in the first transition series.",
     "hint": "Maximum valence electrons allow for most oxidation states.",
-    "trap": "5"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0039",
@@ -465,7 +465,7 @@
     "r": "Salicylic acid",
     "logic": "This reaction is known as the Reimer-Tiemann reaction. Chloroform reacts with the base to generate a dichlorocarbene intermediate. This electrophile attacks the ortho position of the phenoxide ion, followed by hydrolysis to yield salicylaldehyde as the primary product.",
     "hint": "Phenol plus chloroform yields an ortho-aldehyde.",
-    "trap": "8"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0040",
@@ -477,7 +477,7 @@
     "r": "High frequency of collisions",
     "logic": "Collision theory postulates that for a reaction to occur, molecules must collide. However, only those collisions with energy greater than the activation energy and a proper spatial orientation are effective. Without meeting both criteria, the reactant molecules simply bounce off each other without breaking or forming bonds.",
     "hint": "Energy and orientation must both be correct.",
-    "trap": "5"
+    "trap": "Common misconception unavailable."
   },
   {
     "id": "A_0041",
