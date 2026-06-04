@@ -417,7 +417,4 @@
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   global.AlchemistEPUB = api;
   global.AlchemistExporters = createFacade();
-  var api = { EPUB_MIME: EPUB_MIME, JSON_MIME: JSON_MIME, BaseExporter: BaseExporter, PDFExporter: PDFExporter, EPUBExporter: EPUBExporter, AssetEPUBExporter: AssetEPUBExporter, SessionEPUBExporter: SessionEPUBExporter, ZAYExporter: ZAYExporter, KnowledgeBookExporter: KnowledgeBookExporter, buildQuestionStructuredContent: buildQuestionStructuredContent, buildKnowledgeBookModel: buildKnowledgeBookModel, buildEPUBPackage: buildEPUBPackage, safeFileName: safeFileName };
-  if (typeof module !== 'undefined' && module.exports) module.exports = api;
-  global.AlchemistEPUB = api;
 })(typeof window !== 'undefined' ? window : globalThis);

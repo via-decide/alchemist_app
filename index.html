@@ -14,6 +14,8 @@
 <script src="kernel/alchemist/session-review.js"></script>
 <script src="kernel/alchemist/session-normalizer.js"></script>
 <script src="kernel/alchemist/epub-exporter.js"></script>
+<script src="kernel/alchemist/knowledge-book-exporter.js"></script>
+<script src="kernel/alchemist/navigation-state.js"></script>
 <script src="kernel/alchemist/ui-integration.js"></script>
 <script src="kernel/alchemist/ui-activation.js"></script>
 <script>
@@ -99,6 +101,18 @@ body.lib-open #vault-list,body.lib-open #vault-detail{display:block;}
   #vault-list,#vault-detail{right:8px; left:8px; width:auto;}
 }
 
+
+.alchemist-nav-rail{width:90%; margin:10px auto 0; display:none; gap:8px; align-items:center; font-family:var(--font-code); z-index:125; flex-shrink:0;}
+body.nav-recovery-active .alchemist-nav-rail{display:flex;}
+.alchemist-nav-button,.export-completion-panel button{background:#080808; color:#aaa; border:1px solid #333; border-radius:4px; padding:6px 9px; font-family:var(--font-code); font-size:11px; letter-spacing:1px; text-transform:uppercase; cursor:pointer;}
+.alchemist-nav-button:hover,.alchemist-nav-button:focus,.export-completion-panel button:hover,.export-completion-panel button:focus{border-color:var(--gold); color:var(--gold); outline:none;}
+.export-completion-panel{position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom)); transform:translateX(-50%); width:min(92vw,420px); background:#080808; border:1px solid #333; border-radius:8px; padding:12px; color:#ccc; font-family:var(--font-code); font-size:12px; z-index:180; box-shadow:0 12px 45px rgba(0,0,0,0.85); display:none;}
+.export-completion-panel.active{display:block;}
+.export-completion-title{color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px;}
+.export-completion-title.failed{color:var(--red);}
+.export-completion-meta{color:#777; margin-bottom:10px; word-break:break-word;}
+.export-completion-actions{display:flex; gap:8px; flex-wrap:wrap;}
+
 /* SWIPE LABELS */
 .swipe-label{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center; 
@@ -122,6 +136,13 @@ body.lib-open #vault-list,body.lib-open #vault-detail{display:block;}
   <div class="progress-track"><div id="progress-bar"></div></div>
 </div>
 
+
+<div id="alchemist-nav-rail" class="alchemist-nav-rail" aria-label="Navigation recovery controls">
+  <button id="nav-back" class="alchemist-nav-button" type="button" aria-label="Go back">← Back</button>
+  <button id="nav-home" class="alchemist-nav-button" type="button" aria-label="Return home">⌂ Home</button>
+  <button id="nav-library" class="alchemist-nav-button" type="button" aria-label="Open library">[ Library ]</button>
+</div>
+
 <div id="kinetic-logger">
   <div class="log-line" id="log-1">> SYSTEM BOOT</div>
   <div class="log-line" id="log-2">> INJECTING DATA...</div>
@@ -131,6 +152,7 @@ body.lib-open #vault-list,body.lib-open #vault-detail{display:block;}
 
 <div id="vault-list"></div>
 <div id="vault-detail"></div>
+<div id="export-completion-panel" class="export-completion-panel" role="status" aria-live="polite"></div>
 
 <div id="stack">
   <div class="card">
@@ -3035,6 +3057,119 @@ class PhysicsController {
 }
 
 const UI = {stack:document.getElementById("stack"), id:document.getElementById("id-ui"), xp:document.getElementById("xp-ui"), bar:document.getElementById("progress-bar"), gyro:document.getElementById("gyro-status")};
+const NAV = window.AlchemistNavigation;
+const NAV_MAJOR_VIEWS = {"library":true,"question-detail":true,"session-review":true,"export-preview":true,"export-complete":true};
+let suppressNavApply = false;
+
+function closeExportCompletionPanel(){
+ const panel=document.getElementById('export-completion-panel');
+ if(panel){ panel.classList.remove('active'); panel.innerHTML=''; }
+}
+function closeLibraryPanel(){
+ document.body.classList.remove('lib-open');
+ const detail=document.getElementById('vault-detail');
+ if(detail) detail.innerHTML='';
+ ACTIVE=null;
+}
+function resetHomeUI(){
+ closeExportCompletionPanel();
+ closeLibraryPanel();
+ if(Array.isArray(RAW_DATA) && RAW_DATA.length){ begin(); }
+}
+function updateNavControls(){
+ const view=NAV && NAV.getCurrentView ? NAV.getCurrentView() : 'home';
+ document.body.classList.toggle('nav-recovery-active', !!NAV_MAJOR_VIEWS[view]);
+ const back=document.getElementById('nav-back');
+ if(back) back.setAttribute('aria-disabled', 'false');
+}
+function applyNavigationState(state, reason){
+ if(suppressNavApply || !state) { updateNavControls(); return; }
+ const payload=state.payload||{};
+ if(state.view==='home') resetHomeUI();
+ if(state.view==='library') openLibraryPanel(false);
+ if(state.view==='question-detail') { if(typeof payload.index==='number' && VAULT[payload.index]) { ACTIVE=VAULT[payload.index]; selectedItem=ACTIVE; } document.body.classList.add('lib-open'); renderList(); renderDetail(); closeExportCompletionPanel(); }
+ if(state.view==='session-review') report(false);
+ if(state.view==='export-preview') showSessionExportMenu(payload.data||null, payload.id||null, null, false);
+ if(state.view==='export-complete') showExportCompletionPanel(payload);
+ updateNavControls();
+}
+if(NAV && NAV.configure) NAV.configure({onChange:applyNavigationState});
+function navPush(view,payload){
+ if(!NAV || !NAV.pushView) return;
+ suppressNavApply=true;
+ NAV.pushView(view,payload||null);
+ suppressNavApply=false;
+ updateNavControls();
+}
+function navGoBack(){ if(NAV && NAV.goBack) NAV.goBack(); else resetHomeUI(); }
+function navGoHome(){ if(NAV && NAV.goHome) NAV.goHome(); else resetHomeUI(); }
+function navGoLibrary(){ if(NAV && NAV.goLibrary) NAV.goLibrary(); else openLibraryPanel(); }
+function openLibraryPanel(pushNav=true){
+ closeExportCompletionPanel();
+ document.body.classList.add('lib-open');
+ if(Array.isArray(VAULT)&&VAULT.length) renderList();
+ if(pushNav) navPush('library');
+}
+function navPanelText(value){ return chemText(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function showExportCompletionPanel(payload){
+ payload=payload||{};
+ const panel=document.getElementById('export-completion-panel');
+ if(!panel) return;
+ const failed=payload.failed===true;
+ const isKnowledgeBook=payload.type==='knowledge-book';
+ const title=failed ? (isKnowledgeBook ? 'Knowledge Book export failed' : 'Export failed') : (isKnowledgeBook ? 'Knowledge Book exported' : 'Export complete');
+ const file=payload.filename ? String(payload.filename) : String(payload.type||'export');
+ const format=payload.formatLabel || (payload.format ? String(payload.format).toUpperCase() : '');
+ const reason=payload.reason ? `<div class="export-completion-meta">Reason: ${navPanelText(payload.reason)}</div>` : '';
+ const formatLine=isKnowledgeBook && format ? `<div class="export-completion-meta">Format: ${navPanelText(format)}</div>` : '';
+ const messageLine=payload.message ? `<div class="export-completion-meta">${navPanelText(payload.message)}</div>` : '';
+ const libraryButton=failed ? '' : '<button id="export-complete-library" type="button" aria-label="Open library after export">[ Library ]</button>';
+ panel.innerHTML=`<div class="export-completion-title${failed?' failed':''}">${title}</div>${formatLine}<div class="export-completion-meta">Filename: ${navPanelText(file)}</div>${reason}${messageLine}<div class="export-completion-actions"><button id="export-complete-back" type="button" aria-label="Go back after export">← Back</button>${libraryButton}<button id="export-complete-home" type="button" aria-label="Return home after export">⌂ Home</button></div>`;
+ panel.classList.add('active');
+ document.getElementById('export-complete-back').onclick=navGoBack;
+ const libraryAction=document.getElementById('export-complete-library');
+ if(libraryAction) libraryAction.onclick=navGoLibrary;
+ document.getElementById('export-complete-home').onclick=navGoHome;
+ updateNavControls();
+}
+function pushExportComplete(type,filename,extra){
+ const payload=Object.assign({type:type, filename:filename||''}, extra||{});
+ if(NAV && NAV.pushView) NAV.pushView('export-complete', payload); else showExportCompletionPanel(payload);
+}
+function pushExportFailed(type,filename){
+ const payload={type:type, filename:filename||'', failed:true};
+ if(NAV && NAV.pushView) NAV.pushView('export-complete', payload); else showExportCompletionPanel(payload);
+}
+document.getElementById('nav-back').onclick=navGoBack;
+document.getElementById('nav-home').onclick=navGoHome;
+document.getElementById('nav-library').onclick=navGoLibrary;
+document.addEventListener('keydown', event=>{
+ if(event.key !== 'Escape') return;
+ const panel=document.getElementById('export-completion-panel');
+ if(panel && panel.classList.contains('active')) { navGoBack(); event.preventDefault(); return; }
+ if(document.body.classList.contains('lib-open')) { navGoBack(); event.preventDefault(); return; }
+ if(NAV && NAV.canGoBack && NAV.canGoBack()) { navGoBack(); event.preventDefault(); }
+});
+(function installMobileEdgeBack(){
+ let startX=0,startY=0,tracking=false;
+ const isMobile=()=>window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+ window.addEventListener('touchstart',event=>{
+  if(!isMobile() || !event.touches || event.touches.length!==1) return;
+  const t=event.touches[0];
+  if(t.clientX>24) return;
+  if(event.target && event.target.closest && event.target.closest('#stack .card')) return;
+  tracking=true; startX=t.clientX; startY=t.clientY;
+ },{passive:true});
+ window.addEventListener('touchmove',event=>{
+  if(!tracking || !event.touches || event.touches.length!==1) return;
+  const t=event.touches[0];
+  const dx=t.clientX-startX;
+  const dy=Math.abs(t.clientY-startY);
+  if(dy>40){ tracking=false; return; }
+  if(dx>60){ tracking=false; navGoBack(); }
+ },{passive:true});
+ window.addEventListener('touchend',()=>{ tracking=false; },{passive:true});
+})();
 
 function card(text, labels, cb, allowSensors = true) {
  UI.stack.innerHTML=""; const el=document.createElement("div"); el.className="card";
@@ -3163,18 +3298,20 @@ function review(){
  });
 }
 
-function report(){
- emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID});
+function report(pushNav=true){
+ if(pushNav) { navPush("session-review"); emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID}); }
  if(!CURRENT_SES_ID) generateSessionID();
  const percent = Math.round((XP / SESSION_ALL.length) * 100) || 0;
  card(`SUMMARY\n\n${XP} / ${SESSION_ALL.length} Correct\n(${percent}%)`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
     if(dir==="DOWN") showSessionExportMenu();
     if(dir==="UP") startQuiz(); 
-    if(dir==="LEFT") begin();
+    if(dir==="LEFT") navGoHome();
  }, false);
 }
 
-function showSessionExportMenu(data=null, id=null, back=null){
+function showSessionExportMenu(data=null, id=null, back=null, pushNav=true){
+    if(pushNav) navPush("export-preview", {data:data||null, id:id||null});
+    closeExportCompletionPanel();
     const renderData = data || SESSION_ALL;
     const renderID = id || CURRENT_SES_ID;
     const count = Array.isArray(renderData) ? renderData.length : 0;
@@ -3206,7 +3343,7 @@ ID: ${id || CURRENT_SES_ID}`,
                     const mob = prompt("ENTER REGISTERED MOBILE:");
                     if(mob && mob.length >= 10) {
                         localStorage.setItem("USER_MOBILE", mob); USER_MOBILE = mob;
-                        log("IDENTITY LINKED", "active"); showSessionExportMenu(data, id);
+                        log("IDENTITY LINKED", "active"); showSessionExportMenu(data, id, null, false);
                     } else { log("INVALID INPUT", "normal"); handleDownloadRequest(data, id); }
                 }
             }, false
@@ -3253,9 +3390,11 @@ function exportSessionPDF(data=null, id=null){
   doc.setDrawColor(200); doc.setLineWidth(0.1); doc.line(ML,y,195,y); y+=5;
  });
 
- doc.save(`ALCHEMIST_${renderID}.pdf`);
+ const filename = `ALCHEMIST_${renderID}.pdf`;
+ doc.save(filename);
  if(!data) sendTelemetry(); 
- setTimeout(begin,500);
+ log("SESSION PDF EXPORTED", "active");
+ pushExportComplete("pdf", filename, {id:renderID, data:renderData});
 }
 
 function renderSessionPDF(data=null, id=null){ exportSessionPDF(data, id); }
@@ -3265,13 +3404,15 @@ function exportSessionEPUB(data=null, id=null){
  const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
  try {
   const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.SessionEPUBExporter();
-  if(!exporter) { log("EPUB ENGINE UNAVAILABLE", "danger"); return; }
+  if(!exporter) { log("EPUB ENGINE UNAVAILABLE", "danger"); pushExportFailed("epub", "EPUB engine unavailable"); return; }
   const book = exporter.build({ sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData });
   dl(book.fileName, book.bytes, window.AlchemistEPUB.EPUB_MIME);
   log("SESSION EPUB EXPORTED", "active");
+  pushExportComplete("epub", book.fileName, {id:renderID, data:renderData});
  } catch(error) {
   console.error(error);
   log("SESSION EPUB EXPORT FAILED", "danger");
+  pushExportFailed("epub", error && error.message ? error.message : "EPUB export failed");
  }
 }
 
@@ -3280,28 +3421,30 @@ function exportSessionZAY(data=null, id=null){
  const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
  try {
   const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.ZAYExporter();
-  if(exporter){ const pkg = exporter.build({ sessionId: renderID, questions: renderData }); dl(pkg.fileName, pkg.content, pkg.mimeType); }
+  let filename = `ALCHEMIST_SESSION_${safeFileName(renderID)}.zay`;
+  if(exporter){ const pkg = exporter.build({ sessionId: renderID, questions: renderData }); filename = pkg.fileName; dl(pkg.fileName, pkg.content, pkg.mimeType); }
   else {
    const unique = Array.isArray(renderData) ? renderData.filter((q,i,self)=>i===self.findIndex(t=>(t.id===q.id))) : [];
    const zay = {meta:{version:"2.0",engine:"zayvora",type:"study-session",created:Date.now(),sessionId:renderID,questionCount:unique.length},content:{blocks:unique.map((q,index)=>({type:"question",title:`Question ${index+1}`,body:{question:cleanPDF(q.q||q.question||"Question unavailable"),answer:cleanPDF(q.u||q.correct||q.answer||"Answer unavailable"),logic:cleanPDF(q.logic||q.explanation||"Logic unavailable")}}))}};
-   dl(`ALCHEMIST_SESSION_${safeFileName(renderID)}.zay`,JSON.stringify(zay,null,2),'application/json');
+   dl(filename,JSON.stringify(zay,null,2),'application/json');
   }
   log("SESSION .ZAY EXPORTED", "active");
- } catch(error) { console.error(error); log("SESSION .ZAY EXPORT FAILED", "danger"); }
+  pushExportComplete("zay", filename, {id:renderID, data:renderData});
+ } catch(error) { console.error(error); log("SESSION .ZAY EXPORT FAILED", "danger"); pushExportFailed("zay", error && error.message ? error.message : "ZAY export failed"); }
 }
 
 function exportKnowledgeBook(data=null, id=null){
  const renderData = Array.isArray(data) ? data : SESSION_ALL;
  const renderID = id || CURRENT_SES_ID || "SESSION_UNKNOWN";
+ const session = { sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData };
  try {
-  const exporter = window.AlchemistEPUB && new window.AlchemistEPUB.KnowledgeBookExporter();
-  if(!exporter) { log("KNOWLEDGE BOOK ENGINE UNAVAILABLE", "danger"); return; }
-  const book = exporter.build({ sessionId: renderID, createdAt: new Date().toISOString(), questions: renderData });
-  dl(book.fileName, book.bytes, window.AlchemistEPUB.EPUB_MIME);
-  log("KNOWLEDGE BOOK EXPORTED", "active");
+  if(!window.AlchemistKnowledgeBookExporter || typeof window.AlchemistKnowledgeBookExporter.openFormatDialog !== "function") { log("KNOWLEDGE BOOK ENGINE UNAVAILABLE", "danger"); pushExportFailed("knowledge-book", "Knowledge Book exporter unavailable"); return; }
+  window.AlchemistKnowledgeBookExporter.openFormatDialog(session);
+  log("CHOOSE KNOWLEDGE BOOK FORMAT", "primary");
  } catch(error) {
   console.error(error);
   log("KNOWLEDGE BOOK EXPORT FAILED", "danger");
+  pushExportFailed("knowledge-book", error && error.message ? error.message : "Knowledge Book export failed");
  }
 }
 
@@ -3337,9 +3480,9 @@ function renderList(){
   head.innerHTML=`<span>LIBRARY · ${VAULT.length}</span><span class="vault-close" id="vault-close">×</span>`;
   c.appendChild(head);
   VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.className='vault-row'; div.textContent=`${item.id||index+1}  ${item.q}`; div.onclick=()=>selectItem(index); c.appendChild(div); });
-  document.getElementById('vault-close').onclick=()=>document.body.classList.remove('lib-open');
+  document.getElementById('vault-close').onclick=navGoBack;
 }
-function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; renderDetail(); }
+function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; navPush('question-detail', {index:index}); renderDetail(); }
 const safeFileName=v=>String(v||'notes').replace(/[\\/:*?"<>|]+/g,' ').trim().replace(/\s+/g,'_')||'notes';
 const generateNotes=i=>`# ${i.q}
 
@@ -3367,11 +3510,14 @@ function buildEPUB(s){
 <package><metadata><title>${s.title}</title><creator>${s.author}</creator></metadata><manifest>${s.chapters.map((c,i)=>`<item id="c${i}" href="c${i}.html"/>`).join("")}</manifest><spine>${s.chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join("")}</spine></package>`;
 }
 function exportEPUB(s){
-  if(window.AlchemistEPUB){ const asset = new window.AlchemistEPUB.AssetEPUBExporter().build(s); dl(asset.fileName, asset.bytes, window.AlchemistEPUB.EPUB_MIME); return; }
-  dl(`${safeFileName(s.title)}.epub`,buildEPUB(s),'application/epub+zip');
+  try{
+    if(window.AlchemistEPUB){ const asset = new window.AlchemistEPUB.AssetEPUBExporter().build(s); dl(asset.fileName, asset.bytes, window.AlchemistEPUB.EPUB_MIME); pushExportComplete("epub", asset.fileName); return; }
+    const filename=`${safeFileName(s.title)}.epub`; dl(filename,buildEPUB(s),'application/epub+zip'); pushExportComplete("epub", filename);
+  } catch(error){ console.error(error); pushExportFailed("epub", error && error.message ? error.message : "EPUB export failed"); }
 }
-function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF) return alert('PDF engine unavailable'); const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); d.save(`${safeFileName(s.title)}.pdf`);}
+function exportPDF(s){const {jsPDF}=window.jspdf||{}; if(!jsPDF){ pushExportFailed("pdf", "PDF engine unavailable"); return alert('PDF engine unavailable'); } try{ const d=new jsPDF(); let y=20; d.setFontSize(14); d.text(s.title||'Notes',15,y); y+=10; (s.chapters||[]).forEach(c=>{ if(y>270){d.addPage(); y=20;} d.setFont(undefined,'bold'); d.text(c.title||'',15,y); y+=7; d.setFont(undefined,'normal'); const lines=d.splitTextToSize(String(c.content||''),180); d.text(lines,15,y); y+=lines.length*6+4; }); const filename=`${safeFileName(s.title)}.pdf`; d.save(filename); pushExportComplete("pdf", filename); } catch(error){ console.error(error); pushExportFailed("pdf", error && error.message ? error.message : "PDF export failed"); }}
 function exportZAY(item,structure){
+ try{
   const notes=window.generatedNotes||"";
   const blocks=(structure&&structure.chapters||[]).map(c=>({type:"text",title:c.title,body:c.content}));
   const concepts=[item.hint,item.topic,item.set].filter(Boolean);
@@ -3384,12 +3530,15 @@ function exportZAY(item,structure){
     ui:{layout:"three-panel",flow_view:"svg-graph"},
     state:{overlay_mode:"local",annotations:{},draft_outputs:{}}
   };
-  dl(`${safeFileName(item.id||item.q||"asset")}.zay`,JSON.stringify(z,null,2),'application/json');
+  const filename=`${safeFileName(item.id||item.q||"asset")}.zay`;
+  dl(filename,JSON.stringify(z,null,2),'application/json');
+  pushExportComplete("zay", filename);
+ } catch(error){ console.error(error); pushExportFailed("zay", error && error.message ? error.message : "ZAY export failed"); }
 }
 function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf" ${window.generatedNotes?'':'disabled'}>Export PDF</button><button id="export-epub" ${window.generatedNotes?'':'disabled'}>Export EPUB</button><button id="export-zay" ${window.generatedNotes?'':'disabled'}>Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem); localStorage.setItem('SAVED_NOTES',window.generatedNotes); localStorage.setItem('SAVED_SELECTED_ITEM',JSON.stringify(selectedItem)); ['export-pdf','export-epub','export-zay'].forEach(id=>document.getElementById(id).disabled=false);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
 function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.display='none'; }
 function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
-document.getElementById('lib-toggle').onclick=()=>{ document.body.classList.toggle('lib-open'); if(document.body.classList.contains('lib-open')&&Array.isArray(VAULT)&&VAULT.length) renderList(); };
+document.getElementById('lib-toggle').onclick=()=>{ if(document.body.classList.contains('lib-open')) navGoBack(); else openLibraryPanel(); };
 
 async function init() {
   log("SYSTEM BOOT", "active");
@@ -3412,6 +3561,5 @@ init();
   <a href="data-compliance.html" style="color:#555; text-decoration:none;">Compliance</a>
 </div>
 
-</script>
 </body>
     </html>
