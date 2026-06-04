@@ -71,6 +71,8 @@ const kernelTests = [
   'kernel/alchemist/epub-exporter.test.js',
   'kernel/alchemist/session-engine.test.js',
   'kernel/alchemist/session-review.test.js',
+  'kernel/alchemist/navigation-state.test.js',
+  'kernel/alchemist/knowledge-book-exporter.test.js',
   'kernel/alchemist/zay-compiler.test.js'
 ];
 for (const test of kernelTests) {
