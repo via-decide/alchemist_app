@@ -1,0 +1,37 @@
+[
+  {
+    "id": "welcome",
+    "title": "Welcome to Alchemist",
+    "subtitle": "Turn any topic into: Research, Synthesis, and a Decision PDF.",
+    "content": "Alchemist is a deterministic execution engine. Let's walk through how to build your first research session.",
+    "action": "Start Tutorial"
+  },
+  {
+    "id": "phase1",
+    "title": "Phase 1: Search & Build Nodes",
+    "subtitle": "INPUT",
+    "content": "Start by searching a topic. The engine will retrieve relevant knowledge nodes. You can lock nodes into your session to build the foundation of your research.",
+    "action": "Next"
+  },
+  {
+    "id": "phase2",
+    "title": "Phase 2: Synthesis",
+    "subtitle": "PROCESS",
+    "content": "Swipe through your locked cards. Alchemist automatically synthesizes the relationships between the concepts in real-time.",
+    "action": "Next"
+  },
+  {
+    "id": "phase3",
+    "title": "Phase 3: Export",
+    "subtitle": "OUTPUT",
+    "content": "When your research is complete, open the export panel to generate your Decision PDF or Knowledge Book. Your insights, formatted and ready.",
+    "action": "Next"
+  },
+  {
+    "id": "ready",
+    "title": "Ready?",
+    "subtitle": "Let's build your first decision engine.",
+    "content": "The stack is ready. Your session begins now.",
+    "action": "Enter App"
+  }
+]

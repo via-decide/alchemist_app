@@ -126,9 +126,67 @@ body.nav-recovery-active .alchemist-nav-rail{display:flex;}
     border-radius:14px; color:var(--text-white); border:1px solid #444;
     transform: scale(0.9);
 }
+
+/* ONBOARDING OVERLAY */
+#alchemist-onboarding-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: var(--text-white); font-family: var(--font-sans);
+}
+#alchemist-onboarding-overlay.hidden { display: none; }
+.onboarding-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 40px; max-width: 400px; width: 90%;
+    text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.95);
+}
+.onboarding-subtitle { font-family: var(--font-code); font-size: 0.75rem; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.onboarding-title { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 15px; }
+.onboarding-content { font-size: 1rem; color: #aaa; line-height: 1.5; margin-bottom: 30px; }
+.onboarding-actions { display: flex; gap: 10px; justify-content: center; }
+.onboarding-btn { background: #111; color: var(--gold); border: 1px solid var(--gold); padding: 10px 20px; border-radius: 4px; font-family: var(--font-code); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.onboarding-btn:hover { background: var(--gold); color: #000; }
+.onboarding-skip { background: transparent; color: #666; border: 1px solid transparent; padding: 10px 20px; font-family: var(--font-code); font-size: 0.85rem; cursor: pointer; }
+.onboarding-skip:hover { color: var(--text-white); }
+
+/* SUCCESS MODAL */
+#alchemist-success-modal {
+    position: fixed; inset: 0; z-index: 9998;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+}
+#alchemist-success-modal.active { display: flex; }
+.success-card {
+    background: #0d1825; border: 1px solid #00d68f; border-radius: 14px;
+    padding: 30px; text-align: center; max-width: 350px;
+    box-shadow: 0 10px 40px rgba(0,214,143,0.2);
+}
+.success-title { font-family: var(--font-serif); font-size: 1.8rem; color: #00d68f; margin-bottom: 10px; }
 </style>
 </head>
 <body>
+
+<!-- ONBOARDING OVERLAY -->
+<div id="alchemist-onboarding-overlay" class="hidden">
+  <div class="onboarding-card">
+    <div class="onboarding-subtitle" id="ob-subtitle"></div>
+    <div class="onboarding-title" id="ob-title"></div>
+    <div class="onboarding-content" id="ob-content"></div>
+    <div class="onboarding-actions">
+      <button class="onboarding-skip" onclick="skipOnboarding()">Skip</button>
+      <button class="onboarding-btn" id="ob-next-btn" onclick="nextOnboardingStep()">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="alchemist-success-modal">
+  <div class="success-card">
+    <div class="success-title">Success!</div>
+    <div class="onboarding-content" style="margin-bottom:20px;">You built your first engine. Your PDF is being generated.</div>
+    <button class="onboarding-btn" onclick="closeSuccessModal()">Continue</button>
+  </div>
+</div>
 
 <div id="gyro-status">HYBRID SENSORS READY</div>
 
@@ -3416,6 +3474,12 @@ ID: ${id || CURRENT_SES_ID}`,
 }
 
 function exportSessionPDF(data=null, id=null){
+ if(!localStorage.getItem('alchemist_first_export_success')) {
+   localStorage.setItem('alchemist_first_export_success', 'true');
+   const modal = document.getElementById('alchemist-success-modal');
+   if(modal) modal.classList.add('active');
+ }
+
  const renderData = data || SESSION_ALL;
  const renderID = id || CURRENT_SES_ID;
  
@@ -3604,8 +3668,50 @@ function hideLoader(){ const l=document.querySelector('.card-q'); if(l) l.style.
 function showError(msg){ const l=document.querySelector('.card-q'); if(l) l.innerText=msg; }
 document.getElementById('lib-toggle').onclick=()=>{ if(document.body.classList.contains('lib-open')) navGoBack(); else openLibraryPanel(); };
 
+let onboardingSteps = [];
+let currentOnboardingStep = 0;
+
+async function loadOnboarding() {
+  if (localStorage.getItem('alchemist_onboarding_completed')) return;
+  try {
+    const res = await fetch('onboarding.json');
+    onboardingSteps = await res.json();
+    if (onboardingSteps && onboardingSteps.length > 0) {
+      document.getElementById('alchemist-onboarding-overlay').classList.remove('hidden');
+      renderOnboardingStep();
+    }
+  } catch (e) { console.error('Onboarding load failed', e); }
+}
+
+function renderOnboardingStep() {
+  const step = onboardingSteps[currentOnboardingStep];
+  document.getElementById('ob-subtitle').innerText = step.subtitle || '';
+  document.getElementById('ob-title').innerText = step.title || '';
+  document.getElementById('ob-content').innerText = step.content || '';
+  document.getElementById('ob-next-btn').innerText = step.action || 'Next';
+}
+
+function nextOnboardingStep() {
+  currentOnboardingStep++;
+  if (currentOnboardingStep >= onboardingSteps.length) {
+    skipOnboarding();
+  } else {
+    renderOnboardingStep();
+  }
+}
+
+function skipOnboarding() {
+  localStorage.setItem('alchemist_onboarding_completed', 'true');
+  document.getElementById('alchemist-onboarding-overlay').classList.add('hidden');
+}
+
+function closeSuccessModal() {
+  document.getElementById('alchemist-success-modal').classList.remove('active');
+}
+
 async function init() {
   log("SYSTEM BOOT", "active");
+  loadOnboarding();
   restoreSession();
   await loadVault();
   if(!Array.isArray(VAULT)||!VAULT.length){ return; }
