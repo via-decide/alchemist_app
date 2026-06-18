@@ -7,6 +7,7 @@ function Dashboard() {
     month3: 740,
     month6: 2100,
   });
+  const [series] = useState({ books: 10, status: "dependency graph active" });
 
   useEffect(() => {
     fetch("http://localhost:8000/health")
@@ -43,6 +44,17 @@ function Dashboard() {
             <li>instrumental analysis practice problems</li>
             <li>titration and spectroscopy explained</li>
           </ul>
+        </article>
+      </section>
+      <section className="grid md:grid-cols-2 gap-4">
+        <article className="card">
+          <h2 className="font-semibold text-lg">10-Book Series Planner</h2>
+          <p className="text-sm mt-2">Series size: {series.books} books</p>
+          <p className="text-sm">Status: {series.status}</p>
+        </article>
+        <article className="card">
+          <h2 className="font-semibold text-lg">Institutional Bulk Sales</h2>
+          <p className="text-sm mt-2">Starter, Campus, and Consortium pricing tiers auto-generated.</p>
         </article>
       </section>
     </main>

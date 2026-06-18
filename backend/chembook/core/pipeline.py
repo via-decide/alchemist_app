@@ -8,6 +8,12 @@ from .diagram_generator import titration_curve, spectroscopy_diagram, chromatogr
 from .generators import generate_examples, generate_exercises
 from .citation_engine import extract_pdf_citations
 from .builders import render_compiled_markdown, build_epub, build_paperback_pdf, build_kdp_metadata
+from .crossref import generate_cross_references
+from .bibliography import write_bibliography
+from .kindle_validator import validate_kindle_markdown
+from .ads import generate_amazon_ads_keywords
+from .institutional_sales import build_bulk_sales_offers, forecast_bulk_revenue
+from .book_series import series_graph, topo_order, series_manifest
 
 
 class ChemBookPipeline:
@@ -52,6 +58,19 @@ class ChemBookPipeline:
     def build_all(self, chapters: list[dict], citations: list[str]):
         compiled_md = OUTPUT_DIR / "book.md"
         render_compiled_markdown(chapters, citations, compiled_md)
+        crossrefs = generate_cross_references(chapters)
+        write_bibliography(citations, OUTPUT_DIR / "bibliography.md", OUTPUT_DIR / "references.bib")
+        kindle_report = validate_kindle_markdown(compiled_md)
+        ads_keywords = generate_amazon_ads_keywords("Analytical Chemistry Vol. 1", chapters)
+        bulk_sales = {
+            "offers": build_bulk_sales_offers(series_size=10),
+            "forecast": forecast_bulk_revenue(),
+        }
+        series = {
+            "graph": series_graph(),
+            "order": topo_order(),
+            "books": series_manifest(),
+        }
 
         epub_res = build_epub(compiled_md, OUTPUT_DIR / "book.epub", Path(__file__).resolve().parents[1] / "templates" / "book_template.html")
         pdf_res = build_paperback_pdf(Path(__file__).resolve().parents[1] / "templates" / "paperback.tex", OUTPUT_DIR)
@@ -66,6 +85,19 @@ class ChemBookPipeline:
 
         (OUTPUT_DIR / "examples.json").write_text(json.dumps(examples, indent=2), encoding="utf-8")
         (OUTPUT_DIR / "exercises.json").write_text(json.dumps(exercises, indent=2), encoding="utf-8")
+        (OUTPUT_DIR / "crossrefs.json").write_text(json.dumps(crossrefs, indent=2), encoding="utf-8")
+        (OUTPUT_DIR / "kindle_validation.json").write_text(json.dumps(kindle_report, indent=2), encoding="utf-8")
+        (OUTPUT_DIR / "amazon_ads_keywords.json").write_text(json.dumps(ads_keywords, indent=2), encoding="utf-8")
+        (OUTPUT_DIR / "institutional_sales.json").write_text(json.dumps(bulk_sales, indent=2), encoding="utf-8")
+        (OUTPUT_DIR / "series_graph.json").write_text(json.dumps(series, indent=2), encoding="utf-8")
 
         self._record("build", {"epub_rc": epub_res.returncode, "pdf_rc": pdf_res.returncode})
-        return {"epub": epub_res.returncode, "pdf": pdf_res.returncode, "kdp": kdp}
+        return {
+            "epub": epub_res.returncode,
+            "pdf": pdf_res.returncode,
+            "kdp": kdp,
+            "crossrefs": len(crossrefs),
+            "kindle_validation": kindle_report["status"],
+            "ads_keywords": len(ads_keywords),
+            "series_books": len(series["books"]),
+        }
