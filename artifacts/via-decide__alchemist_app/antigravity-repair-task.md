@@ -4,7 +4,7 @@ TARGET
 Validate and repair only the files touched by the previous implementation.
 
 TASK
-Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+Create reusable telemetry schema for future repos.
 
 RULES
 1. Audit touched files first and identify regressions.
@@ -20,7 +20,7 @@ SOP: REPAIR PROTOCOL (MANDATORY)
 
 REPO CONTEXT
 - README snippet:
-# ChemBook Auto Publisher Deterministic book production engine for KDP-ready EPUB and paperback PDF output. ## Quick start ```bash python3 -m venv .venv source .venv/bin/activate pip install -r requirements.txt make publish ``` Outputs: - `build/epub/book.epub` - `build/pdf/book_print.pdf` - `b
+# ChemBook Auto Publisher End-to-end automated publishing pipeline for an **Analytical Chemistry textbook series**. ## What it does - Ingests notebook photos, markdown notes, and research PDFs. - Runs OCR + chemistry-aware extraction. - Reconstructs chapter content and diagrams. - Generates exampl
 - AGENTS snippet:
 not found
 - package.json snippet:

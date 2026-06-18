@@ -1,9 +1,9 @@
-Branch: simba/add-bookmark-system-to-allow-users-to-save-view-
-Title: Add bookmark system to allow users to save, view, and navigate to spe...
+Branch: simba/create-reusable-telemetry-schema-for-future-repo
+Title: Create reusable telemetry schema for future repos.
 
 ## Summary
 - Repo orchestration task for via-decide/alchemist_app
-- Goal: Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+- Goal: Create reusable telemetry schema for future repos.
 
 ## Testing Checklist
 - [ ] Run unit/integration tests

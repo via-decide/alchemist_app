@@ -1,10 +1,10 @@
 You are working in repository via-decide/alchemist_app on branch main.
 
 MISSION
-Add bookmark system to allow users to save, view, and navigate to specific reading positions.
+Create reusable telemetry schema for future repos.
 
 CONSTRAINTS
-- Max 1 new file - No external dependencies - Must not affect performance
+Preserve existing code; prefer additive changes.
 
 PROCESS (MANDATORY)
 1. Read README.md and AGENTS.md before editing.
@@ -17,9 +17,9 @@ PROCESS (MANDATORY)
 
 REPO AUDIT CONTEXT
 - Description: 
-- Primary language: JavaScript
+- Primary language: HTML
 - README snippet:
-# ChemBook Auto Publisher Deterministic book production engine for KDP-ready EPUB and paperback PDF output. ## Quick start ```bash python3 -m venv .venv source .venv/bin/activate pip install -r requirements.txt make publish ``` Outputs: - `build/epub/book.epub` - `build/pdf/book_print.pdf` - `b
+# ChemBook Auto Publisher End-to-end automated publishing pipeline for an **Analytical Chemistry textbook series**. ## What it does - Ingests notebook photos, markdown notes, and research PDFs. - Runs OCR + chemistry-aware extraction. - Reconstructs chapter content and diagrams. - Generates exampl
 
 - AGENTS snippet:
 not found
