@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-06-21T23:19:10.637Z",
+  "mission": "Cockpit v0.2 Verification Mission",
+  "elapsedMs": 118,
+  "tokensEstimate": 26200,
+  "creditsSaved": 12.4,
+  "metrics": {
+    "filesScanned": 148,
+    "techDebtScore": 15,
+    "todosCount": 0,
+    "emptyCatchesCount": 5,
+    "evalsCount": 0,
+    "duplicatesCount": 0
+  },
+  "verification": {
+    "success": false,
+    "testsPassed": 0,
+    "testsFailed": 1,
+    "lintPassed": false
+  },
+  "planPath": "/Users/dharamdaxini/Downloads/via/alchemist_app/IMPROVEMENT_PLAN.md",
+  "patchProposed": null,
+  "logs": [
+    "[4:49:10 AM] Mission Control Sequence Initiated: Cockpit v0.2 Verification Mission",
+    "[4:49:10 AM] Phase 1: Scanner (Measuring codebase)...",
+    "[4:49:10 AM] Scan Complete. Files: 148, Debt Score: 15",
+    "[4:49:10 AM] Phase 2: Planner (Formulating improvements)...",
+    "[4:49:10 AM] Plan Complete: /Users/dharamdaxini/Downloads/via/alchemist_app/IMPROVEMENT_PLAN.md",
+    "[4:49:10 AM] Phase 3: Verifier (Running tests & syntax checks)...",
+    "[4:49:10 AM] Verification Failed ❌",
+    "[4:49:10 AM] Phase 4: Metrics (Computing token/time savings)...",
+    "[4:49:10 AM] Phase 5: Trace & Vault (Saving execution trace)..."
+  ]
+}

@@ -162,6 +162,76 @@ body.nav-recovery-active .alchemist-nav-rail{display:flex;}
     box-shadow: 0 10px 40px rgba(0,214,143,0.2);
 }
 .success-title { font-family: var(--font-serif); font-size: 1.8rem; color: #00d68f; margin-bottom: 10px; }
+
+/* ASSET SUMMARY OVERLAY */
+.asset-modal {
+    position: fixed; inset: 0; z-index: 9997;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; overflow-y: auto;
+}
+.asset-modal.active { display: flex; }
+.asset-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 25px; max-width: 440px; width: 100%;
+    box-shadow: 0 25px 65px rgba(0,0,0,0.95);
+    display: flex; flex-direction: column; gap: 18px;
+    position: relative; max-height: 90vh; overflow-y: auto;
+}
+.asset-card::-webkit-scrollbar { width: 4px; }
+.asset-card::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.asset-header { text-align: center; }
+.asset-title { font-family: var(--font-code); font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; font-weight: bold; }
+.asset-subtitle { font-family: var(--font-code); font-size: 0.7rem; color: #666; margin-top: 4px; }
+
+.asset-stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    background: #0d0d0d; border: 1px solid #1a1a1a; padding: 12px 8px; border-radius: 8px;
+}
+.asset-stat { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.stat-num { font-family: var(--font-code); font-size: 1.15rem; color: #fff; font-weight: bold; }
+.stat-label { font-family: var(--font-code); font-size: 0.55rem; color: #666; margin-top: 3px; letter-spacing: 0.5px; }
+
+.asset-description { font-size: 0.8rem; color: #aaa; line-height: 1.5; margin: 0; text-align: center; }
+.asset-description strong { color: var(--gold); }
+
+.export-options-list { display: flex; flex-direction: column; gap: 10px; }
+.export-row {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    border: 1px solid #1c1c1c; background: #080808; padding: 10px 12px; border-radius: 8px;
+    cursor: pointer; transition: all 0.2s ease;
+}
+.export-row:hover { border-color: #333; background: #0d0d0d; }
+.export-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left; }
+.export-name { font-family: var(--font-code); font-size: 0.85rem; color: #fff; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+.export-badge { font-size: 0.6rem; padding: 1px 5px; border-radius: 3px; background: #222; color: #aaa; text-transform: uppercase; font-weight: normal; }
+.export-badge.primary { background: rgba(255,214,0,0.15); color: var(--gold); }
+.export-desc { font-size: 0.7rem; color: #666; line-height: 1.3; }
+
+.export-btn {
+    background: #111; color: #ccc; border: 1px solid #333;
+    padding: 6px 12px; border-radius: 4px; font-family: var(--font-code);
+    font-size: 0.72rem; cursor: pointer; transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.export-row:hover .export-btn { border-color: var(--gold); color: var(--gold); }
+.export-btn.primary { border-color: var(--gold); color: var(--gold); background: rgba(255,214,0,0.05); }
+.export-row:hover .export-btn.primary { background: var(--gold); color: #000; }
+
+.asset-modal-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #1c1c1c; padding-top: 14px; margin-top: 5px;
+    font-family: var(--font-code); font-size: 0.68rem; color: #444;
+}
+.asset-modal-footer a { color: #666; text-decoration: none; border-bottom: 1px dashed #444; }
+.asset-modal-footer a:hover { color: var(--gold); border-color: var(--gold); }
+.asset-close-btn {
+    background: transparent; border: none; color: #888;
+    cursor: pointer; text-transform: uppercase; font-family: var(--font-code);
+    font-size: 0.68rem; font-weight: bold;
+}
+.asset-close-btn:hover { color: var(--red); }
 </style>
 </head>
 <body>
@@ -185,8 +255,80 @@ body.nav-recovery-active .alchemist-nav-rail{display:flex;}
     <div class="success-title">Success!</div>
     <div class="onboarding-content" style="margin-bottom:20px;">You built your first engine. Your PDF is being generated.</div>
     <button class="onboarding-btn" onclick="closeSuccessModal()">Continue</button>
+</div>
+
+<!-- ASSET SUMMARY MODAL -->
+<div id="alchemist-asset-summary-modal" class="asset-modal">
+  <div class="asset-card">
+    <div class="asset-header">
+      <div class="asset-title">KNOWLEDGE ASSET SUMMARY</div>
+      <div class="asset-subtitle" id="asset-session-id">SES_XXXXX</div>
+    </div>
+    
+    <div class="asset-stats-grid">
+      <div class="asset-stat">
+        <span class="stat-num" id="asset-stat-questions">0</span>
+        <span class="stat-label">QUESTIONS</span>
+      </div>
+      <div class="asset-stat">
+        <span class="stat-num" id="asset-stat-concepts">0</span>
+        <span class="stat-label">CONCEPTS</span>
+      </div>
+      <div class="asset-stat">
+        <span class="stat-num" id="asset-stat-domains">0</span>
+        <span class="stat-label">DOMAINS</span>
+      </div>
+      <div class="asset-stat">
+        <span class="stat-num" id="asset-stat-relations">0</span>
+        <span class="stat-label">RELATIONS</span>
+      </div>
+    </div>
+    
+    <p class="asset-description">
+      A <strong>.zay Knowledge Asset</strong> stores concepts, semantic relationships, reasoning maps, and learning history in a portable format.
+    </p>
+
+    <div class="export-options-list">
+      <div class="export-row" onclick="triggerAssetExport('pdf')">
+        <div class="export-meta">
+          <span class="export-name">PDF <span class="export-badge">Read</span></span>
+          <span class="export-desc">Best for revision, printing, sharing with teachers, and offline study.</span>
+        </div>
+        <button class="export-btn">Export PDF</button>
+      </div>
+
+      <div class="export-row" onclick="triggerAssetExport('epub')">
+        <div class="export-meta">
+          <span class="export-name">EPUB <span class="export-badge">Publish</span></span>
+          <span class="export-desc">Turn session into a digital book compatible with Kindle, Apple Books.</span>
+        </div>
+        <button class="export-btn">Export EPUB</button>
+      </div>
+
+      <div class="export-row" onclick="triggerAssetExport('html')">
+        <div class="export-meta">
+          <span class="export-name">HTML <span class="export-badge">Share</span></span>
+          <span class="export-desc">Generate an interactive offline-capable web book to host or share.</span>
+        </div>
+        <button class="export-btn">Export HTML</button>
+      </div>
+
+      <div class="export-row" onclick="triggerAssetExport('zay')">
+        <div class="export-meta">
+          <span class="export-name">ZAY <span class="export-badge primary">Own</span></span>
+          <span class="export-desc">Portable personal knowledge asset. View at <a href="https://daxini.xyz/.zay" target="_blank" onclick="event.stopPropagation()">daxini.xyz/.zay</a>.</span>
+        </div>
+        <button class="export-btn primary">Create Asset</button>
+      </div>
+    </div>
+
+    <div class="asset-modal-footer">
+      <span>Powered by Zayvora Engine &bull; <a href="https://daxini.xyz/journal" target="_blank" onclick="event.stopPropagation()">daxini.xyz/journal</a></span>
+      <button class="asset-close-btn" onclick="closeAssetSummaryModal()">Close</button>
+    </div>
   </div>
 </div>
+
 
 <div id="gyro-status">HYBRID SENSORS READY</div>
 
@@ -2959,7 +3101,7 @@ let SESSION_LOG = [];
 let CURRENT_SESSION_MODEL = null;
 
 // --- BACKEND ---
-let USER_MOBILE = localStorage.getItem("USER_MOBILE") || null;
+let USER_MOBILE = localStorage.getItem("USER_MOBILE") || "GUEST";
 let CURRENT_SES_ID = null;
 let CREDITS = parseInt(localStorage.getItem("USER_CREDITS") || "10");
 let VAULT = [];
@@ -3148,6 +3290,12 @@ function updateNavControls(){
 function applyNavigationState(state, reason){
  if(suppressNavApply || !state) { updateNavControls(); return; }
  const payload=state.payload||{};
+
+ const modal = document.getElementById('alchemist-asset-summary-modal');
+ if (modal && state.view !== 'export-preview') {
+     modal.classList.remove('active');
+ }
+
  if(state.view==='home') resetHomeUI();
  if(state.view==='library') openLibraryPanel(false);
  if(state.view==='question-detail') { if(typeof payload.index==='number' && VAULT[payload.index]) { ACTIVE=VAULT[payload.index]; selectedItem=ACTIVE; } document.body.classList.add('lib-open'); renderList(); renderDetail(); closeExportCompletionPanel(); }
@@ -3295,7 +3443,31 @@ function card(text, labels, cb, allowSensors = true) {
 
 function begin(){
  const tiltLabel = SENSORS_ENABLED ? "SENSORS ACTIVE" : "ENABLE TILT";
- card(`DATA LOADED\n${RAW_DATA.length} UNITS`,{up:"START QUIZ", down:tiltLabel, left:"VAULT", right:"RELOAD"}, dir=>{
+ const html = `<div class="landing-hero" style="font-family:var(--font-code);font-size:0.95rem;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">ALCHEMIST ENGINE v1.1</div>
+<div style="font-family:var(--font-serif);font-size:1.6rem;font-weight:600;margin-bottom:15px;color:#fff;">Build Portable Knowledge Assets</div>
+
+<div class="explanation-strip" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;width:100%;margin-bottom:20px;text-align:left;">
+  <div class="exp-step" style="border:1px solid #222;background:#0d0d0d;padding:10px;border-radius:6px;font-size:0.75rem;font-family:var(--font-code);">
+    <span style="color:var(--gold);display:block;margin-bottom:2px;font-weight:bold;">01 / QUESTIONS</span>
+    <span style="color:#aaa;">Test knowledge with physics-driven cards.</span>
+  </div>
+  <div class="exp-step" style="border:1px solid #222;background:#0d0d0d;padding:10px;border-radius:6px;font-size:0.75rem;font-family:var(--font-code);">
+    <span style="color:var(--gold);display:block;margin-bottom:2px;font-weight:bold;">02 / CONCEPTS</span>
+    <span style="color:#aaa;">Extract core concepts automatically.</span>
+  </div>
+  <div class="exp-step" style="border:1px solid #222;background:#0d0d0d;padding:10px;border-radius:6px;font-size:0.75rem;font-family:var(--font-code);">
+    <span style="color:var(--gold);display:block;margin-bottom:2px;font-weight:bold;">03 / REASONING</span>
+    <span style="color:#aaa;">Synthesize structural domain maps.</span>
+  </div>
+  <div class="exp-step" style="border:1px solid #222;background:#0d0d0d;padding:10px;border-radius:6px;font-size:0.75rem;font-family:var(--font-code);">
+    <span style="color:var(--gold);display:block;margin-bottom:2px;font-weight:bold;">04 / OWNERSHIP</span>
+    <span style="color:#aaa;">Export portable .zay knowledge vaults.</span>
+  </div>
+</div>
+<div style="font-family:var(--font-code);font-size:0.75rem;color:#666;border-top:1px dashed #222;padding-top:10px;width:100%;">
+  DATABASE READY: ${RAW_DATA.length} UNITS
+</div>`;
+ card(html,{up:"START SESSION", down:tiltLabel, left:"VAULT", right:"RELOAD"}, dir=>{
   if(dir==="UP") setPick(); 
   if(dir==="DOWN") requestSensorAccess(); 
   if(dir==="LEFT") checkLoginForVault();
@@ -3316,12 +3488,15 @@ function requestSensorAccess() {
 }
 
 function checkLoginForVault(){
-    if(USER_MOBILE && USER_MOBILE.length > 5){ openVault(0); return; }
-    const mob = prompt("SECURE VAULT ACCESS\n\nEnter your Registered Mobile Number to unlock:");
+    if(USER_MOBILE && USER_MOBILE !== "GUEST" && USER_MOBILE.length > 5){ openVault(0); return; }
+    const mob = prompt("SECURE VAULT ACCESS\n\nEnter your Registered Mobile Number to unlock (or leave blank to Continue as Guest):");
     if(mob && mob.length >= 10){
         localStorage.setItem("USER_MOBILE", mob); USER_MOBILE = mob;
         log(`LOGIN SUCCESS: ${mob}`, "active"); openVault(0);
-    } else { log("ACCESS DENIED", "danger"); begin(); }
+    } else {
+        USER_MOBILE = "GUEST";
+        log("GUEST VAULT ACCESS", "active"); openVault(0);
+    }
 }
 
 function openVault(index){
@@ -3432,18 +3607,7 @@ ${reasoning}`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
 function showSessionExportMenu(data=null, id=null, back=null, pushNav=true){
     if(pushNav) navPush("export-preview", {data:data||null, id:id||null});
     closeExportCompletionPanel();
-    const renderData = data || SESSION_ALL;
-    const renderID = id || CURRENT_SES_ID;
-    const count = Array.isArray(renderData) ? renderData.length : 0;
-    card(`SESSION EXPORTS
-
-${renderID || "SESSION"}
-${count} Questions`,{up:"EXPORT PDF", right:"EXPORT EPUB", down:"EXPORT .ZAY", left:"EXPORT KNOWLEDGE BOOK"},dir=>{
-        if(dir==="UP") handleDownloadRequest(data, id);
-        if(dir==="RIGHT") exportSessionEPUB(data, id);
-        if(dir==="DOWN") exportSessionZAY(data, id);
-        if(dir==="LEFT") exportKnowledgeBook(data, id);
-    }, false);
+    showAssetSummaryModal(data, id);
 }
 
 function handleDownloadRequest(data=null, id=null){
@@ -3708,6 +3872,72 @@ function skipOnboarding() {
 function closeSuccessModal() {
   document.getElementById('alchemist-success-modal').classList.remove('active');
 }
+
+/* ASSET SUMMARY MODAL CONTROLLER */
+let currentExportData = null;
+let currentExportId = null;
+
+function showAssetSummaryModal(data=null, id=null) {
+    currentExportData = data || SESSION_ALL;
+    currentExportId = id || CURRENT_SES_ID;
+    
+    const questionsCount = Array.isArray(currentExportData) ? currentExportData.length : 0;
+    
+    // Extract unique domains
+    const domainsSet = new Set(Array.isArray(currentExportData) ? currentExportData.map(q => q.Domain || q.domain).filter(Boolean) : []);
+    const domainsCount = domainsSet.size || 1;
+    
+    // Extract unique subdomains/concepts
+    const conceptsSet = new Set(Array.isArray(currentExportData) ? currentExportData.map(q => q.Subdomain || q.subdomain || q.concept).filter(Boolean) : []);
+    const conceptsCount = conceptsSet.size || 1;
+    
+    // Relationships: use graph edges count if available, otherwise concepts count - 1 (min 0)
+    const session = ensureUniverseSession(currentExportData, currentExportId);
+    const graph = session && session.logic && session.logic.conceptGraph;
+    let relationsCount = 0;
+    if (graph && Array.isArray(graph.edges) && graph.edges.length > 0) {
+        relationsCount = graph.edges.length;
+    } else {
+        relationsCount = Math.max(0, conceptsCount - 1);
+    }
+    
+    // Set text contents
+    document.getElementById('asset-session-id').textContent = currentExportId || "SESSION";
+    document.getElementById('asset-stat-questions').textContent = questionsCount;
+    document.getElementById('asset-stat-concepts').textContent = conceptsCount;
+    document.getElementById('asset-stat-domains').textContent = domainsCount;
+    document.getElementById('asset-stat-relations').textContent = relationsCount;
+    
+    // Show modal
+    document.getElementById('alchemist-asset-summary-modal').classList.add('active');
+    
+    // Log state
+    log(`ASSET READY // ${currentExportId}`, "primary");
+}
+
+function closeAssetSummaryModal() {
+    document.getElementById('alchemist-asset-summary-modal').classList.remove('active');
+    const currentView = NAV && NAV.getCurrentView ? NAV.getCurrentView() : '';
+    if (currentView === 'export-preview') {
+        navGoBack();
+    }
+}
+
+function triggerAssetExport(format) {
+    // Hide the modal when launching export
+    document.getElementById('alchemist-asset-summary-modal').classList.remove('active');
+    
+    if (format === 'pdf') {
+        exportSessionPDF(currentExportData, currentExportId);
+    } else if (format === 'epub') {
+        exportSessionEPUB(currentExportData, currentExportId);
+    } else if (format === 'html') {
+        exportKnowledgeBook(currentExportData, currentExportId);
+    } else if (format === 'zay') {
+        exportSessionZAY(currentExportData, currentExportId);
+    }
+}
+
 
 async function init() {
   log("SYSTEM BOOT", "active");
