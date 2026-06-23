@@ -3711,7 +3711,7 @@ function closeSuccessModal() {
 
 async function init() {
   log("SYSTEM BOOT", "active");
-  loadOnboarding();
+  await loadOnboarding();
   restoreSession();
   await loadVault();
   if(!Array.isArray(VAULT)||!VAULT.length){ return; }
