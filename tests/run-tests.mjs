@@ -1,6 +1,8 @@
 import assert from 'node:assert';
 import { createRequire } from 'node:module';
 import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 const normalizer = require('../kernel/alchemist/session-normalizer.js');
@@ -81,5 +83,22 @@ for (const test of kernelTests) {
   const result = spawnSync('node', [test], { encoding: 'utf8' });
   assert.equal(result.status, 0, `${test}\n${result.stdout}\n${result.stderr}`);
 }
+
+// SEO & Launch Readiness Verification
+console.log('Running launch readiness verification...');
+const filesToCheck = ['index.html', 'privacy.html', 'terms.html', 'data-compliance.html'];
+for (const file of filesToCheck) {
+  const content = fs.readFileSync(path.join(process.cwd(), file), 'utf8');
+  assert(content.includes('rel="canonical"'), `Canonical tag missing in ${file}`);
+  assert(content.includes('og:title'), `OG tags missing in ${file}`);
+}
+
+// Robots & Sitemap Verification
+const robots = fs.readFileSync(path.join(process.cwd(), 'robots.txt'), 'utf8');
+assert(robots.includes('Sitemap: https://daxini.xyz/alchemist/sitemap.xml'), 'Robots.txt missing Sitemap reference');
+
+const sitemap = fs.readFileSync(path.join(process.cwd(), 'sitemap.xml'), 'utf8');
+assert(sitemap.includes('<loc>https://daxini.xyz/alchemist/</loc>'), 'Sitemap missing homepage URL');
+assert(sitemap.includes('<loc>https://daxini.xyz/alchemist/privacy.html</loc>'), 'Sitemap missing privacy page URL');
 
 console.log('Alchemist lightweight tests passed.');

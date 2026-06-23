@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daxini.xyz/alchemist/sitemap.xml

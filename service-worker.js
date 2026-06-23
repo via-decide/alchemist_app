@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alchemist-static-v1';
+const CACHE_NAME = 'alchemist-static-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -11,7 +11,14 @@ const STATIC_ASSETS = [
   './kernel/alchemist/session-normalizer.js',
   './kernel/alchemist/epub-exporter.js',
   './kernel/alchemist/ui-integration.js',
-  './kernel/alchemist/ui-activation.js'
+  './kernel/alchemist/ui-activation.js',
+  './kernel/alchemist/knowledge-book-exporter.js',
+  './kernel/alchemist/navigation-state.js',
+  './kernel/alchemist/analytics.js',
+  './packages/logic-core/vialogic.js',
+  './packages/visual-core/zayvora-visual-engine.js',
+  './packages/kernel/alchemist-universe-session.js',
+  './packages/zay-format/zay-v2.js'
 ];
 
 self.addEventListener('install', (event) => {
@@ -42,6 +49,12 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       })
-      .catch(() => caches.match(request).then((cached) => cached || caches.match('./index.html')))
+      .catch(() => caches.match(request).then((cached) => {
+        if (cached) return cached;
+        if (request.mode === 'navigate' || (request.headers.get('accept') && request.headers.get('accept').includes('text/html'))) {
+          return caches.match('./index.html');
+        }
+        return new Response('Asset not found', { status: 404, statusText: 'Not Found' });
+      }))
   );
 });

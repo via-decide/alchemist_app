@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="pub-id" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="pub-id">urn:uuid:sample-kinetics-book</dc:identifier>
+    <dc:title>Chemical Kinetics - Alchemist</dc:title>
+    <dc:creator>Alchemist Study Engine</dc:creator>
+    <dc:language>en</dc:language>
+  </metadata>
+  <manifest>
+    <item id="c0" href="c0.html" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine>
+    <itemref idref="c0"/>
+  </spine>
+</package>
+  

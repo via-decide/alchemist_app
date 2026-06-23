@@ -1,0 +1,21 @@
+{
+  "sessionId": "SES_SAMPLE",
+  "createdAt": "2026-06-23T05:56:04.199Z",
+  "results": [
+    {
+      "id": "A_0001",
+      "res": "WIN",
+      "latency": 2800
+    },
+    {
+      "id": "A_0006",
+      "res": "WIN",
+      "latency": 3100
+    },
+    {
+      "id": "A_0015",
+      "res": "LOSS",
+      "latency": 4500
+    }
+  ]
+}
