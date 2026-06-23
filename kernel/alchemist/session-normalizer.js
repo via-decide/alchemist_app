@@ -47,7 +47,7 @@
       domain: domain,
       topic: topic,
       question: text(raw.q || raw.question || raw.title, ''),
-      answer: text(raw.correct || raw.answer || raw.u, ''),
+      answer: text(raw.answer || raw.u || (raw.correct !== 'UP' && raw.correct !== 'DOWN' && raw.correct !== 'LEFT' && raw.correct !== 'RIGHT' ? raw.correct : ''), ''),
       logic: text(raw.logic || raw.explanation || raw.ctx, 'Logic unavailable.'),
       hint: text(raw.hint, ''),
       trap: trap,
