@@ -4349,6 +4349,20 @@ let onboardingSteps = [];
 let currentOnboardingStep = 0;
 
 async function loadOnboarding() {
+  // ---- Explorer Pass: Cross-Origin + Same-Origin Bypass ----
+  const params = new URLSearchParams(window.location.search);
+  const fromQR = params.get('via_source') === 'smarttag-qr';
+  if (fromQR) {
+    try {
+      localStorage.setItem('via_auth_source', 'smarttag-qr');
+      localStorage.setItem('via_explorer_pass', 'active');
+    } catch(e) {}
+    const clean = new URL(window.location.href);
+    clean.searchParams.delete('via_source');
+    window.history.replaceState({}, '', clean.toString());
+    console.log('✅ Alchemist: Explorer Pass (URL param) detected. Onboarding bypassed.');
+    return;
+  }
   if (localStorage.getItem('via_auth_source') === 'smarttag-qr' || localStorage.getItem('alchemist_onboarding_completed')) return;
   try {
     const res = await fetch('onboarding.json');
@@ -4359,6 +4373,7 @@ async function loadOnboarding() {
     }
   } catch (e) { console.error('Onboarding load failed', e); }
 }
+
 
 function renderOnboardingStep() {
   const step = onboardingSteps[currentOnboardingStep];
