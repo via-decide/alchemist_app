@@ -1,60 +1,104 @@
-const CACHE_NAME = 'alchemist-static-v3';
+const CACHE_VERSION = 'daxini-v2';
+const STATIC_CACHE = `${CACHE_VERSION}-static`;
+const API_CACHE = `${CACHE_VERSION}-api`;
+
 const STATIC_ASSETS = [
-  './',
-  './index.html',
-  './MASTER_VAULT.json',
-  './manifest.json',
-  './kernel/alchemist/block-system.js',
-  './kernel/alchemist/session-engine.js',
-  './kernel/alchemist/ingestion-engine.js',
-  './kernel/alchemist/session-review.js',
-  './kernel/alchemist/session-normalizer.js',
-  './kernel/alchemist/epub-exporter.js',
-  './kernel/alchemist/ui-integration.js',
-  './kernel/alchemist/ui-activation.js',
-  './kernel/alchemist/knowledge-book-exporter.js',
-  './kernel/alchemist/navigation-state.js',
-  './kernel/alchemist/analytics.js',
-  './packages/logic-core/vialogic.js',
-  './packages/visual-core/zayvora-visual-engine.js',
-  './packages/kernel/alchemist-universe-session.js',
-  './packages/zay-format/zay-v2.js'
+  '/',
+  '/index.html',
+  '/workspace.html',
+  '/zayvora.html',
+  '/assets/css/base.css',
+  '/assets/css/layout.css',
+  '/assets/css/components.css',
+  '/assets/css/modules.css',
+  '/assets/css/zayvora.css',
+  '/assets/js/app.js',
+  '/assets/js/stack.js',
+  '/assets/js/reasoning.js',
+  '/assets/js/graph.js',
+  '/assets/js/github.js',
+  '/assets/js/zayvora-auth.js',
+  '/assets/js/zayvora-app.js',
+  '/manifest.json',
+  '/offline.html'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(STATIC_ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(STATIC_CACHE).then((cache) => Promise.allSettled(
+      STATIC_ASSETS.map((asset) => cache.add(asset))
+    ))
   );
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim())
+    caches.keys().then((keys) => Promise.all(
+      keys.filter((key) => !key.startsWith(CACHE_VERSION)).map((key) => caches.delete(key))
+    )).then(() => self.clients.claim())
   );
 });
 
+async function networkFirstDocument(request) {
+  try {
+    const response = await fetch(request);
+    if (response && response.ok) {
+      const cache = await caches.open(STATIC_CACHE);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    const cached = await caches.match(request);
+    return cached || caches.match('/offline.html');
+  }
+}
+
+async function networkFirstApi(request) {
+  const cache = await caches.open(API_CACHE);
+  try {
+    const response = await fetch(request);
+    if (response && response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    const cached = await cache.match(request);
+    return cached || new Response(JSON.stringify({ offline: true }), {
+      status: 503,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+
+  const response = await fetch(request);
+  if (response && response.ok) {
+    const cache = await caches.open(STATIC_CACHE);
+    cache.put(request, response.clone());
+  }
+  return response;
+}
+
 self.addEventListener('fetch', (event) => {
-  const request = event.request;
+  const { request } = event;
   if (request.method !== 'GET') return;
-  event.respondWith(
-    fetch(request)
-      .then((response) => {
-        if (response && response.ok && new URL(request.url).origin === self.location.origin) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-        }
-        return response;
-      })
-      .catch(() => caches.match(request).then((cached) => {
-        if (cached) return cached;
-        if (request.mode === 'navigate' || (request.headers.get('accept') && request.headers.get('accept').includes('text/html'))) {
-          return caches.match('./index.html');
-        }
-        return new Response('Asset not found', { status: 404, statusText: 'Not Found' });
-      }))
-  );
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(networkFirstApi(request));
+    return;
+  }
+
+  if (request.mode === 'navigate' || request.destination === 'document') {
+    event.respondWith(networkFirstDocument(request));
+    return;
+  }
+
+  event.respondWith(cacheFirst(request));
 });

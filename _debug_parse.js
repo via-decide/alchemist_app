@@ -1,582 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="manifest" href="manifest.json">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Alchemist | Kinetic </title>
 
-<link rel="canonical" href="https://daxini.xyz/alchemist/" />
-<meta property="og:title" content="Alchemist | Portable Knowledge Asset Engine" />
-<meta property="og:description" content="Generate and structure beautiful chemistry notes and interactive knowledge assets dynamically using a physics-driven learning interface." />
-<meta property="og:image" content="https://daxini.xyz/alchemist/cover_image.png" />
-<meta property="og:url" content="https://daxini.xyz/alchemist/" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Alchemist | Portable Knowledge Asset Engine" />
-<meta name="twitter:description" content="Generate and structure beautiful chemistry notes and interactive knowledge assets dynamically using a physics-driven learning interface." />
-<meta name="twitter:image" content="https://daxini.xyz/alchemist/cover_image.png" />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://daxini.xyz/#organization",
-      "name": "Zayvora Sovereign Engineering",
-      "url": "https://daxini.xyz/",
-      "logo": "https://daxini.xyz/logo.png"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://daxini.xyz/alchemist/#website",
-      "url": "https://daxini.xyz/alchemist/",
-      "name": "Alchemist",
-      "publisher": {
-        "@id": "https://daxini.xyz/#organization"
-      }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://daxini.xyz/alchemist/#software",
-      "name": "Alchemist Kinetic Study Engine",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "All",
-      "url": "https://daxini.xyz/alchemist/",
-      "publisher": {
-        "@id": "https://daxini.xyz/#organization"
-      },
-      "description": "An interactive, physics-driven chemistry reasoning and study engine for NEET, JEE, and board exam preparation.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      }
-    }
-  ]
-}
-</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="kernel/alchemist/block-system.js"></script>
-<script src="kernel/alchemist/session-engine.js"></script>
-<script src="kernel/alchemist/ingestion-engine.js"></script>
-<script src="kernel/alchemist/session-review.js"></script>
-<script src="kernel/alchemist/session-normalizer.js"></script>
-<script src="packages/logic-core/vialogic.js"></script>
-<script src="packages/visual-core/zayvora-visual-engine.js"></script>
-<script src="packages/kernel/alchemist-universe-session.js"></script>
-<script src="packages/zay-format/zay-v2.js"></script>
-<script src="kernel/alchemist/epub-exporter.js"></script>
-<script src="kernel/alchemist/knowledge-book-exporter.js"></script>
-<script src="kernel/alchemist/navigation-state.js"></script>
-<script src="kernel/alchemist/ui-integration.js"></script>
-<script src="kernel/alchemist/ui-activation.js"></script>
-<script src="kernel/alchemist/analytics.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
-  });
-}
-</script>
-
-<style>
-/* KINETIC VISUAL CORE */
-:root{ --bg:#000000; --card:#0a0a0a; --border:#222; --gold:#ffd600; --green:#2ecc71; --red:#ff4444; --text-white:#ffffff; --text-grey:#888888; --font-serif:'Crimson Text',serif; --font-sans:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace; }
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-body{margin:0; height:100vh; background:var(--bg); color:var(--text-white); font-family:var(--font-sans); overflow:hidden; display:flex; flex-direction:column;}
-
-/* HEADER & LOGS */
-#header{width:90%; margin:25px auto 0; z-index:100; flex-shrink:0;}
-.header-meta{display:flex; justify-content:space-between; font-family:var(--font-code); font-size:0.75rem; color:#666; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:15px;}
-.progress-track{width:100%; height:3px; background:#222; border-radius:2px;}
-#progress-bar{height:100%; background:var(--gold); width:0%; transition:width 0.4s ease; border-radius:2px;}
-
-#kinetic-logger{width:90%; margin:15px auto 5px; font-family:var(--font-code); font-size:0.8rem; color:#444; line-height:1.4; text-transform:uppercase; min-height:60px; display:flex; flex-direction:column; justify-content:flex-end;}
-.log-line{opacity:0.5; transition:opacity 0.2s;} 
-.log-line.active{color:var(--green); opacity:1; font-weight:700;} 
-.log-line.primary{color:var(--gold); opacity:1; font-weight:700;}
-.log-line.danger{color:var(--red); opacity:1; font-weight:700;}
-
-/* SENSOR STATUS PILL */
-#gyro-status { 
-    position: absolute; top: 20px; left: 50%; transform: translateX(-50%); 
-    font-family: var(--font-code); font-size: 0.6rem; color: #444; 
-    border: 1px solid #333; padding: 4px 8px; border-radius: 4px; 
-    opacity: 0; transition: opacity 0.5s; pointer-events: none;
-}
-#gyro-status.active { opacity: 1; color: var(--gold); border-color: var(--gold); }
-
-/* PHYSICS STACK */
-#stack{position:relative; width:90%; max-width:420px; height:calc(100vh - 220px - env(safe-area-inset-bottom)); margin:10px auto 20px; perspective:1500px; display:flex; align-items:center; justify-content:center;}
-.card{
-    position:absolute; width:100%; height:100%; background:var(--card); 
-    border-radius:14px; border:1px solid var(--border); padding:35px; 
-    display:flex; flex-direction:column; justify-content:center; align-items:center; 
-    box-shadow:0 20px 60px rgba(0,0,0,0.95); 
-    will-change: transform; 
-    transform-style:preserve-3d; overflow:hidden;
-}
-
-.card.locked { opacity: 0.2; transform: scale(0.96); transition: opacity 0.3s, transform 0.3s; filter: grayscale(100%); }
-
-.card-q{
-    font-family:var(--font-serif); font-size:clamp(1.4rem, 5vw, 1.9rem); line-height:1.4; font-weight:600; 
-    text-align:center; color:var(--text-white); width:100%; max-height:100%; overflow-y:auto; 
-    word-wrap:break-word; padding:0 5px; display:flex; flex-direction:column; justify-content:center;
-    transition: transform 0.1s ease-out; 
-}
-.card-q::-webkit-scrollbar{width:0px;} 
-.card-q sub{font-size:0.7em; vertical-align:-0.3em;} .card-q sup{font-size:0.7em; vertical-align:0.5em;}
-
-/* LIBRARY PANEL (gated by body.lib-open) */
-.lib-toggle{cursor:pointer; color:#888; padding:0 6px; user-select:none;}
-.lib-toggle:hover{color:var(--gold);}
-#vault-list,#vault-detail{display:none;}
-body.lib-open #vault-list{display:block;}
-#vault-list,#vault-detail{
-  position:fixed; right:12px; width:280px; max-width:calc(100vw - 24px);
-  background:#0a0a0a; border:1px solid #333; border-radius:8px; padding:10px 12px;
-  font-family:var(--font-code); font-size:12px; color:#ccc; z-index:120;
-  box-shadow:0 10px 40px rgba(0,0,0,0.8);
-}
-#vault-list{top:64px; max-height:38vh; overflow:auto;}
-#vault-detail{top:calc(64px + 40vh); max-height:48vh; overflow:auto;}
-.vault-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; color:var(--gold); letter-spacing:1.2px; text-transform:uppercase; font-size:11px;}
-.vault-close{cursor:pointer; color:#888; padding:0 4px;}
-.vault-close:hover{color:var(--red);}
-.vault-row{cursor:pointer; padding:5px 4px; border-bottom:1px solid #1a1a1a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#aaa;}
-.vault-row:hover{color:var(--text-white); background:#141414;}
-#vault-detail h3{margin:6px 0 8px; font-family:var(--font-serif); font-size:14px; color:var(--text-white); white-space:normal;}
-#vault-detail p{margin:6px 0; line-height:1.4; color:#aaa;}
-#vault-detail button{margin:4px 4px 0 0; padding:6px 8px; font-family:var(--font-code); font-size:11px; background:#111; color:#ccc; border:1px solid #333; border-radius:4px; cursor:pointer;}
-#vault-detail button:hover{border-color:var(--gold); color:var(--gold);}
-@media(max-width:480px){
-  #vault-list,#vault-detail,#alchemist-analytics-panel,#alchemist-checklist-panel{right:8px; left:8px; width:auto;}
-}
-
-
-.alchemist-nav-rail{width:90%; margin:10px auto 0; display:none; gap:8px; align-items:center; font-family:var(--font-code); z-index:125; flex-shrink:0;}
-body.nav-recovery-active .alchemist-nav-rail{display:flex;}
-.alchemist-nav-button,.export-completion-panel button{background:#080808; color:#aaa; border:1px solid #333; border-radius:4px; padding:6px 9px; font-family:var(--font-code); font-size:11px; letter-spacing:1px; text-transform:uppercase; cursor:pointer;}
-.alchemist-nav-button:hover,.alchemist-nav-button:focus,.export-completion-panel button:hover,.export-completion-panel button:focus{border-color:var(--gold); color:var(--gold); outline:none;}
-.export-completion-panel{position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom)); transform:translateX(-50%); width:min(92vw,420px); background:#080808; border:1px solid #333; border-radius:8px; padding:12px; color:#ccc; font-family:var(--font-code); font-size:12px; z-index:180; box-shadow:0 12px 45px rgba(0,0,0,0.85); display:none;}
-.export-completion-panel.active{display:block;}
-.export-completion-title{color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px;}
-.export-completion-title.failed{color:var(--red);}
-.export-completion-meta{color:#777; margin-bottom:10px; word-break:break-word;}
-.export-completion-actions{display:flex; gap:8px; flex-wrap:wrap;}
-
-/* SWIPE LABELS */
-.swipe-label{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; 
-    background:rgba(0,0,0,0.85); font-family:var(--font-sans); font-weight:900; 
-    font-size:1.6rem; text-transform:uppercase; letter-spacing:1px; text-align:center; 
-    padding:40px; opacity:0; pointer-events:none; transition:opacity 0.1s ease, transform 0.1s ease; 
-    border-radius:14px; color:var(--text-white); border:1px solid #444;
-    transform: scale(0.9);
-}
-
-/* ONBOARDING OVERLAY */
-#alchemist-onboarding-overlay {
-    position: fixed; inset: 0; z-index: 9999;
-    background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    color: var(--text-white); font-family: var(--font-sans);
-    overflow-y: auto; padding: 20px 10px;
-}
-#alchemist-onboarding-overlay.hidden { display: none; }
-.onboarding-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 40px; max-width: 400px; width: 90%;
-    text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.95);
-    margin: auto;
-}
-.onboarding-subtitle { font-family: var(--font-code); font-size: 0.75rem; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
-.onboarding-title { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 15px; }
-.onboarding-content { font-size: 1rem; color: #aaa; line-height: 1.5; margin-bottom: 30px; }
-.onboarding-actions { display: flex; gap: 10px; justify-content: center; }
-.onboarding-btn { background: #111; color: var(--gold); border: 1px solid var(--gold); padding: 10px 20px; border-radius: 4px; font-family: var(--font-code); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
-.onboarding-btn:hover { background: var(--gold); color: #000; }
-.onboarding-skip { background: transparent; color: #666; border: 1px solid transparent; padding: 10px 20px; font-family: var(--font-code); font-size: 0.85rem; cursor: pointer; }
-.onboarding-skip:hover { color: var(--text-white); }
-
-/* SUCCESS MODAL */
-#alchemist-success-modal {
-    position: fixed; inset: 0; z-index: 9998;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
-    display: none; flex-direction: column; justify-content: center; align-items: center;
-    overflow-y: auto; padding: 20px 10px;
-}
-#alchemist-success-modal.active { display: flex; }
-.success-card {
-    background: #0d1825; border: 1px solid #00d68f; border-radius: 14px;
-    padding: 30px; text-align: center; max-width: 350px;
-    box-shadow: 0 10px 40px rgba(0,214,143,0.2);
-    margin: auto;
-}
-.success-title { font-family: var(--font-serif); font-size: 1.8rem; color: #00d68f; margin-bottom: 10px; }
-
-/* ASSET SUMMARY OVERLAY */
-.asset-modal {
-    position: fixed; inset: 0; z-index: 9997;
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
-    display: none; flex-direction: column; justify-content: center; align-items: center;
-    padding: 20px; overflow-y: auto;
-}
-.asset-modal.active { display: flex; }
-.asset-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 25px; max-width: 440px; width: 100%;
-    box-shadow: 0 25px 65px rgba(0,0,0,0.95);
-    display: flex; flex-direction: column; gap: 18px;
-    position: relative; max-height: 90vh; overflow-y: auto;
-}
-.asset-card::-webkit-scrollbar { width: 4px; }
-.asset-card::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-
-.asset-header { text-align: center; }
-.asset-title { font-family: var(--font-code); font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; font-weight: bold; }
-.asset-subtitle { font-family: var(--font-code); font-size: 0.7rem; color: #666; margin-top: 4px; }
-
-.asset-stats-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
-    background: #0d0d0d; border: 1px solid #1a1a1a; padding: 12px 8px; border-radius: 8px;
-}
-.asset-stat { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.stat-num { font-family: var(--font-code); font-size: 1.15rem; color: #fff; font-weight: bold; }
-.stat-label { font-family: var(--font-code); font-size: 0.55rem; color: #666; margin-top: 3px; letter-spacing: 0.5px; }
-
-.asset-description { font-size: 0.8rem; color: #aaa; line-height: 1.5; margin: 0; text-align: center; }
-.asset-description strong { color: var(--gold); }
-
-.export-options-list { display: flex; flex-direction: column; gap: 10px; }
-.export-row {
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    border: 1px solid #1c1c1c; background: #080808; padding: 10px 12px; border-radius: 8px;
-    cursor: pointer; transition: all 0.2s ease;
-}
-.export-row:hover { border-color: #333; background: #0d0d0d; }
-.export-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left; }
-.export-name { font-family: var(--font-code); font-size: 0.85rem; color: #fff; font-weight: bold; display: flex; align-items: center; gap: 6px; }
-.export-badge { font-size: 0.6rem; padding: 1px 5px; border-radius: 3px; background: #222; color: #aaa; text-transform: uppercase; font-weight: normal; }
-.export-badge.primary { background: rgba(255,214,0,0.15); color: var(--gold); }
-.export-desc { font-size: 0.7rem; color: #666; line-height: 1.3; }
-
-.export-btn {
-    background: #111; color: #ccc; border: 1px solid #333;
-    padding: 6px 12px; border-radius: 4px; font-family: var(--font-code);
-    font-size: 0.72rem; cursor: pointer; transition: all 0.2s ease;
-    white-space: nowrap;
-}
-.export-row:hover .export-btn { border-color: var(--gold); color: var(--gold); }
-.export-btn.primary { border-color: var(--gold); color: var(--gold); background: rgba(255,214,0,0.05); }
-.export-row:hover .export-btn.primary { background: var(--gold); color: #000; }
-
-.asset-modal-footer {
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid #1c1c1c; padding-top: 14px; margin-top: 5px;
-    font-family: var(--font-code); font-size: 0.68rem; color: #444;
-}
-.asset-modal-footer a { color: #666; text-decoration: none; border-bottom: 1px dashed #444; }
-.asset-modal-footer a:hover { color: var(--gold); border-color: var(--gold); }
-.asset-close-btn {
-    background: transparent; border: none; color: #888;
-    cursor: pointer; text-transform: uppercase; font-family: var(--font-code);
-    font-size: 0.68rem; font-weight: bold;
-}
-.asset-close-btn:hover { color: var(--red); }
-
-/* TOAST STACK SYSTEM */
-.alchemist-toast {
-  background: rgba(10, 5, 5, 0.95);
-  border: 1px solid var(--red);
-  border-radius: 8px;
-  padding: 14px 18px;
-  color: #fff;
-  font-family: var(--font-code);
-  font-size: 0.8rem;
-  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.25);
-  min-width: 280px;
-  max-width: 380px;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: auto;
-  backdrop-filter: blur(8px);
-}
-.alchemist-toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.alchemist-toast.warning {
-  border-color: var(--gold);
-  background: rgba(12, 10, 5, 0.95);
-  box-shadow: 0 10px 30px rgba(255, 214, 0, 0.2);
-}
-.alchemist-toast.info {
-  border-color: var(--green);
-  background: rgba(5, 12, 8, 0.95);
-  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
-}
-
-/* FUNNEL DASHBOARD */
-.funnel-stage {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 12px;
-}
-.funnel-stage-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  font-family: var(--font-code);
-}
-.funnel-track {
-  width: 100%;
-  height: 8px;
-  background: #111;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid #222;
-}
-.funnel-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ffd600, #ffaa00);
-  border-radius: 4px;
-  width: 0%;
-  transition: width 0.6s cubic-bezier(0.1, 0.8, 0.2, 1);
-}
-.funnel-fill.active {
-  background: linear-gradient(90deg, #2ecc71, #27ae60);
-}
-
-/* CHECKLIST ROW */
-.checklist-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border: 1px solid #1c1c1c;
-  background: #080808;
-  padding: 10px 12px;
-  border-radius: 8px;
-  transition: border-color 0.2s ease;
-}
-.checklist-item.completed {
-  border-color: rgba(46,204,113,0.3);
-  background: rgba(46,204,113,0.02);
-}
-.checklist-box {
-  width: 16px;
-  height: 16px;
-  border: 1px solid #444;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: var(--green);
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.checklist-item.completed .checklist-box {
-  border-color: var(--green);
-  background: rgba(46,204,113,0.15);
-}
-.checklist-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-align: left;
-}
-.checklist-name {
-  font-family: var(--font-code);
-  font-size: 0.82rem;
-  color: #aaa;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.checklist-item.completed .checklist-name {
-  color: #fff;
-  text-decoration: line-through;
-}
-.checklist-desc {
-  font-size: 0.68rem;
-  color: #555;
-  line-height: 1.3;
-}
-</style>
-  <script src="pwa.js" defer></script>
-</head>
-<body>
-
-<!-- ONBOARDING OVERLAY -->
-<div id="alchemist-onboarding-overlay" class="hidden">
-  <div class="onboarding-card">
-    <div class="onboarding-subtitle" id="ob-subtitle"></div>
-    <div class="onboarding-title" id="ob-title"></div>
-    <div class="onboarding-content" id="ob-content"></div>
-    <div class="onboarding-actions">
-      <button class="onboarding-skip" onclick="skipOnboarding()">Skip</button>
-      <button class="onboarding-btn" id="ob-next-btn" onclick="nextOnboardingStep()">Next</button>
-    </div>
-  </div>
-</div>
-
-<!-- SUCCESS MODAL -->
-<div id="alchemist-success-modal">
-  <div class="success-card">
-    <div class="success-title">Success!</div>
-    <div class="onboarding-content" style="margin-bottom:20px;">You built your first engine. Your PDF is being generated.</div>
-    <button class="onboarding-btn" onclick="closeSuccessModal()">Continue</button>
-  </div>
-</div>
-
-<!-- ASSET SUMMARY MODAL -->
-<div id="alchemist-asset-summary-modal" class="asset-modal">
-  <div class="asset-card">
-    <div class="asset-header">
-      <div class="asset-title">KNOWLEDGE ASSET SUMMARY</div>
-      <div class="asset-subtitle" id="asset-session-id">SES_XXXXX</div>
-    </div>
-    
-    <div class="asset-stats-grid">
-      <div class="asset-stat">
-        <span class="stat-num" id="asset-stat-questions">0</span>
-        <span class="stat-label">QUESTIONS</span>
-      </div>
-      <div class="asset-stat">
-        <span class="stat-num" id="asset-stat-concepts">0</span>
-        <span class="stat-label">CONCEPTS</span>
-      </div>
-      <div class="asset-stat">
-        <span class="stat-num" id="asset-stat-domains">0</span>
-        <span class="stat-label">DOMAINS</span>
-      </div>
-      <div class="asset-stat">
-        <span class="stat-num" id="asset-stat-relations">0</span>
-        <span class="stat-label">RELATIONS</span>
-      </div>
-    </div>
-    
-    <p class="asset-description">
-      A <strong>.zay Knowledge Asset</strong> stores concepts, semantic relationships, reasoning maps, and learning history in a portable format.
-    </p>
-
-    <div class="export-options-list">
-      <div class="export-row" onclick="triggerAssetExport('pdf')">
-        <div class="export-meta">
-          <span class="export-name">PDF <span class="export-badge">Read</span></span>
-          <span class="export-desc">Best for revision, printing, sharing with teachers, and offline study.</span>
-        </div>
-        <button class="export-btn">Export PDF</button>
-      </div>
-
-      <div class="export-row" onclick="triggerAssetExport('epub')">
-        <div class="export-meta">
-          <span class="export-name">EPUB <span class="export-badge">Publish</span></span>
-          <span class="export-desc">Turn session into a digital book compatible with Kindle, Apple Books.</span>
-        </div>
-        <button class="export-btn">Export EPUB</button>
-      </div>
-
-      <div class="export-row" onclick="triggerAssetExport('html')">
-        <div class="export-meta">
-          <span class="export-name">HTML <span class="export-badge">Share</span></span>
-          <span class="export-desc">Generate an interactive offline-capable web book to host or share.</span>
-        </div>
-        <button class="export-btn">Export HTML</button>
-      </div>
-
-      <div class="export-row" onclick="triggerAssetExport('zay')">
-        <div class="export-meta">
-          <span class="export-name">ZAY <span class="export-badge primary">Own</span></span>
-          <span class="export-desc">Portable personal knowledge asset. View at <a href="https://daxini.xyz/.zay" target="_blank" onclick="event.stopPropagation()">daxini.xyz/.zay</a>.</span>
-        </div>
-        <button class="export-btn primary">Create Asset</button>
-      </div>
-    </div>
-
-    <div class="asset-modal-footer">
-      <span>Powered by Zayvora Engine &bull; <a href="https://daxini.xyz/journal" target="_blank" onclick="event.stopPropagation()">daxini.xyz/journal</a></span>
-      <button class="asset-close-btn" onclick="closeAssetSummaryModal()">Close</button>
-    </div>
-  </div>
-</div>
-
-
-<div id="gyro-status">HYBRID SENSORS READY</div>
-
-<div id="header">
-  <div class="header-meta">
-    <span id="id-ui">VIA.STACK</span>
-    <span>
-      <span id="checklist-toggle" class="lib-toggle" title="Open getting started checklist" style="color: var(--green); margin-right: 8px;">[ CHECKLIST (0/5) ]</span>
-      <span id="analytics-toggle" class="lib-toggle" title="Open analytics funnel dashboard" style="margin-right: 8px;">[ ANALYTICS ]</span>
-      <span id="lib-toggle" class="lib-toggle" title="Open question library">[ LIBRARY ]</span>
-      <span id="xp-ui" style="margin-left: 8px;">0 XP</span>
-    </span>
-  </div>
-  <div class="progress-track"><div id="progress-bar"></div></div>
-</div>
-
-
-<div id="alchemist-nav-rail" class="alchemist-nav-rail" aria-label="Navigation recovery controls">
-  <button id="nav-back" class="alchemist-nav-button" type="button" aria-label="Go back">← Back</button>
-  <button id="nav-home" class="alchemist-nav-button" type="button" aria-label="Return home">⌂ Home</button>
-  <button id="nav-library" class="alchemist-nav-button" type="button" aria-label="Open library">[ Library ]</button>
-</div>
-
-<div id="kinetic-logger">
-  <div class="log-line" id="log-1">> SYSTEM BOOT</div>
-  <div class="log-line" id="log-2">> INJECTING DATA...</div>
-  <div class="log-line active" id="log-3">> ...</div>
-</div>
-
-
-<div id="vault-list"></div>
-<div id="vault-detail"></div>
-<div id="export-completion-panel" class="export-completion-panel" role="status" aria-live="polite"></div>
-
-<!-- ANALYTICS PANEL -->
-<div id="alchemist-analytics-panel" style="display:none; position:fixed; right:12px; top:64px; width:320px; max-width:calc(100vw - 24px); background:#0a0a0a; border:1px solid #333; border-radius:8px; padding:15px; font-family:var(--font-code); font-size:12px; color:#ccc; z-index:120; box-shadow:0 10px 40px rgba(0,0,0,0.8); max-height:85vh; overflow-y:auto; backdrop-filter:blur(10px);">
-  <div class="vault-head">
-    <span>TELEMETRY FUNNEL</span>
-    <span class="vault-close" id="analytics-close">×</span>
-  </div>
-  <div id="analytics-content" style="margin-top:15px;"></div>
-</div>
-
-<!-- CHECKLIST PANEL -->
-<div id="alchemist-checklist-panel" style="display:none; position:fixed; right:12px; top:64px; width:320px; max-width:calc(100vw - 24px); background:#0a0a0a; border:1px solid #333; border-radius:8px; padding:15px; font-family:var(--font-code); font-size:12px; color:#ccc; z-index:120; box-shadow:0 10px 40px rgba(0,0,0,0.8); max-height:85vh; overflow-y:auto; backdrop-filter:blur(10px);">
-  <div class="vault-head">
-    <span>GETTING STARTED</span>
-    <span class="vault-close" id="checklist-close">×</span>
-  </div>
-  <div id="checklist-content" style="margin-top:15px; display:flex; flex-direction:column; gap:12px;"></div>
-</div>
-
-<!-- TOAST CONTAINER -->
-<div id="alchemist-toast-container" style="position:fixed; top:20px; right:20px; z-index:1000000; display:flex; flex-direction:column; gap:10px; pointer-events:none;"></div>
-
-<!-- CONTEXTUAL LIVE SUGGESTIONS POPUP -->
-<div id="alchemist-live-suggestion" style="position:fixed; bottom:70px; left:50%; transform:translateX(-50%); z-index:999; width:min(90vw, 420px); background:rgba(10, 10, 10, 0.95); border:1px solid var(--gold); border-radius:8px; padding:12px 16px; font-family:var(--font-sans); font-size:0.85rem; color:#fff; box-shadow:0 10px 30px rgba(255, 214, 0, 0.15); backdrop-filter:blur(10px); display:flex; align-items:center; gap:12px; transition:all 0.3s ease; opacity:0; pointer-events:none;">
-  <div id="suggestion-icon" style="font-size:1.2rem; flex-shrink:0;">💡</div>
-  <div id="suggestion-text" style="line-height:1.4; flex:1;">Contextual hints will appear here.</div>
-  <span id="suggestion-close" style="cursor:pointer; color:#666; font-size:1rem; user-select:none;">&times;</span>
-</div>
-
-<div id="stack">
-  <div class="card">
-    <div class="card-q" style="font-family:var(--font-code); font-size:0.9rem; color:#666; font-style:normal;">LOADING STATIC CORE...</div>
-  </div>
-</div>
-
-<script>
 /* =========================================
    VIA.STACK | KINETIC v147.6 STATIC (FIXED)
    ========================================= */
@@ -3302,7 +2724,7 @@ const INJECTED_DATA =
 
 // --- STATE ---
 let RAW_DATA = [], POOL = [], WRONG = [], SESSION_ALL = [];
-let SET_CURSOR = 0, ACTIVE_SET = null, XP = 0, VOLUME_LIMIT = null, TOPIC_FILTER = null;
+let SET_CURSOR = 0, ACTIVE_SET = null, XP = 0, VOLUME_LIMIT = null;
 let ATTEMPTED = new Set();
 let ALCHEMIST = null;
 const emitAlchemy=(name,detail)=>document.dispatchEvent(new CustomEvent(name,{detail})); 
@@ -3346,11 +2768,7 @@ class PhysicsController {
   
   this.el.classList.add('locked');
   
-  const s = e => {
-    if (e.target.closest('a, button, input, select, textarea, .clickable')) return;
-    if (this.isOverlayActive()) return;
-    this.startDrag(e.touches?e.touches[0]:e);
-  };
+  const s = e => this.startDrag(e.touches?e.touches[0]:e); 
   const m = e => this.move(e.touches?e.touches[0]:e); 
   const e2 = () => this.end();
   el.addEventListener("mousedown",s); window.addEventListener("mousemove",m); window.addEventListener("mouseup",e2);
@@ -3370,21 +2788,6 @@ class PhysicsController {
   } else {
       this.unlockCard();
   }
- }
-
- isOverlayActive() {
-     const libOpen = document.body.classList.contains('lib-open');
-     const assetModal = document.getElementById('alchemist-asset-summary-modal')?.classList.contains('active');
-     const analyticsPanel = document.getElementById('alchemist-analytics-panel')?.style.display === 'block';
-     const checklistPanel = document.getElementById('alchemist-checklist-panel')?.style.display === 'block';
-     const successModal = document.getElementById('alchemist-success-modal')?.classList.contains('active');
-     const onboardingOverlay = document.getElementById('alchemist-onboarding-overlay') && !document.getElementById('alchemist-onboarding-overlay').classList.contains('hidden');
-     return libOpen || assetModal || analyticsPanel || checklistPanel || successModal || onboardingOverlay;
- }
-
- isDirValid(dir) {
-     const label = this.labels[dir];
-     return label && label.textContent.trim() !== "";
  }
 
  unlockCard() {
@@ -3424,7 +2827,7 @@ class PhysicsController {
  }
 
  handleMouseTether(e) {
-     if(this.active || this.locked || this.isOverlayActive()) return; 
+     if(this.active || this.locked) return; 
      const cx = window.innerWidth / 2;
      const cy = window.innerHeight / 2;
      this.target.x = (e.clientX - cx) * 0.8;
@@ -3432,12 +2835,12 @@ class PhysicsController {
  }
 
  handleMouseCommit(e) {
-     if(this.active || this.locked || this.awaitingRecenter || this.isOverlayActive()) return;
+     if(this.active || this.locked || this.awaitingRecenter) return;
      if(Math.abs(this.target.x) > 80 || Math.abs(this.target.y) > 80) this.commitWithAnimation(this.target.x, this.target.y);
  }
 
  handleOrientation(event) {
-     if(this.active || this.locked || this.isOverlayActive()) return;
+     if(this.active || this.locked) return;
      let g = event.gamma; let b = event.beta - 45; 
      let radX = (g * Math.PI) / 180; let radY = (b * Math.PI) / 180;
      const MAX_RAD = 20 * Math.PI / 180;
@@ -3448,22 +2851,16 @@ class PhysicsController {
  }
 
  commitWithAnimation(dx, dy) {
-     const dir = this.dir(dx, dy);
-     if (!this.isDirValid(dir)) {
-         this.target.x = 0; this.target.y = 0;
-         return;
-     }
      this.locked = true;
      this.cleanup(); 
      const flyX = dx * 6; const flyY = dy * 6;
      this.el.style.transition = "0.4s cubic-bezier(0.2, 0.8, 0.2, 1)";
      this.el.style.transform = `translate(${flyX}px, ${flyY}px) rotate(${flyX/15}deg)`;
      this.el.style.opacity = "0";
-     setTimeout(() => { this.cbs.onCommit(dir); }, 300);
+     setTimeout(() => { this.cbs.onCommit(this.dir(dx, dy)); }, 300);
  }
 
  startDrag(p){ 
-     if (this.isOverlayActive()) return;
      this.active=true; this.unlockCard(); this.start={x:p.clientX, y:p.clientY}; this.el.style.transition="none"; 
  }
  move(p){ 
@@ -3473,16 +2870,8 @@ class PhysicsController {
  end(){
      if(!this.active) return; this.active=false;
      const m = new WebKitCSSMatrix(getComputedStyle(this.el).transform);
-     const dist = Math.hypot(m.m41, m.m42);
-     const dir = this.dir(m.m41, m.m42);
-     if(dist > 100 && this.isDirValid(dir)) {
-         this.cbs.onCommit(dir);
-     }
-     else { 
-         this.el.style.transition="0.3s cubic-bezier(0.2,0.8,0.2,1)"; 
-         this.el.style.transform="translate(0,0)"; 
-         Object.values(this.labels).forEach(l => l && (l.style.opacity = 0));
-     }
+     if(Math.hypot(m.m41, m.m42) > 100) this.cbs.onCommit(this.dir(m.m41, m.m42));
+     else { this.el.style.transition="0.3s cubic-bezier(0.2,0.8,0.2,1)"; this.el.style.transform="translate(0,0)"; }
  }
 
  updateVisuals(dx, dy) {
@@ -3518,7 +2907,7 @@ function closeExportCompletionPanel(){
 function closeLibraryPanel(){
  document.body.classList.remove('lib-open');
  const detail=document.getElementById('vault-detail');
- if(detail) { detail.innerHTML=''; detail.style.display='none'; }
+ if(detail) detail.innerHTML='';
  ACTIVE=null;
 }
 function resetHomeUI(){
@@ -3541,22 +2930,12 @@ function applyNavigationState(state, reason){
      modal.classList.remove('active');
  }
 
- if(state.view!=='checklist') closeChecklistPanel();
- if(state.view!=='analytics') closeAnalyticsPanel();
- if(state.view!=='library' && state.view!=='question-detail') document.body.classList.remove('lib-open');
- if(state.view!=='question-detail') {
-    const detail = document.getElementById('vault-detail');
-    if (detail) detail.style.display = 'none';
- }
-
  if(state.view==='home') resetHomeUI();
  if(state.view==='library') openLibraryPanel(false);
  if(state.view==='question-detail') { if(typeof payload.index==='number' && VAULT[payload.index]) { ACTIVE=VAULT[payload.index]; selectedItem=ACTIVE; } document.body.classList.add('lib-open'); renderList(); renderDetail(); closeExportCompletionPanel(); }
  if(state.view==='session-review') report(false);
  if(state.view==='export-preview') showSessionExportMenu(payload.data||null, payload.id||null, null, false);
  if(state.view==='export-complete') showExportCompletionPanel(payload);
- if(state.view==='checklist') { renderChecklist(); document.getElementById('alchemist-checklist-panel').style.display='block'; }
- if(state.view==='analytics') { renderAnalytics(); document.getElementById('alchemist-analytics-panel').style.display='block'; }
  updateNavControls();
 }
 if(NAV && NAV.configure) NAV.configure({onChange:applyNavigationState});
@@ -3573,7 +2952,7 @@ function navGoLibrary(){ if(NAV && NAV.goLibrary) NAV.goLibrary(); else openLibr
 function openLibraryPanel(pushNav=true){
  closeExportCompletionPanel();
  document.body.classList.add('lib-open');
- renderList();
+ if(Array.isArray(VAULT)&&VAULT.length) renderList();
  if(pushNav) navPush('library');
 }
 function navPanelText(value){ return chemText(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
@@ -3599,20 +2978,10 @@ function showExportCompletionPanel(payload){
  updateNavControls();
 }
 function pushExportComplete(type,filename,extra){
- if(window.AlchemistAnalytics) {
-   window.AlchemistAnalytics.trackEvent(type + '_exported', { filename: filename || '' });
-   // Update checklist item
-   if (type === 'pdf') updateChecklistItem('export-pdf');
-   if (type === 'epub') updateChecklistItem('export-epub');
-   if (type === 'zay') updateChecklistItem('save-asset');
- }
  const payload=Object.assign({type:type, filename:filename||''}, extra||{});
  if(NAV && NAV.pushView) NAV.pushView('export-complete', payload); else showExportCompletionPanel(payload);
 }
 function pushExportFailed(type,filename){
- if(window.AlchemistAnalytics) {
-   window.AlchemistAnalytics.trackEvent(type + '_export_failed', { filename: filename || '' });
- }
  const payload={type:type, filename:filename||'', failed:true};
  if(NAV && NAV.pushView) NAV.pushView('export-complete', payload); else showExportCompletionPanel(payload);
 }
@@ -3707,13 +3076,9 @@ function card(text, labels, cb, allowSensors = true) {
 }
 
 function begin(){
- showLiveSuggestion("👋 Welcome to Alchemist! Swipe 👆 UP (or press Up Arrow) to start a new chemistry session.", '💡', 8000);
  const tiltLabel = SENSORS_ENABLED ? "SENSORS ACTIVE" : "ENABLE TILT";
  const html = `<div class="landing-hero" style="font-family:var(--font-code);font-size:0.95rem;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">ALCHEMIST ENGINE v1.1</div>
-<div style="font-family:var(--font-serif);font-size:1.65rem;font-weight:600;margin-bottom:8px;color:#fff;">Interactive Chemistry Reasoning</div>
-<div style="font-size:0.85rem;color:#aaa;margin-bottom:18px;line-height:1.4;">
-  For NEET & JEE Chemistry aspirants. Practise with physics-driven cards, generate structured notes & reasoning maps, and own your .zay digital knowledge assets.
-</div>
+<div style="font-family:var(--font-serif);font-size:1.6rem;font-weight:600;margin-bottom:15px;color:#fff;">Build Portable Knowledge Assets</div>
 
 <div class="explanation-strip" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;width:100%;margin-bottom:20px;text-align:left;">
   <div class="exp-step" style="border:1px solid #222;background:#0d0d0d;padding:10px;border-radius:6px;font-size:0.75rem;font-family:var(--font-code);">
@@ -3770,38 +3135,7 @@ function checkLoginForVault(){
 
 function openVault(index){
     if(VAULT.length === 0){ 
-        // ALCHM-008: Improve Empty-State Experience in the vault
-        const emptyHtml = `<div class="empty-vault-card" style="font-family:var(--font-sans); text-align:left; color:#fff; width:100%; box-sizing:border-box;">
-  <div class="landing-hero" style="font-family:var(--font-code); font-size:0.85rem; color:var(--gold); letter-spacing:2px; margin-bottom:8px;">LOCAL VAULT EMPTY</div>
-  <div style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600; margin-bottom:10px; color:#fff; line-height:1.2;">No Study Sessions Saved</div>
-  
-  <div style="font-size:0.75rem; color:#aaa; margin-bottom:14px; line-height:1.4;">
-    You haven't completed any practice sessions yet. You can download precompiled study notes or jump straight into a quick-start template:
-  </div>
-
-  <div style="margin-bottom:14px;">
-    <div style="font-size:0.7rem; color:#666; font-weight:bold; margin-bottom:5px; font-family:var(--font-code); letter-spacing:0.5px;">DOWNLOAD STUDY FILES</div>
-    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px;">
-      <a href="samples/chemical_kinetics_notes.pdf" download class="clickable" style="display:flex; justify-content:space-between; align-items:center; background:#0d0d0d; border:1px solid #222; padding:6px 8px; border-radius:4px; text-decoration:none; color:#fff; font-size:0.7rem; font-family:var(--font-code);">
-        <span>Notes (PDF)</span>
-        <span style="color:var(--gold);">↓</span>
-      </a>
-      <a href="samples/chemical_kinetics_notes.epub" download class="clickable" style="display:flex; justify-content:space-between; align-items:center; background:#0d0d0d; border:1px solid #222; padding:6px 8px; border-radius:4px; text-decoration:none; color:#fff; font-size:0.7rem; font-family:var(--font-code);">
-        <span>Book (EPUB)</span>
-        <span style="color:var(--gold);">↓</span>
-      </a>
-    </div>
-  </div>
-
-  <div style="margin-bottom:10px;">
-    <div style="font-size:0.7rem; color:#666; font-weight:bold; margin-bottom:5px; font-family:var(--font-code); letter-spacing:0.5px;">QUICK-START TEMPLATES</div>
-    <div style="display:flex; gap:6px;">
-      <button class="clickable" onclick="hideLiveSuggestion(); setPickTopic('Chemical Kinetics');" style="flex:1; background:rgba(255,214,0,0.1); border:1px solid var(--gold); color:#fff; padding:6px 8px; border-radius:4px; font-size:0.7rem; font-family:var(--font-code); cursor:pointer; text-align:center;">Chemical Kinetics</button>
-      <button class="clickable" onclick="hideLiveSuggestion(); setPickTopic('Coordination Compounds');" style="flex:1; background:#0d0d0d; border:1px solid #222; color:#fff; padding:6px 8px; border-radius:4px; font-size:0.7rem; font-family:var(--font-code); cursor:pointer; text-align:center;">Coordination</button>
-    </div>
-  </div>
-</div>`;
-        card(emptyHtml, {up:"MENU"}, dir => begin());
+        card("LOCAL ARCHIVE EMPTY", {up:"MENU"}, dir => begin());
         return; 
     }
     if(index < 0) { begin(); return; } 
@@ -3821,7 +3155,6 @@ function openVault(index){
 function setPick(){
  const sets=[...new Set(RAW_DATA.map(d=>d.set))];
  if(sets.length===0){card("NO DATA FOUND",{down:"RETRY"},()=>location.reload());return;}
- showLiveSuggestion("Select a Chemistry Topic set using 👈 / 👉, and swipe 👆 to choose.", '📂', 7000);
  card(sets[SET_CURSOR],{left:"",right:"",up:"SELECT",down:"BACK"},dir=>{
   if(dir==="LEFT"){SET_CURSOR=(SET_CURSOR-1+sets.length)%sets.length;setPick();}
   if(dir==="RIGHT"){SET_CURSOR=(SET_CURSOR+1)%sets.length;setPick();}
@@ -3831,25 +3164,15 @@ function setPick(){
 }
 
 function volumePick(){
- showLiveSuggestion("Choose the number of questions you want in this study run (10, 25, 50, or ALL).", '📊', 7000);
  card(`QUESTION VOLUME`,{up:"10 Q",left:"25 Q",right:"50 Q",down:"ALL"},dir=>{
-     if(dir==="UP")VOLUME_LIMIT=10; if(dir==="LEFT")VOLUME_LIMIT=25; if(dir==="RIGHT")VOLUME_LIMIT=50; if(dir==="DOWN")VOLUME_LIMIT=null;
-     startQuiz();
+    if(dir==="UP")VOLUME_LIMIT=10; if(dir==="LEFT")VOLUME_LIMIT=25; if(dir==="RIGHT")VOLUME_LIMIT=50; if(dir==="DOWN")VOLUME_LIMIT=null;
+    startQuiz();
  });
 }
 
 function startQuiz(){
  log("INITIATING QUIZ...", "active");
  let base = RAW_DATA.filter(d=>d.set===ACTIVE_SET);
- if (typeof TOPIC_FILTER !== 'undefined' && TOPIC_FILTER) {
-   base = base.filter(q => (q.topic && q.topic.toLowerCase().includes(TOPIC_FILTER.toLowerCase())) || (q.hint && q.hint.toLowerCase().includes(TOPIC_FILTER.toLowerCase())));
-   TOPIC_FILTER = null;
- }
- if (base.length === 0) {
-   showLiveSuggestion("No questions found for this topic.", "⚠️", 3000);
-   begin();
-   return;
- }
  base = shuffle(base); 
  if(VOLUME_LIMIT && VOLUME_LIMIT < base.length) base = base.slice(0, VOLUME_LIMIT);
  POOL=base; WRONG=[]; SESSION_ALL=[]; XP=0; ATTEMPTED=new Set(); CURRENT_SESSION_MODEL=null;
@@ -3864,13 +3187,6 @@ function nextQ(){
  const d=POOL.shift();
  log(`ID: ${d.id}`, "normal");
  if(!SESSION_ALL.includes(d)) SESSION_ALL.push(d); 
- 
- if (SESSION_ALL.length === 1) {
-   showLiveSuggestion("👆 UP, 👈 LEFT, or 👉 RIGHT represent answer choices. The positions shuffles! Swipe or use arrow keys.", '🧪', 10000);
- } else {
-   hideLiveSuggestion();
- }
-
  const opts = shuffle([d.u, d.l, d.r]);
  const map = { up: opts[0], left: opts[1], right: opts[2] };
  card(d.q, map, dir=>{
@@ -3882,10 +3198,6 @@ function nextQ(){
   // 'picked' holds the TEXT of the option chosen.
   // 'd.u' holds the TEXT of the correct answer (from the mapping).
   const isCorrect = String(picked).trim().toLowerCase() === String(cText).trim().toLowerCase();
-  
-  if(window.AlchemistAnalytics) {
-    window.AlchemistAnalytics.trackEvent('question_submitted', { id: d.id, correct: isCorrect });
-  }
   
   const latency = Date.now() - Q_START_TIME;
   SESSION_LOG.push({ id: d.id, res: isCorrect ? "WIN" : "LOSS", latency: latency });
@@ -3902,7 +3214,6 @@ function review(){
  if(!WRONG.length){ report(); return; } 
  const d=WRONG[0]; 
  log("REVIEW MODE", "primary");
- showLiveSuggestion("If you make a mistake, Alchemist saves it for review. Swipe 👆 to retry the concept.", '🔁', 8000);
  card(`REVIEW NOTE\n\n${d.logic || "Review the core principles."}`,{up:"RETRY", down:"SKIP"},dir=>{
     if(dir==="UP"){ WRONG.shift(); POOL.unshift(d); } else { WRONG.shift(); }
     nextQ();
@@ -3912,16 +3223,11 @@ function review(){
 function report(pushNav=true){
  if(pushNav) { navPush("session-review"); emitAlchemy("alchemist:session:end",{sessionId:CURRENT_SES_ID}); }
  if(!CURRENT_SES_ID) generateSessionID();
- if(window.AlchemistAnalytics) {
-   window.AlchemistAnalytics.trackEvent('session_completed', { score: XP, total: SESSION_ALL.length });
- }
- updateChecklistItem('complete-session');
- showLiveSuggestion("🏁 Excellent job! Swipe 👇 to see and export your new Knowledge Asset.", '🏆', 8000);
  CURRENT_SESSION_MODEL = ensureUniverseSession(null, CURRENT_SES_ID);
  const percent = Math.round((XP / SESSION_ALL.length) * 100) || 0;
  const reasoning = renderReasoningSummaryText(CURRENT_SESSION_MODEL);
  card(`SUMMARY
- 
+
 ${XP} / ${SESSION_ALL.length} Correct
 (${percent}%)
 
@@ -3930,10 +3236,9 @@ ${reasoning}`,{down:"EXPORTS", up:"RESTART", left:"MENU"},dir=>{
     if(dir==="UP") startQuiz(); 
     if(dir==="LEFT") navGoHome();
  }, false);
-  attachReasoningMapToCard(CURRENT_SESSION_MODEL);
+ attachReasoningMapToCard(CURRENT_SESSION_MODEL);
 }
 function showSessionExportMenu(data=null, id=null, back=null, pushNav=true){
-    showLiveSuggestion("💾 Choose PDF (Print), EPUB (Kindle/Apple Books), HTML (Web page), or Create .ZAY Asset.", '💾', 10000);
     if(pushNav) navPush("export-preview", {data:data||null, id:id||null});
     closeExportCompletionPanel();
     showAssetSummaryModal(data, id);
@@ -4095,142 +3400,12 @@ const cleanPDF = t => String(t||"").replace(/<[^>]*>/g, "").replace(/&Delta;/g, 
 // ✅ FIXED MAPPING LOGIC
 let ACTIVE = null, selectedItem = null;
 const loadVault = async () => { try { const res = await fetch('./MASTER_VAULT.json'); if(!res.ok) throw new Error('VAULT_HTTP_'+res.status); VAULT = await res.json(); console.log('VAULT LOADED', VAULT); renderList(); hideLoader(); } catch (err) { console.error('LOAD FAILED', err); showError('DATA LOAD FAILED — OFFLINE CACHE UNAVAILABLE'); } };
-
-function setPickTopic(topicName) {
-  const sets = [...new Set(RAW_DATA.map(d => d.set))];
-  let targetSet = null;
-  for (const s of sets) {
-    const questions = RAW_DATA.filter(q => q.set === s);
-    if (questions.some(q => (q.topic && q.topic.toLowerCase().includes(topicName.toLowerCase())) || (q.hint && q.hint.toLowerCase().includes(topicName.toLowerCase())))) {
-      targetSet = s;
-      break;
-    }
-  }
-  
-  if (!targetSet) {
-    targetSet = sets[0] || 'SET_A';
-  }
-  
-  ACTIVE_SET = targetSet;
-  TOPIC_FILTER = topicName;
-  volumePick();
-}
-
-function startSingleQuestionSession(item) {
-  log("INITIATING SINGLE QUESTION REVIEW...", "active");
-  POOL = [item];
-  WRONG = [];
-  SESSION_ALL = [];
-  XP = 0;
-  ATTEMPTED = new Set();
-  CURRENT_SESSION_MODEL = null;
-  CURRENT_SES_ID = null;
-  SESSION_LOG = [];
-  nextQ();
-}
-
 function renderList(){
   const c=document.getElementById('vault-list'); c.innerHTML='';
   const head=document.createElement('div'); head.className='vault-head';
   head.innerHTML=`<span>LIBRARY · ${VAULT.length}</span><span class="vault-close" id="vault-close">×</span>`;
   c.appendChild(head);
-  
-  if (VAULT.length === 0) {
-    const emptyEl = document.createElement('div');
-    emptyEl.style.cssText = 'padding: 15px; font-family: var(--font-sans); color: #ccc; line-height: 1.5;';
-    emptyEl.innerHTML = `
-      <div style="font-family: var(--font-code); color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; letter-spacing: 1px;">LOCAL LIBRARY EMPTY</div>
-      <p style="font-size: 0.75rem; color: #888; margin-bottom: 16px; line-height: 1.4;">
-        You haven't completed any practice sessions yet. Your study notes and saved questions will appear here.
-      </p>
-      
-      <div style="margin-bottom: 16px;">
-        <span style="font-family: var(--font-code); font-size: 0.7rem; color: #555; display: block; margin-bottom: 6px; font-weight: bold; letter-spacing: 0.5px;">SEARCH TOPICS</span>
-        <input type="text" id="library-search-input" placeholder="Type to filter..." style="width: 100%; padding: 8px 10px; background: #000; border: 1px solid #333; border-radius: 4px; color: #fff; font-family: var(--font-code); font-size: 0.75rem; margin-bottom: 10px; outline: none; box-sizing: border-box;" />
-        <div id="library-search-results" style="display: flex; flex-direction: column; gap: 6px; max-height: 150px; overflow-y: auto;"></div>
-      </div>
-
-      <div style="margin-bottom: 16px;">
-        <span style="font-family: var(--font-code); font-size: 0.7rem; color: #555; display: block; margin-bottom: 6px; font-weight: bold; letter-spacing: 0.5px;">QUICK-START TEMPLATES</span>
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <button class="clickable" onclick="document.body.classList.remove('lib-open'); hideLiveSuggestion(); setPickTopic('Chemical Kinetics');" style="text-align: left; background: #0d0d0d; border: 1px solid #222; color: #fff; padding: 8px 10px; border-radius: 4px; font-size: 0.75rem; font-family: var(--font-code); cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <span>Chemical Kinetics</span>
-            <span style="color: var(--gold);">→</span>
-          </button>
-          <button class="clickable" onclick="document.body.classList.remove('lib-open'); hideLiveSuggestion(); setPickTopic('Coordination Compounds');" style="text-align: left; background: #0d0d0d; border: 1px solid #222; color: #fff; padding: 8px 10px; border-radius: 4px; font-size: 0.75rem; font-family: var(--font-code); cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <span>Coordination Compounds</span>
-            <span style="color: var(--gold);">→</span>
-          </button>
-        </div>
-      </div>
-
-      <div style="border-top: 1px solid #222; padding-top: 12px; margin-top: 12px;">
-        <span style="font-family: var(--font-code); font-size: 0.7rem; color: #555; display: block; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.5px;">DOWNLOAD PRECOMPILED SAMPLES</span>
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <a href="samples/chemical_kinetics_notes.pdf" download class="clickable" style="display: flex; justify-content: space-between; align-items: center; background: #0d0d0d; border: 1px solid #222; padding: 8px 10px; border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.75rem; font-family: var(--font-code);">
-            <span>Kinetics Notes (PDF)</span>
-            <span style="color: var(--gold);">↓</span>
-          </a>
-          <a href="samples/chemical_kinetics_notes.epub" download class="clickable" style="display: flex; justify-content: space-between; align-items: center; background: #0d0d0d; border: 1px solid #222; padding: 8px 10px; border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.75rem; font-family: var(--font-code);">
-            <span>Kinetics Book (EPUB)</span>
-            <span style="color: var(--gold);">↓</span>
-          </a>
-          <a href="samples/chemical_kinetics_notes.html" download class="clickable" style="display: flex; justify-content: space-between; align-items: center; background: #0d0d0d; border: 1px solid #222; padding: 8px 10px; border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.75rem; font-family: var(--font-code);">
-            <span>Kinetics Web (HTML)</span>
-            <span style="color: var(--gold);">↓</span>
-          </a>
-          <a href="samples/chemical_kinetics_session.json" download class="clickable" style="display: flex; justify-content: space-between; align-items: center; background: #0d0d0d; border: 1px solid #222; padding: 8px 10px; border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.75rem; font-family: var(--font-code);">
-            <span>Session Logs (JSON)</span>
-            <span style="color: var(--gold);">↓</span>
-          </a>
-        </div>
-      </div>
-    `;
-    c.appendChild(emptyEl);
-    
-    // Add search functionality
-    setTimeout(() => {
-      const input = document.getElementById('library-search-input');
-      const results = document.getElementById('library-search-results');
-      if (input && results) {
-        const updateResults = () => {
-          const query = input.value.trim().toLowerCase();
-          results.innerHTML = '';
-          if (!query) {
-            results.innerHTML = '<div style="font-size:0.7rem; color:#444; font-style:italic;">Type to search the bank...</div>';
-            return;
-          }
-          const matches = RAW_DATA.filter(item => 
-            (item.q && item.q.toLowerCase().includes(query)) ||
-            (item.topic && item.topic.toLowerCase().includes(query)) ||
-            (item.hint && item.hint.toLowerCase().includes(query)) ||
-            (item.logic && item.logic.toLowerCase().includes(query))
-          ).slice(0, 5);
-          
-          if (matches.length === 0) {
-            results.innerHTML = '<div style="font-size:0.7rem; color:#666;">No matches found in database.</div>';
-            return;
-          }
-          
-          matches.forEach(m => {
-            const itemEl = document.createElement('div');
-            itemEl.style.cssText = 'background:#000; border:1px solid #222; padding:6px; border-radius:3px; font-size:0.7rem; font-family:var(--font-code); color:#aaa; cursor:pointer; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;';
-            itemEl.textContent = `${m.id}: ${m.q}`;
-            itemEl.onclick = () => {
-              document.body.classList.remove('lib-open');
-              hideLiveSuggestion();
-              startSingleQuestionSession(m);
-            };
-            results.appendChild(itemEl);
-          });
-        };
-        input.oninput = updateResults;
-        updateResults();
-      }
-    }, 50);
-  } else {
-    VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.className='vault-row'; div.textContent=`${item.id||index+1}  ${item.q}`; div.onclick=()=>selectItem(index); c.appendChild(div); });
-  }
+  VAULT.forEach((item,index)=>{ const div=document.createElement('div'); div.className='vault-row'; div.textContent=`${item.id||index+1}  ${item.q}`; div.onclick=()=>selectItem(index); c.appendChild(div); });
   document.getElementById('vault-close').onclick=navGoBack;
 }
 function selectItem(index){ ACTIVE = VAULT[index]; selectedItem = ACTIVE; navPush('question-detail', {index:index}); renderDetail(); }
@@ -4286,50 +3461,7 @@ function exportZAY(item,structure){
   pushExportComplete("zay", filename);
  } catch(error){ console.error(error); pushExportFailed("zay", error && error.message ? error.message : "ZAY export failed"); }
 }
-function renderDetail(){
-  const d=document.getElementById('vault-detail');
-  if(!d) return;
-  if(!ACTIVE) {
-    d.style.display = 'none';
-    return;
-  }
-  d.style.display = 'block';
-  d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.u}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf" ${window.generatedNotes?'':'disabled'}>Export PDF</button><button id="export-epub" ${window.generatedNotes?'':'disabled'}>Export EPUB</button><button id="export-zay" ${window.generatedNotes?'':'disabled'}>Export .ZAY</button>`;
-  
-  document.getElementById('gen-notes').onclick=()=>{
-    if(!selectedItem)return alert('Select item first');
-    window.generatedNotes=generateNotes(selectedItem);
-    localStorage.setItem('SAVED_NOTES',window.generatedNotes);
-    localStorage.setItem('SAVED_SELECTED_ITEM',JSON.stringify(selectedItem));
-    ['export-pdf','export-epub','export-zay'].forEach(id=>document.getElementById(id).disabled=false);
-    
-    if(window.AlchemistAnalytics) {
-      window.AlchemistAnalytics.trackEvent('asset_created', { type: 'notes', id: selectedItem.id });
-    }
-    updateChecklistItem('generate-note');
-  };
-  
-  document.getElementById('export-pdf').onclick=()=>{
-    if(!selectedItem)return alert('Select item first');
-    if(!window.generatedNotes)return alert('Generate notes first');
-    const s=buildStructuredContent(selectedItem);
-    exportPDF(s);
-  };
-  
-  document.getElementById('export-epub').onclick=()=>{
-    if(!selectedItem)return alert('Select item first');
-    if(!window.generatedNotes)return alert('Generate notes first');
-    const s=buildStructuredContent(selectedItem);
-    exportEPUB(s);
-  };
-  
-  document.getElementById('export-zay').onclick=()=>{
-    if(!selectedItem)return alert('Select item first');
-    if(!window.generatedNotes)return alert('Generate notes first');
-    const s=buildStructuredContent(selectedItem);
-    exportZAY(selectedItem,s);
-  };
-}
+function renderDetail(){ const d=document.getElementById('vault-detail'); if(!ACTIVE) return; d.innerHTML=`<h3>${ACTIVE.q}</h3><p><b>Answer:</b> ${ACTIVE.correct}</p><p>${ACTIVE.logic||''}</p><button id="gen-notes">Generate Notes</button><button id="export-pdf" ${window.generatedNotes?'':'disabled'}>Export PDF</button><button id="export-epub" ${window.generatedNotes?'':'disabled'}>Export EPUB</button><button id="export-zay" ${window.generatedNotes?'':'disabled'}>Export .ZAY</button>`; document.getElementById('gen-notes').onclick=()=>{if(!selectedItem)return alert('Select item first');window.generatedNotes=generateNotes(selectedItem); localStorage.setItem('SAVED_NOTES',window.generatedNotes); localStorage.setItem('SAVED_SELECTED_ITEM',JSON.stringify(selectedItem)); ['export-pdf','export-epub','export-zay'].forEach(id=>document.getElementById(id).disabled=false);}; document.getElementById('export-pdf').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportPDF(s);}; document.getElementById('export-epub').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportEPUB(s);}; document.getElementById('export-zay').onclick=()=>{if(!selectedItem)return alert('Select item first'); if(!window.generatedNotes)return alert('Generate notes first'); const s=buildStructuredContent(selectedItem); exportZAY(selectedItem,s);}; }
 function hideLoader(){
   // Remove the initial static loading card — begin() will replace it
   const stack = document.getElementById('stack');
@@ -4349,7 +3481,7 @@ let onboardingSteps = [];
 let currentOnboardingStep = 0;
 
 async function loadOnboarding() {
-  if (localStorage.getItem('via_auth_source') === 'smarttag-qr' || localStorage.getItem('alchemist_onboarding_completed')) return;
+  if (localStorage.getItem('alchemist_onboarding_completed')) return;
   try {
     const res = await fetch('onboarding.json');
     onboardingSteps = await res.json();
@@ -4467,283 +3599,9 @@ function normalizeQuestion(d, i) {
   };
 }
 
-/* ========================================================
-   ALCHEMIST LAUNCH READINESS CONTROLLER
-   Toasts, Checklist, Analytics Dashboard, and Live Suggestions
-   ======================================================== */
-
-// --- TOAST SYSTEM ---
-function showToast(message, type = 'error', duration = 5000) {
-  const container = document.getElementById('alchemist-toast-container');
-  if (!container) return;
-  const toast = document.createElement('div');
-  toast.className = `alchemist-toast ${type}`;
-  toast.innerHTML = `<div style="font-weight:bold;margin-bottom:4px;letter-spacing:1px;font-size:0.7rem;">${type.toUpperCase()}</div><div>${message}</div>`;
-  container.appendChild(toast);
-  
-  // Slide in
-  setTimeout(() => toast.classList.add('show'), 50);
-  
-  // Auto remove
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 300);
-  }, duration);
-}
-
-// --- CONTEXTUAL LIVE SUGGESTIONS ---
-let currentSuggestionTimeout = null;
-function showLiveSuggestion(text, icon = '💡', duration = 8000) {
-  const popup = document.getElementById('alchemist-live-suggestion');
-  const txt = document.getElementById('suggestion-text');
-  const icn = document.getElementById('suggestion-icon');
-  if (!popup || !txt || !icn) return;
-  
-  if (currentSuggestionTimeout) clearTimeout(currentSuggestionTimeout);
-  
-  icn.textContent = icon;
-  txt.innerHTML = text;
-  
-  popup.style.opacity = '1';
-  popup.style.pointerEvents = 'auto';
-  popup.style.transform = 'translateX(-50%) translateY(-10px)';
-  
-  if (duration > 0) {
-    currentSuggestionTimeout = setTimeout(hideLiveSuggestion, duration);
-  }
-}
-
-function hideLiveSuggestion() {
-  const popup = document.getElementById('alchemist-live-suggestion');
-  if (!popup) return;
-  popup.style.opacity = '0';
-  popup.style.pointerEvents = 'none';
-  popup.style.transform = 'translateX(-50%) translateY(0)';
-}
-
-document.getElementById('suggestion-close').onclick = hideLiveSuggestion;
-
-// --- CHECKLIST ENGINE ---
-const CHECKLIST_KEY = 'alchemist_first_time_checklist';
-let checklist = {
-  'generate-note': { label: 'Generate Study Notes', desc: 'Create study notes for any practice question in the library.', completed: false },
-  'save-asset': { label: 'Save Knowledge Asset', desc: 'Create / save a portable .zay knowledge asset package.', completed: false },
-  'export-pdf': { label: 'Export PDF Document', desc: 'Download a clean, high-yield summary PDF.', completed: false },
-  'export-epub': { label: 'Export EPUB Digital Book', desc: 'Compile a Kindle/Apple Books readable study book.', completed: false },
-  'complete-session': { label: 'Complete First Session', desc: 'Attempt and finalize a full card practice block.', completed: false }
-};
-
-function initChecklist() {
-  try {
-    const stored = localStorage.getItem(CHECKLIST_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      Object.keys(checklist).forEach(k => {
-        if (parsed[k] !== undefined) checklist[k].completed = parsed[k];
-      });
-    }
-  } catch (e) {
-    console.warn('Checklist load failed:', e);
-  }
-  updateChecklistBadge();
-}
-
-function saveChecklist() {
-  try {
-    const data = {};
-    Object.keys(checklist).forEach(k => data[k] = checklist[k].completed);
-    localStorage.setItem(CHECKLIST_KEY, JSON.stringify(data));
-  } catch (e) {
-    console.error('Checklist save failed:', e);
-  }
-  updateChecklistBadge();
-}
-
-function updateChecklistItem(key) {
-  if (!checklist[key]) return;
-  if (checklist[key].completed) return; // already completed
-  
-  checklist[key].completed = true;
-  saveChecklist();
-  
-  showToast(`Checklist step complete: "${checklist[key].label}"`, 'info', 4000);
-  
-  if (key === 'save-asset') {
-    if (window.AlchemistAnalytics) {
-      window.AlchemistAnalytics.trackEvent('asset_created', { type: 'zay_package' });
-    }
-  }
-
-  // Check if all steps completed
-  const total = Object.keys(checklist).length;
-  const completed = Object.keys(checklist).filter(k => checklist[k].completed).length;
-  if (completed === total) {
-    setTimeout(() => {
-      showToast('🎉 CONGRATULATIONS! You completed the getting started checklist!', 'info', 8000);
-      showLiveSuggestion('🎉 Checklist completed! You have learned the full Alchemist study workflow.', '🚀', 10000);
-    }, 1500);
-  }
-}
-
-function updateChecklistBadge() {
-  const badge = document.getElementById('checklist-toggle');
-  if (!badge) return;
-  const total = Object.keys(checklist).length;
-  const completed = Object.keys(checklist).filter(k => checklist[k].completed).length;
-  badge.textContent = `[ CHECKLIST (${completed}/${total}) ]`;
-  if (completed === total) {
-    badge.style.color = 'var(--green)';
-  } else {
-    badge.style.color = 'var(--gold)';
-  }
-}
-
-function renderChecklist() {
-  const content = document.getElementById('checklist-content');
-  if (!content) return;
-  content.innerHTML = '';
-  
-  Object.keys(checklist).forEach(k => {
-    const item = checklist[k];
-    const el = document.createElement('div');
-    el.className = `checklist-item ${item.completed ? 'completed' : ''}`;
-    el.innerHTML = `
-      <div class="checklist-box">${item.completed ? '✓' : ''}</div>
-      <div class="checklist-meta">
-        <span class="checklist-name">${item.label}</span>
-        <span class="checklist-desc">${item.desc}</span>
-      </div>
-    `;
-    content.appendChild(el);
-  });
-}
-
-function openChecklistPanel() {
-  closeAnalyticsPanel();
-  document.body.classList.remove('lib-open'); // Close library
-  renderChecklist();
-  document.getElementById('alchemist-checklist-panel').style.display = 'block';
-  navPush('checklist');
-}
-
-function closeChecklistPanel() {
-  const panel = document.getElementById('alchemist-checklist-panel');
-  if (panel) panel.style.display = 'none';
-}
-
-document.getElementById('checklist-toggle').onclick = () => {
-  const panel = document.getElementById('alchemist-checklist-panel');
-  if (panel && panel.style.display === 'block') navGoBack();
-  else openChecklistPanel();
-};
-document.getElementById('checklist-close').onclick = navGoBack;
-
-// --- ANALYTICS DASHBOARD ---
-function renderAnalytics() {
-  const content = document.getElementById('analytics-content');
-  if (!content) return;
-  
-  const stats = window.AlchemistAnalytics ? window.AlchemistAnalytics.getStats() : { visitsCount: 1, activationRate: 0, exportRate: 0, returnRate: 0, funnel: {} };
-  const funnel = stats.funnel;
-
-  content.innerHTML = `
-    <div style="background:#0d0d0d; border:1px solid #222; padding:12px; border-radius:6px; margin-bottom:15px;">
-      <div style="font-size:10px; color:#555; margin-bottom:4px;">VISITOR ID</div>
-      <div style="font-size:11px; word-break:break-all; color:#fff; font-weight:bold;">${stats.visitorId || 'UNKNOWN'}</div>
-      <div style="display:flex; justify-content:space-between; margin-top:10px; border-top:1px dashed #222; padding-top:8px;">
-        <span>Visits count:</span>
-        <span style="color:var(--gold); font-weight:bold;">${stats.visitsCount}</span>
-      </div>
-    </div>
-    
-    <div style="margin-bottom:18px;">
-      <div style="color:var(--gold); font-size:11px; margin-bottom:12px; letter-spacing:1px;">CONVERSION FUNNEL</div>
-      
-      <div class="funnel-stage">
-        <div class="funnel-stage-header">
-          <span>1. Landing page loaded</span>
-          <span>100%</span>
-        </div>
-        <div class="funnel-track"><div class="funnel-fill active" style="width:100%;"></div></div>
-      </div>
-      
-      <div class="funnel-stage">
-        <div class="funnel-stage-header">
-          <span>2. First Practiced (Activation)</span>
-          <span>${funnel.firstPrompt ? '100%' : '0%'}</span>
-        </div>
-        <div class="funnel-track"><div class="funnel-fill ${funnel.firstPrompt ? 'active' : ''}" style="width:${funnel.firstPrompt ? '100%' : '0%'};"></div></div>
-      </div>
-      
-      <div class="funnel-stage">
-        <div class="funnel-stage-header">
-          <span>3. First Notes Saved</span>
-          <span>${funnel.firstAsset ? '100%' : '0%'}</span>
-        </div>
-        <div class="funnel-track"><div class="funnel-fill ${funnel.firstAsset ? 'active' : ''}" style="width:${funnel.firstAsset ? '100%' : '0%'};"></div></div>
-      </div>
-      
-      <div class="funnel-stage">
-        <div class="funnel-stage-header">
-          <span>4. First Exported</span>
-          <span>${funnel.firstExport ? '100%' : '0%'}</span>
-        </div>
-        <div class="funnel-track"><div class="funnel-fill ${funnel.firstExport ? 'active' : ''}" style="width:${funnel.firstExport ? '100%' : '0%'};"></div></div>
-      </div>
-      
-      <div class="funnel-stage">
-        <div class="funnel-stage-header">
-          <span>5. Return Visitor Retention</span>
-          <span>${funnel.returnSession ? '100%' : '0%'}</span>
-        </div>
-        <div class="funnel-track"><div class="funnel-fill ${funnel.returnSession ? 'active' : ''}" style="width:${funnel.returnSession ? '100%' : '0%'};"></div></div>
-      </div>
-    </div>
-    
-    <div style="font-size:10px; color:#444; border-top:1px solid #222; padding-top:10px; text-align:center; line-height:1.4;">
-      Telemetry is stored locally. No third-party cookies or scripts are loaded in this application.
-    </div>
-  `;
-}
-
-function openAnalyticsPanel() {
-  closeChecklistPanel();
-  document.body.classList.remove('lib-open'); // Close library
-  renderAnalytics();
-  document.getElementById('alchemist-analytics-panel').style.display = 'block';
-  navPush('analytics');
-}
-
-function closeAnalyticsPanel() {
-  const panel = document.getElementById('alchemist-analytics-panel');
-  if (panel) panel.style.display = 'none';
-}
-
-document.getElementById('analytics-toggle').onclick = () => {
-  const panel = document.getElementById('alchemist-analytics-panel');
-  if (panel && panel.style.display === 'block') navGoBack();
-  else openAnalyticsPanel();
-};
-document.getElementById('analytics-close').onclick = navGoBack;
-
 async function init() {
   log("SYSTEM BOOT", "active");
-  
-  // Initialize checklist & analytics
-  if (window.AlchemistAnalytics) window.AlchemistAnalytics.init();
-  initChecklist();
-  
-  // Track offline status
-  window.addEventListener('online', () => showToast("Network connected. App is fully online.", "info"));
-  window.addEventListener('offline', () => showToast("Network disconnected. Using offline cached data.", "warning"));
-  if (!navigator.onLine) {
-    showToast("Network is currently offline. Using offline cached data.", "warning");
-  }
-
-  // Initial contextual suggestion
-  showLiveSuggestion("👋 Welcome to Alchemist! Swipe 👆 UP to start your first chemistry session.", '💡', 8000);
-
-  await loadOnboarding();
+  loadOnboarding();
   restoreSession();
 
   // Step 1: Bootstrap immediately from INJECTED_DATA (zero-network, always works)
@@ -4779,18 +3637,3 @@ async function init() {
   }
 }
 init();
-</script>
-
-<!-- LEGAL FOOTER -->
-<div id="legal-footer" style="position:fixed; bottom:0; left:0; right:0; z-index:90; display:flex; justify-content:center; gap:16px; padding:8px 0 calc(8px + env(safe-area-inset-bottom)); font-family:var(--font-code); font-size:0.6rem; color:#444; letter-spacing:0.5px; background:linear-gradient(transparent, rgba(0,0,0,0.9) 40%);">
-  <a href="privacy.html" style="color:#555; text-decoration:none;">Privacy</a>
-  <span style="color:#333;">·</span>
-  <a href="terms.html" style="color:#555; text-decoration:none;">Terms</a>
-  <span style="color:#333;">·</span>
-  <a href="data-compliance.html" style="color:#555; text-decoration:none;">Compliance</a>
-</div>
-
-
-  <button id="pwa-install-btn" class="hidden" style="display:none; position:fixed; bottom:20px; right:20px; z-index:9999; padding:10px 20px; background:#ff2a2a; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.5);">Install App</button>
-</body>
-    </html>

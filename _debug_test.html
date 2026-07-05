@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#222;color:white;font-family:monospace;padding:20px">
+<h2>Alchemist Debug Console</h2>
+<pre id="output" style="white-space:pre-wrap;background:#111;padding:10px;max-height:80vh;overflow:auto"></pre>
+<script>
+const out = document.getElementById('output');
+function log(msg) { out.textContent += msg + '\n'; }
+
+// Override console for the iframe
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'console') {
+    log('[' + e.data.level + '] ' + e.data.msg);
+  }
+});
+
+// Create iframe
+const iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+iframe.src = '/';
+iframe.onload = () => {
+  log('--- IFRAME LOADED ---');
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    const stack = doc.getElementById('stack');
+    log('stack element: ' + (stack ? 'EXISTS' : 'MISSING'));
+    if (stack) {
+      log('stack innerHTML length: ' + stack.innerHTML.length);
+      log('stack innerHTML first 500: ' + stack.innerHTML.substring(0, 500));
+      log('stack childNodes: ' + stack.childNodes.length);
+    }
+    const rawData = iframe.contentWindow.RAW_DATA;
+    log('RAW_DATA: ' + (rawData ? 'length=' + rawData.length : 'undefined'));
+    const injData = iframe.contentWindow.INJECTED_DATA;
+    log('INJECTED_DATA: ' + (injData ? 'length=' + injData.length : 'undefined'));
+    log('typeof begin: ' + typeof iframe.contentWindow.begin);
+    log('typeof init: ' + typeof iframe.contentWindow.init);
+    log('typeof card: ' + typeof iframe.contentWindow.card);
+    log('typeof normalizeQuestion: ' + typeof iframe.contentWindow.normalizeQuestion);
+  } catch(e) {
+    log('ERROR accessing iframe: ' + e.message);
+  }
+};
+document.body.appendChild(iframe);
+
+// Also capture errors from the iframe
+window.addEventListener('error', e => log('GLOBAL ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno));
+</script>
+</body>
+</html>
