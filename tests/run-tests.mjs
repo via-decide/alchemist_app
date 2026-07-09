@@ -77,6 +77,8 @@ const kernelTests = [
   'kernel/alchemist/zay-importer.test.js',
   'tests/universe-integration.test.js',
   'tests/knowledge-engine.test.mjs',
+  'tests/decision-engine.test.js',
+  'tests/knowledge-os-compat.test.js'
   'tests/decision-engine.test.js'
 ];
 for (const test of kernelTests) {
