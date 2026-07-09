@@ -1,0 +1,3917 @@
+[
+  {
+    "id": "book-chapters-01-introduction",
+    "slug": "book-chapters-01-introduction",
+    "title": "Foundations of Analytical Systems",
+    "path": "book/chapters/01-introduction.md",
+    "collection": "book",
+    "category": "chapters",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "This handbook describes a deterministic production path for modern analytical systems publications.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Foundations of Analytical Systems",
+        "slug": "foundations-of-analytical-systems"
+      },
+      {
+        "level": 2,
+        "text": "Why deterministic publishing matters",
+        "slug": "why-deterministic-publishing-matters"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Foundations of Analytical Systems",
+        "anchor": "foundations-of-analytical-systems"
+      },
+      {
+        "level": 2,
+        "title": "Why deterministic publishing matters",
+        "anchor": "why-deterministic-publishing-matters"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 34,
+    "checksum": "59fb4d1c0b490bfe9da354674931e4a1a36c968954693eca64ca9a557da911e1"
+  },
+  {
+    "id": "book-chapters-02-architecture",
+    "slug": "book-chapters-02-architecture",
+    "title": "Cloud and Edge Architecture",
+    "path": "book/chapters/02-architecture.md",
+    "collection": "book",
+    "category": "chapters",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "The workflow spans edge data acquisition, protocol transport, cloud processing, and quality-controlled publication outputs.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Cloud and Edge Architecture",
+        "slug": "cloud-and-edge-architecture"
+      },
+      {
+        "level": 2,
+        "text": "Protocol stack",
+        "slug": "protocol-stack"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Cloud and Edge Architecture",
+        "anchor": "cloud-and-edge-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Protocol stack",
+        "anchor": "protocol-stack"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 33,
+    "checksum": "90a2b0ea2720736a81c8c953b236cc1d2b5958648f3f6ba0c78a66cd02cf20b0"
+  },
+  {
+    "id": "content-equations-gibbs-free-energy",
+    "slug": "content-equations-gibbs-free-energy",
+    "title": "Gibbs Free Energy",
+    "path": "content/equations/gibbs-free-energy.md",
+    "collection": "content",
+    "category": "equations",
+    "frontmatter": {
+      "title": "Gibbs Free Energy",
+      "tags": [
+        "equation",
+        "thermodynamics"
+      ],
+      "type": "equation",
+      "scientist": [
+        "josiah-willard-gibbs"
+      ]
+    },
+    "tags": [
+      "equation",
+      "thermodynamics"
+    ],
+    "author": "",
+    "summary": "Gibbs free energy predicts spontaneity for a chemical process at constant pressure and temperature.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Gibbs Free Energy",
+        "slug": "gibbs-free-energy"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Gibbs Free Energy",
+        "anchor": "gibbs-free-energy"
+      }
+    ],
+    "links": [],
+    "backlinks": [
+      "content-physical-thermodynamics"
+    ],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [
+        "josiah-willard-gibbs"
+      ],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [
+      "G = H - TS"
+    ],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 22,
+    "checksum": "254d4e94485d3f4ae89e0061f1129d7ccad8bca55f2accd4dea42de0bfe94ea5"
+  },
+  {
+    "id": "content-people-josiah-willard-gibbs",
+    "slug": "content-people-josiah-willard-gibbs",
+    "title": "Josiah Willard Gibbs",
+    "path": "content/people/josiah-willard-gibbs.md",
+    "collection": "content",
+    "category": "people",
+    "frontmatter": {
+      "title": "Josiah Willard Gibbs",
+      "tags": [
+        "scientist",
+        "history",
+        "thermodynamics"
+      ],
+      "type": "scientist",
+      "related": [
+        "content-physical-thermodynamics"
+      ]
+    },
+    "tags": [
+      "scientist",
+      "history",
+      "thermodynamics"
+    ],
+    "author": "",
+    "summary": "Josiah Willard Gibbs developed mathematical foundations for chemical thermodynamics and phase equilibria.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Josiah Willard Gibbs",
+        "slug": "josiah-willard-gibbs"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Josiah Willard Gibbs",
+        "anchor": "josiah-willard-gibbs"
+      }
+    ],
+    "links": [],
+    "backlinks": [
+      "content-physical-thermodynamics"
+    ],
+    "relationships": {
+      "prerequisite": [],
+      "related": [
+        "content-physical-thermodynamics"
+      ],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 15,
+    "checksum": "69999b3d0d9879d0c7f27983515fde784a644f104da87329f304ad5468b5d9e4"
+  },
+  {
+    "id": "content-physical-thermodynamics",
+    "slug": "content-physical-thermodynamics",
+    "title": "Thermodynamics",
+    "path": "content/physical/thermodynamics.md",
+    "collection": "content",
+    "category": "physical",
+    "frontmatter": {
+      "title": "Thermodynamics",
+      "tags": [
+        "physical-chemistry",
+        "entropy",
+        "energy"
+      ],
+      "prerequisite": [
+        "content-equations-gibbs-free-energy"
+      ],
+      "related": [
+        "content-people-josiah-willard-gibbs"
+      ],
+      "equation": [
+        "gibbs-free-energy"
+      ]
+    },
+    "tags": [
+      "physical-chemistry",
+      "entropy",
+      "energy"
+    ],
+    "author": "",
+    "summary": "Thermodynamics studies heat, work, entropy, and free energy in chemical systems.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Thermodynamics",
+        "slug": "thermodynamics"
+      },
+      {
+        "level": 2,
+        "text": "Core equation",
+        "slug": "core-equation"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Thermodynamics",
+        "anchor": "thermodynamics"
+      },
+      {
+        "level": 2,
+        "title": "Core equation",
+        "anchor": "core-equation"
+      }
+    ],
+    "links": [
+      "content-equations-gibbs-free-energy",
+      "content-people-josiah-willard-gibbs"
+    ],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [
+        "content-equations-gibbs-free-energy"
+      ],
+      "related": [
+        "content-people-josiah-willard-gibbs"
+      ],
+      "scientist": [],
+      "equation": [
+        "gibbs-free-energy"
+      ],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [
+      "\\Delta G = \\Delta H - T\\Delta S"
+    ],
+    "mermaid": [
+      "graph TD\n  heat --> entropy\n  entropy --> free_energy"
+    ],
+    "readingTimeMinutes": 1,
+    "wordCount": 37,
+    "checksum": "5cf8c3281d2baa6cb5b30c6caea78ded82b703a15f62ebf13060b796d1b4506a"
+  },
+  {
+    "id": "docs-alchemist-universe-architecture",
+    "slug": "docs-alchemist-universe-architecture",
+    "title": "Alchemist Universe Architecture",
+    "path": "docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Alchemist Universe keeps   Alchemist   as the user-facing learning environment while adding browser-safe reasoning and visualization layers.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist Universe Architecture",
+        "slug": "alchemist-universe-architecture"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Runtime Contract",
+        "slug": "runtime-contract"
+      },
+      {
+        "level": 2,
+        "text": "Folder Layout",
+        "slug": "folder-layout"
+      },
+      {
+        "level": 2,
+        "text": "Layer Ownership",
+        "slug": "layer-ownership"
+      },
+      {
+        "level": 2,
+        "text": "Failure Behavior",
+        "slug": "failure-behavior"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Universe Architecture",
+        "anchor": "alchemist-universe-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Runtime Contract",
+        "anchor": "runtime-contract"
+      },
+      {
+        "level": 2,
+        "title": "Folder Layout",
+        "anchor": "folder-layout"
+      },
+      {
+        "level": 2,
+        "title": "Layer Ownership",
+        "anchor": "layer-ownership"
+      },
+      {
+        "level": 2,
+        "title": "Failure Behavior",
+        "anchor": "failure-behavior"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 274,
+    "checksum": "f54ba91cc09eebd007c75c05f00dfa2729a1f3c9f9b4b963f9e0d71bfef7dc0c"
+  },
+  {
+    "id": "docs-architecture-audit",
+    "slug": "docs-architecture-audit",
+    "title": "Alchemist Architecture Audit",
+    "path": "docs/ARCHITECTURE_AUDIT.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "-   ACTIVE   — shipped or directly used by the browser-first app.\n-   PARTIAL   — useful code exists, but integration or production requirements are incomplete.\n-   DISCONNECTED   — code exists but is not currently reachable from the shippe",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist Architecture Audit",
+        "slug": "alchemist-architecture-audit"
+      },
+      {
+        "level": 2,
+        "text": "Status labels",
+        "slug": "status-labels"
+      },
+      {
+        "level": 2,
+        "text": "Repository reality map",
+        "slug": "repository-reality-map"
+      },
+      {
+        "level": 2,
+        "text": "Recommended integration order",
+        "slug": "recommended-integration-order"
+      },
+      {
+        "level": 2,
+        "text": "Guardrails for future work",
+        "slug": "guardrails-for-future-work"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Architecture Audit",
+        "anchor": "alchemist-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Status labels",
+        "anchor": "status-labels"
+      },
+      {
+        "level": 2,
+        "title": "Repository reality map",
+        "anchor": "repository-reality-map"
+      },
+      {
+        "level": 2,
+        "title": "Recommended integration order",
+        "anchor": "recommended-integration-order"
+      },
+      {
+        "level": 2,
+        "title": "Guardrails for future work",
+        "anchor": "guardrails-for-future-work"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 322,
+    "checksum": "e2bc2158cf7264d2e8658da6acbdf02938ce6def62f9fd802e08bf69cbc3f2b5"
+  },
+  {
+    "id": "docs-decision-engine-architecture",
+    "slug": "docs-decision-engine-architecture",
+    "title": "Alchemist Decision Engine Architecture",
+    "path": "docs/DECISION_ENGINE_ARCHITECTURE.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Alchemist no longer treats swipe as the learning model. Swipe is now one possible interaction source that emits a normalized  DecisionEvent  into an interaction-agnostic backend engine.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist Decision Engine Architecture",
+        "slug": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "text": "Layering",
+        "slug": "layering"
+      },
+      {
+        "level": 2,
+        "text": "DecisionEvent",
+        "slug": "decisionevent"
+      },
+      {
+        "level": 2,
+        "text": "KnowledgeUnit",
+        "slug": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "text": "State machine",
+        "slug": "state-machine"
+      },
+      {
+        "level": 2,
+        "text": "API surface",
+        "slug": "api-surface"
+      },
+      {
+        "level": 2,
+        "text": "Migration note",
+        "slug": "migration-note"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Decision Engine Architecture",
+        "anchor": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Layering",
+        "anchor": "layering"
+      },
+      {
+        "level": 2,
+        "title": "DecisionEvent",
+        "anchor": "decisionevent"
+      },
+      {
+        "level": 2,
+        "title": "KnowledgeUnit",
+        "anchor": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "title": "State machine",
+        "anchor": "state-machine"
+      },
+      {
+        "level": 2,
+        "title": "API surface",
+        "anchor": "api-surface"
+      },
+      {
+        "level": 2,
+        "title": "Migration note",
+        "anchor": "migration-note"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 315,
+    "checksum": "24327a63a787750d3ae85084360d7a88773bb7f0a9e1b89205c9cb344e5a944b"
+  },
+  {
+    "id": "docs-epub-engine-status",
+    "slug": "docs-epub-engine-status",
+    "title": "EPUB Engine Status",
+    "path": "docs/EPUB_ENGINE_STATUS.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "The  core/  directory contains a standalone EPUB reader/parser/renderer engine. It is real code, but it currently uses ES module syntax such as  export class  and  export default .",
+    "headings": [
+      {
+        "level": 1,
+        "text": "EPUB Engine Status",
+        "slug": "epub-engine-status"
+      },
+      {
+        "level": 2,
+        "text": "Current status: DISCONNECTED",
+        "slug": "current-status-disconnected"
+      },
+      {
+        "level": 2,
+        "text": "Export EPUB vs reader EPUB",
+        "slug": "export-epub-vs-reader-epub"
+      },
+      {
+        "level": 2,
+        "text": "Future integration options",
+        "slug": "future-integration-options"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "EPUB Engine Status",
+        "anchor": "epub-engine-status"
+      },
+      {
+        "level": 2,
+        "title": "Current status: DISCONNECTED",
+        "anchor": "current-status-disconnected"
+      },
+      {
+        "level": 2,
+        "title": "Export EPUB vs reader EPUB",
+        "anchor": "export-epub-vs-reader-epub"
+      },
+      {
+        "level": 2,
+        "title": "Future integration options",
+        "anchor": "future-integration-options"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 173,
+    "checksum": "2ee380d45acf7b5392dc04e8cbbbf56dff60d9295171b3ea298ba197e0adaa10"
+  },
+  {
+    "id": "docs-payments-and-credits",
+    "slug": "docs-payments-and-credits",
+    "title": "Payments and Credits",
+    "path": "docs/PAYMENTS_AND_CREDITS.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Alchemist can run on GitHub Pages as a static browser app. GitHub Pages cannot securely verify Stripe checkout sessions, process webhooks, or update credits server-side.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Payments and Credits",
+        "slug": "payments-and-credits"
+      },
+      {
+        "level": 2,
+        "text": "Current status: SCAFFOLDING",
+        "slug": "current-status-scaffolding"
+      },
+      {
+        "level": 2,
+        "text": "Important limitations",
+        "slug": "important-limitations"
+      },
+      {
+        "level": 2,
+        "text": "Existing adapters",
+        "slug": "existing-adapters"
+      },
+      {
+        "level": 2,
+        "text": "Production backend options",
+        "slug": "production-backend-options"
+      },
+      {
+        "level": 2,
+        "text": "GitHub Pages demo behavior",
+        "slug": "github-pages-demo-behavior"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Payments and Credits",
+        "anchor": "payments-and-credits"
+      },
+      {
+        "level": 2,
+        "title": "Current status: SCAFFOLDING",
+        "anchor": "current-status-scaffolding"
+      },
+      {
+        "level": 2,
+        "title": "Important limitations",
+        "anchor": "important-limitations"
+      },
+      {
+        "level": 2,
+        "title": "Existing adapters",
+        "anchor": "existing-adapters"
+      },
+      {
+        "level": 2,
+        "title": "Production backend options",
+        "anchor": "production-backend-options"
+      },
+      {
+        "level": 2,
+        "title": "GitHub Pages demo behavior",
+        "anchor": "github-pages-demo-behavior"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 200,
+    "checksum": "988441fad0c9f89f8040296bdc731633dcc11ba5a036e7372ce2e65e25a75c8b"
+  },
+  {
+    "id": "docs-vault-format",
+    "slug": "docs-vault-format",
+    "title": "MASTER VAULT Format",
+    "path": "docs/VAULT_FORMAT.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "MASTER VAULT.json  is the active chemistry question database for the shipped  index.html  app.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "MASTER VAULT Format",
+        "slug": "master-vault-format"
+      },
+      {
+        "level": 2,
+        "text": "Accepted raw fields",
+        "slug": "accepted-raw-fields"
+      },
+      {
+        "level": 2,
+        "text": "Normalized output shape",
+        "slug": "normalized-output-shape"
+      },
+      {
+        "level": 2,
+        "text": "Validation",
+        "slug": "validation"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "MASTER VAULT Format",
+        "anchor": "master-vault-format"
+      },
+      {
+        "level": 2,
+        "title": "Accepted raw fields",
+        "anchor": "accepted-raw-fields"
+      },
+      {
+        "level": 2,
+        "title": "Normalized output shape",
+        "anchor": "normalized-output-shape"
+      },
+      {
+        "level": 2,
+        "title": "Validation",
+        "anchor": "validation"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 220,
+    "checksum": "2862c0b5a009ce84003f56b6150e31a5c3d6b569c92cffa1e789e60974d16b94"
+  },
+  {
+    "id": "docs-vialogic-integration",
+    "slug": "docs-vialogic-integration",
+    "title": "ViaLogic Integration",
+    "path": "docs/VIALOGIC_INTEGRATION.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Reusable reasoning logic is implemented in:",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ViaLogic Integration",
+        "slug": "vialogic-integration"
+      },
+      {
+        "level": 2,
+        "text": "Imported Files",
+        "slug": "imported-files"
+      },
+      {
+        "level": 2,
+        "text": "Browser API",
+        "slug": "browser-api"
+      },
+      {
+        "level": 2,
+        "text": "Session Integration Point",
+        "slug": "session-integration-point"
+      },
+      {
+        "level": 2,
+        "text": "UI Fallback",
+        "slug": "ui-fallback"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ViaLogic Integration",
+        "anchor": "vialogic-integration"
+      },
+      {
+        "level": 2,
+        "title": "Imported Files",
+        "anchor": "imported-files"
+      },
+      {
+        "level": 2,
+        "title": "Browser API",
+        "anchor": "browser-api"
+      },
+      {
+        "level": 2,
+        "title": "Session Integration Point",
+        "anchor": "session-integration-point"
+      },
+      {
+        "level": 2,
+        "title": "UI Fallback",
+        "anchor": "ui-fallback"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 127,
+    "checksum": "d882380a3edcee28e3a8a1df7afaa2aad8340414a04b5e46b26dbbb7f0dd5858"
+  },
+  {
+    "id": "docs-visual-engine-integration",
+    "slug": "docs-visual-engine-integration",
+    "title": "Visual Engine Integration",
+    "path": "docs/VISUAL_ENGINE_INTEGRATION.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Reusable visualization logic is implemented in:",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Visual Engine Integration",
+        "slug": "visual-engine-integration"
+      },
+      {
+        "level": 2,
+        "text": "Imported Files",
+        "slug": "imported-files"
+      },
+      {
+        "level": 2,
+        "text": "Renderer API",
+        "slug": "renderer-api"
+      },
+      {
+        "level": 2,
+        "text": "Graph Format",
+        "slug": "graph-format"
+      },
+      {
+        "level": 2,
+        "text": "Render Targets",
+        "slug": "render-targets"
+      },
+      {
+        "level": 2,
+        "text": "Failure Fallback",
+        "slug": "failure-fallback"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Visual Engine Integration",
+        "anchor": "visual-engine-integration"
+      },
+      {
+        "level": 2,
+        "title": "Imported Files",
+        "anchor": "imported-files"
+      },
+      {
+        "level": 2,
+        "title": "Renderer API",
+        "anchor": "renderer-api"
+      },
+      {
+        "level": 2,
+        "title": "Graph Format",
+        "anchor": "graph-format"
+      },
+      {
+        "level": 2,
+        "title": "Render Targets",
+        "anchor": "render-targets"
+      },
+      {
+        "level": 2,
+        "title": "Failure Fallback",
+        "anchor": "failure-fallback"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 163,
+    "checksum": "6c69943482cc9df7bc14c715d31f8b706fd1c5406c7ba9401a8460e466b580a5"
+  },
+  {
+    "id": "docs-zay-format-v2",
+    "slug": "docs-zay-format-v2",
+    "title": ".ZAY Format V2",
+    "path": "docs/ZAY_FORMAT_V2.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": ".ZAY  v2 keeps legacy  meta ,  content ,  vault , and  state  fields while adding canonical top-level Alchemist Universe fields.",
+    "headings": [
+      {
+        "level": 1,
+        "text": ".ZAY Format V2",
+        "slug": "zay-format-v2"
+      },
+      {
+        "level": 2,
+        "text": "Schema",
+        "slug": "schema"
+      },
+      {
+        "level": 2,
+        "text": "Sample Export",
+        "slug": "sample-export"
+      },
+      {
+        "level": 2,
+        "text": "Backward Compatibility",
+        "slug": "backward-compatibility"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": ".ZAY Format V2",
+        "anchor": "zay-format-v2"
+      },
+      {
+        "level": 2,
+        "title": "Schema",
+        "anchor": "schema"
+      },
+      {
+        "level": 2,
+        "title": "Sample Export",
+        "anchor": "sample-export"
+      },
+      {
+        "level": 2,
+        "title": "Backward Compatibility",
+        "anchor": "backward-compatibility"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 229,
+    "checksum": "80a18d50bf5a9353382972b59377d4652951080c229080ceeb05f032e8f10d5a"
+  },
+  {
+    "id": "docs-alchemist-alchemist-3d-block-module-v1",
+    "slug": "docs-alchemist-alchemist-3d-block-module-v1",
+    "title": "ALCHEMIST 3D BLOCK MODULE V1",
+    "path": "docs/alchemist/ALCHEMIST_3D_BLOCK_MODULE_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\n 3d-block.js  defines a lightweight, deterministic 3D block metadata handler for Alchemist sessions.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST 3D BLOCK MODULE V1",
+        "slug": "alchemist-3d-block-module-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Block Structure",
+        "slug": "block-structure"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Public API",
+        "slug": "public-api"
+      },
+      {
+        "level": 3,
+        "text": "create3DBlock id, model, interaction?",
+        "slug": "create3dblock-id-model-interaction"
+      },
+      {
+        "level": 3,
+        "text": "add3DBlockToSession sessionEngine, block",
+        "slug": "add3dblocktosession-sessionengine-block"
+      },
+      {
+        "level": 2,
+        "text": "STL Loader Reference",
+        "slug": "stl-loader-reference"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria",
+        "slug": "success-criteria"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST 3D BLOCK MODULE V1",
+        "anchor": "alchemist-3d-block-module-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Block Structure",
+        "anchor": "block-structure"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "create3DBlock id, model, interaction?",
+        "anchor": "create3dblock-id-model-interaction"
+      },
+      {
+        "level": 3,
+        "title": "add3DBlockToSession sessionEngine, block",
+        "anchor": "add3dblocktosession-sessionengine-block"
+      },
+      {
+        "level": 2,
+        "title": "STL Loader Reference",
+        "anchor": "stl-loader-reference"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 169,
+    "checksum": "40422571e906737b913878f02e718bafcaab259022d6e9ddacfae5243a51eb9b"
+  },
+  {
+    "id": "docs-alchemist-alchemist-block-system-v1",
+    "slug": "docs-alchemist-alchemist-block-system-v1",
+    "title": "ALCHEMIST BLOCK SYSTEM V1",
+    "path": "docs/alchemist/ALCHEMIST_BLOCK_SYSTEM_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\n block-system.js  converts all user input into deterministic, typed content blocks and rejects untyped or invalid data.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST BLOCK SYSTEM V1",
+        "slug": "alchemist-block-system-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Block Types",
+        "slug": "block-types"
+      },
+      {
+        "level": 2,
+        "text": "Public API",
+        "slug": "public-api"
+      },
+      {
+        "level": 3,
+        "text": "createBlock type, content",
+        "slug": "createblock-type-content"
+      },
+      {
+        "level": 3,
+        "text": "validateBlock block",
+        "slug": "validateblock-block"
+      },
+      {
+        "level": 2,
+        "text": "Rules Enforced",
+        "slug": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria Mapping",
+        "slug": "success-criteria-mapping"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST BLOCK SYSTEM V1",
+        "anchor": "alchemist-block-system-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Block Types",
+        "anchor": "block-types"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "createBlock type, content",
+        "anchor": "createblock-type-content"
+      },
+      {
+        "level": 3,
+        "title": "validateBlock block",
+        "anchor": "validateblock-block"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 193,
+    "checksum": "c2a8dc3111e392338996539abae665dc0733cdf32de837eabcd5fbf313998f31"
+  },
+  {
+    "id": "docs-alchemist-alchemist-core-ui-activation-v1",
+    "slug": "docs-alchemist-alchemist-core-ui-activation-v1",
+    "title": "ALCHEMIST CORE UI ACTIVATION V1",
+    "path": "docs/alchemist/ALCHEMIST_CORE_UI_ACTIVATION_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "ALCHEMIST CORE UI ACTIVATION V1\n   Purpose\nActivate Alchemist session/block/ingestion/review/publish behavior from swipe UI via listeners only.\n   Design Philosophy\nUI is read-only; orchestration is external; communication uses events and h",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST CORE UI ACTIVATION V1",
+        "slug": "alchemist-core-ui-activation-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Design Philosophy",
+        "slug": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "text": "System",
+        "slug": "system"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Reversibility",
+        "slug": "reversibility"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria",
+        "slug": "success-criteria"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST CORE UI ACTIVATION V1",
+        "anchor": "alchemist-core-ui-activation-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Reversibility",
+        "anchor": "reversibility"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 108,
+    "checksum": "0b94bc9144af8eec555d27a2998e1cc61eda22839a1436a8be75d9880612261b"
+  },
+  {
+    "id": "docs-alchemist-alchemist-credit-vault-system-v1",
+    "slug": "docs-alchemist-alchemist-credit-vault-system-v1",
+    "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+    "path": "docs/alchemist/ALCHEMIST_CREDIT_VAULT_SYSTEM_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\nDefine a deterministic session credit economy with vault decisions and publish rewards.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+        "slug": "alchemist-credit-vault-system-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Credit Rules",
+        "slug": "credit-rules"
+      },
+      {
+        "level": 2,
+        "text": "Publish Reward",
+        "slug": "publish-reward"
+      },
+      {
+        "level": 2,
+        "text": "Recovery Logic",
+        "slug": "recovery-logic"
+      },
+      {
+        "level": 2,
+        "text": "Vault System",
+        "slug": "vault-system"
+      },
+      {
+        "level": 3,
+        "text": "States",
+        "slug": "states"
+      },
+      {
+        "level": 3,
+        "text": "Flow",
+        "slug": "flow"
+      },
+      {
+        "level": 2,
+        "text": "API",
+        "slug": "api"
+      },
+      {
+        "level": 3,
+        "text": "creditSystem",
+        "slug": "creditsystem"
+      },
+      {
+        "level": 3,
+        "text": "vaultManager",
+        "slug": "vaultmanager"
+      },
+      {
+        "level": 2,
+        "text": "Rules Enforced",
+        "slug": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "text": "Integration Notes",
+        "slug": "integration-notes"
+      },
+      {
+        "level": 2,
+        "text": "Determinism and Tamper Resistance",
+        "slug": "determinism-and-tamper-resistance"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+        "anchor": "alchemist-credit-vault-system-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Credit Rules",
+        "anchor": "credit-rules"
+      },
+      {
+        "level": 2,
+        "title": "Publish Reward",
+        "anchor": "publish-reward"
+      },
+      {
+        "level": 2,
+        "title": "Recovery Logic",
+        "anchor": "recovery-logic"
+      },
+      {
+        "level": 2,
+        "title": "Vault System",
+        "anchor": "vault-system"
+      },
+      {
+        "level": 3,
+        "title": "States",
+        "anchor": "states"
+      },
+      {
+        "level": 3,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "API",
+        "anchor": "api"
+      },
+      {
+        "level": 3,
+        "title": "creditSystem",
+        "anchor": "creditsystem"
+      },
+      {
+        "level": 3,
+        "title": "vaultManager",
+        "anchor": "vaultmanager"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Integration Notes",
+        "anchor": "integration-notes"
+      },
+      {
+        "level": 2,
+        "title": "Determinism and Tamper Resistance",
+        "anchor": "determinism-and-tamper-resistance"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 332,
+    "checksum": "09533bdd2f457c7968d606754265f38f2e9bfc27fdf64733671c7e4319ea9c4c"
+  },
+  {
+    "id": "docs-alchemist-alchemist-ingestion-engine-v1",
+    "slug": "docs-alchemist-alchemist-ingestion-engine-v1",
+    "title": "ALCHEMIST INGESTION ENGINE V1",
+    "path": "docs/alchemist/ALCHEMIST_INGESTION_ENGINE_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\n ingestion-engine.js  provides a controlled input pipeline that transforms user input into structured blocks and stores them in the active session lifecycle.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST INGESTION ENGINE V1",
+        "slug": "alchemist-ingestion-engine-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Flow",
+        "slug": "flow"
+      },
+      {
+        "level": 2,
+        "text": "Public API",
+        "slug": "public-api"
+      },
+      {
+        "level": 3,
+        "text": "parseInput input",
+        "slug": "parseinput-input"
+      },
+      {
+        "level": 3,
+        "text": "createIngestionEngine { blockSystem, sessionEngine, now }",
+        "slug": "createingestionengine-blocksystem-sessionengine-now"
+      },
+      {
+        "level": 3,
+        "text": "ingest input",
+        "slug": "ingest-input"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria Mapping",
+        "slug": "success-criteria-mapping"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST INGESTION ENGINE V1",
+        "anchor": "alchemist-ingestion-engine-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "parseInput input",
+        "anchor": "parseinput-input"
+      },
+      {
+        "level": 3,
+        "title": "createIngestionEngine { blockSystem, sessionEngine, now }",
+        "anchor": "createingestionengine-blocksystem-sessionengine-now"
+      },
+      {
+        "level": 3,
+        "title": "ingest input",
+        "anchor": "ingest-input"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 170,
+    "checksum": "7e78a32fe33c5f81409369b556be85b944d3c5b40070faf9a1b8130631e2e7da"
+  },
+  {
+    "id": "docs-alchemist-alchemist-session-engine-v1",
+    "slug": "docs-alchemist-alchemist-session-engine-v1",
+    "title": "ALCHEMIST SESSION ENGINE V1",
+    "path": "docs/alchemist/ALCHEMIST_SESSION_ENGINE_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\n session-engine.js  provides a deterministic session lifecycle manager for content assembly. It enforces a single non-finalized session, protects block data from outside mutation, and persists state through  localStorage  for reload",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST SESSION ENGINE V1",
+        "slug": "alchemist-session-engine-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Public API",
+        "slug": "public-api"
+      },
+      {
+        "level": 3,
+        "text": "startSession name?",
+        "slug": "startsession-name"
+      },
+      {
+        "level": 3,
+        "text": "addBlock block",
+        "slug": "addblock-block"
+      },
+      {
+        "level": 3,
+        "text": "removeBlock id",
+        "slug": "removeblock-id"
+      },
+      {
+        "level": 3,
+        "text": "setReviewing",
+        "slug": "setreviewing"
+      },
+      {
+        "level": 3,
+        "text": "finalizeSession",
+        "slug": "finalizesession"
+      },
+      {
+        "level": 3,
+        "text": "getSession",
+        "slug": "getsession"
+      },
+      {
+        "level": 3,
+        "text": "reset",
+        "slug": "reset"
+      },
+      {
+        "level": 2,
+        "text": "Session States",
+        "slug": "session-states"
+      },
+      {
+        "level": 2,
+        "text": "Rules Enforced",
+        "slug": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "text": "Persistence",
+        "slug": "persistence"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST SESSION ENGINE V1",
+        "anchor": "alchemist-session-engine-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "startSession name?",
+        "anchor": "startsession-name"
+      },
+      {
+        "level": 3,
+        "title": "addBlock block",
+        "anchor": "addblock-block"
+      },
+      {
+        "level": 3,
+        "title": "removeBlock id",
+        "anchor": "removeblock-id"
+      },
+      {
+        "level": 3,
+        "title": "setReviewing",
+        "anchor": "setreviewing"
+      },
+      {
+        "level": 3,
+        "title": "finalizeSession",
+        "anchor": "finalizesession"
+      },
+      {
+        "level": 3,
+        "title": "getSession",
+        "anchor": "getsession"
+      },
+      {
+        "level": 3,
+        "title": "reset",
+        "anchor": "reset"
+      },
+      {
+        "level": 2,
+        "title": "Session States",
+        "anchor": "session-states"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Persistence",
+        "anchor": "persistence"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 205,
+    "checksum": "055eaaabe4834d9ca08adfca3b6bdd76651c85e4989f718031a94016e139aa02"
+  },
+  {
+    "id": "docs-alchemist-alchemist-session-review-mode-v1",
+    "slug": "docs-alchemist-alchemist-session-review-mode-v1",
+    "title": "ALCHEMIST SESSION REVIEW MODE V1",
+    "path": "docs/alchemist/ALCHEMIST_SESSION_REVIEW_MODE_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Convert final cards into an intuitive decision flow where each card becomes a decision unit for keep/discard/publish.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST SESSION REVIEW MODE V1",
+        "slug": "alchemist-session-review-mode-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Design Philosophy",
+        "slug": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "text": "Interaction Model",
+        "slug": "interaction-model"
+      },
+      {
+        "level": 3,
+        "text": "Card States",
+        "slug": "card-states"
+      },
+      {
+        "level": 3,
+        "text": "Gestures",
+        "slug": "gestures"
+      },
+      {
+        "level": 3,
+        "text": "Visual Feedback  UI Adapter",
+        "slug": "visual-feedback-ui-adapter"
+      },
+      {
+        "level": 2,
+        "text": "System",
+        "slug": "system"
+      },
+      {
+        "level": 3,
+        "text": "Review Controller",
+        "slug": "review-controller"
+      },
+      {
+        "level": 3,
+        "text": "Decision Store",
+        "slug": "decision-store"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Final Card",
+        "slug": "final-card"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria Mapping",
+        "slug": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "text": "DoD",
+        "slug": "dod"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST SESSION REVIEW MODE V1",
+        "anchor": "alchemist-session-review-mode-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "Interaction Model",
+        "anchor": "interaction-model"
+      },
+      {
+        "level": 3,
+        "title": "Card States",
+        "anchor": "card-states"
+      },
+      {
+        "level": 3,
+        "title": "Gestures",
+        "anchor": "gestures"
+      },
+      {
+        "level": 3,
+        "title": "Visual Feedback  UI Adapter",
+        "anchor": "visual-feedback-ui-adapter"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 3,
+        "title": "Review Controller",
+        "anchor": "review-controller"
+      },
+      {
+        "level": 3,
+        "title": "Decision Store",
+        "anchor": "decision-store"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Final Card",
+        "anchor": "final-card"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "title": "DoD",
+        "anchor": "dod"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 290,
+    "checksum": "cedd76deb1c89cd0c41302e87c5bdd7f5b7d8e3c503d4f59ecaaf3fbab2c6701"
+  },
+  {
+    "id": "docs-alchemist-alchemist-ui-integration-layer-v1",
+    "slug": "docs-alchemist-alchemist-ui-integration-layer-v1",
+    "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+    "path": "docs/alchemist/ALCHEMIST_UI_INTEGRATION_LAYER_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Bridge swipe/selection UI interactions into Alchemist core systems through a non-invasive layer that listens and routes events without touching existing gesture logic.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST UI INTEGRATION LAYER V1",
+        "slug": "alchemist-ui-integration-layer-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Design Philosophy",
+        "slug": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "text": "System",
+        "slug": "system"
+      },
+      {
+        "level": 3,
+        "text": "Selection Hook",
+        "slug": "selection-hook"
+      },
+      {
+        "level": 3,
+        "text": "Integration Router",
+        "slug": "integration-router"
+      },
+      {
+        "level": 3,
+        "text": "Safe Adapter",
+        "slug": "safe-adapter"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Integration Points",
+        "slug": "integration-points"
+      },
+      {
+        "level": 2,
+        "text": "Features Enabled",
+        "slug": "features-enabled"
+      },
+      {
+        "level": 2,
+        "text": "Failure Handling",
+        "slug": "failure-handling"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria",
+        "slug": "success-criteria"
+      },
+      {
+        "level": 2,
+        "text": "DoD",
+        "slug": "dod"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+        "anchor": "alchemist-ui-integration-layer-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 3,
+        "title": "Selection Hook",
+        "anchor": "selection-hook"
+      },
+      {
+        "level": 3,
+        "title": "Integration Router",
+        "anchor": "integration-router"
+      },
+      {
+        "level": 3,
+        "title": "Safe Adapter",
+        "anchor": "safe-adapter"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Integration Points",
+        "anchor": "integration-points"
+      },
+      {
+        "level": 2,
+        "title": "Features Enabled",
+        "anchor": "features-enabled"
+      },
+      {
+        "level": 2,
+        "title": "Failure Handling",
+        "anchor": "failure-handling"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      },
+      {
+        "level": 2,
+        "title": "DoD",
+        "anchor": "dod"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 303,
+    "checksum": "f3e67d1b9c5748673d829cf469a931c1d0fa7eabd64c9d528570cc49231fcb5e"
+  },
+  {
+    "id": "docs-alchemist-alchemist-zay-compiler-v1",
+    "slug": "docs-alchemist-alchemist-zay-compiler-v1",
+    "title": "ALCHEMIST ZAY COMPILER V1",
+    "path": "docs/alchemist/ALCHEMIST_ZAY_COMPILER_V1.md",
+    "collection": "docs",
+    "category": "alchemist",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\nConvert a finalized Alchemist session into a portable  .zay  package blueprint with deterministic output.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ALCHEMIST ZAY COMPILER V1",
+        "slug": "alchemist-zay-compiler-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Input",
+        "slug": "input"
+      },
+      {
+        "level": 2,
+        "text": "Output",
+        "slug": "output"
+      },
+      {
+        "level": 2,
+        "text": "Includes",
+        "slug": "includes"
+      },
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      },
+      {
+        "level": 2,
+        "text": "Success Criteria Mapping",
+        "slug": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "text": "Module Output",
+        "slug": "module-output"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST ZAY COMPILER V1",
+        "anchor": "alchemist-zay-compiler-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Input",
+        "anchor": "input"
+      },
+      {
+        "level": 2,
+        "title": "Output",
+        "anchor": "output"
+      },
+      {
+        "level": 2,
+        "title": "Includes",
+        "anchor": "includes"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "title": "Module Output",
+        "anchor": "module-output"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 156,
+    "checksum": "de38542e776f7a004e3a0ddcd4b4f530581052fd120cd423f9dec101a7a01afe"
+  },
+  {
+    "id": "docs-alchemist-audit",
+    "slug": "docs-alchemist-audit",
+    "title": "Alchemist Repository Architecture Audit",
+    "path": "docs/alchemist_audit.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Date: 2026-06-04\nRepository:  https://github.com/via-decide/alchemist app.git \nLocal source inspected:  /workspace/alchemist app",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist Repository Architecture Audit",
+        "slug": "alchemist-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "text": "Source Acquisition",
+        "slug": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Classification",
+        "slug": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "text": "Entry Points",
+        "slug": "entry-points"
+      },
+      {
+        "level": 2,
+        "text": "Module Structure",
+        "slug": "module-structure"
+      },
+      {
+        "level": 2,
+        "text": "Data Flow",
+        "slug": "data-flow"
+      },
+      {
+        "level": 3,
+        "text": "Shipped quiz and export flow",
+        "slug": "shipped-quiz-and-export-flow"
+      },
+      {
+        "level": 3,
+        "text": "Kernel integration flow",
+        "slug": "kernel-integration-flow"
+      },
+      {
+        "level": 3,
+        "text": "Python publishing flow",
+        "slug": "python-publishing-flow"
+      },
+      {
+        "level": 2,
+        "text": "Dependency Analysis",
+        "slug": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "text": "Browser/CDN dependencies",
+        "slug": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "text": "npm / Node packages",
+        "slug": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "text": "Python packages",
+        "slug": "python-packages"
+      },
+      {
+        "level": 3,
+        "text": "Other platform files",
+        "slug": "other-platform-files"
+      },
+      {
+        "level": 2,
+        "text": "Deployment Model",
+        "slug": "deployment-model"
+      },
+      {
+        "level": 2,
+        "text": "Capability Inventory",
+        "slug": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Diagram",
+        "slug": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "text": "Risks and Constraints",
+        "slug": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "text": "Audit Conclusion",
+        "slug": "audit-conclusion"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Repository Architecture Audit",
+        "anchor": "alchemist-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 3,
+        "title": "Shipped quiz and export flow",
+        "anchor": "shipped-quiz-and-export-flow"
+      },
+      {
+        "level": 3,
+        "title": "Kernel integration flow",
+        "anchor": "kernel-integration-flow"
+      },
+      {
+        "level": 3,
+        "title": "Python publishing flow",
+        "anchor": "python-publishing-flow"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "npm / Node packages",
+        "anchor": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 3,
+        "title": "Other platform files",
+        "anchor": "other-platform-files"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 7,
+    "wordCount": 1431,
+    "checksum": "fec487d3eb77aabbe2fa3150de6e0222ed2409b82ca566dbdde777c82a6a6685"
+  },
+  {
+    "id": "docs-merge-recommendation",
+    "slug": "docs-merge-recommendation",
+    "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+    "path": "docs/merge_recommendation.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+        "slug": "alchemist-vialogic-zayvora-visual-engine-merge-recommendation"
+      },
+      {
+        "level": 2,
+        "text": "Executive Recommendation",
+        "slug": "executive-recommendation"
+      },
+      {
+        "level": 2,
+        "text": "Discovery Status",
+        "slug": "discovery-status"
+      },
+      {
+        "level": 2,
+        "text": "Repository Purpose Summary",
+        "slug": "repository-purpose-summary"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Classification Matrix",
+        "slug": "architecture-classification-matrix"
+      },
+      {
+        "level": 2,
+        "text": "Runtime and Deployment Matrix",
+        "slug": "runtime-and-deployment-matrix"
+      },
+      {
+        "level": 2,
+        "text": "Dependency Map",
+        "slug": "dependency-map"
+      },
+      {
+        "level": 2,
+        "text": "Capability Matrix",
+        "slug": "capability-matrix"
+      },
+      {
+        "level": 2,
+        "text": "Overlap Detection and Recommendation",
+        "slug": "overlap-detection-and-recommendation"
+      },
+      {
+        "level": 2,
+        "text": "Integration Readiness Assessment",
+        "slug": "integration-readiness-assessment"
+      },
+      {
+        "level": 3,
+        "text": "ViaLogic placement",
+        "slug": "vialogic-placement"
+      },
+      {
+        "level": 3,
+        "text": "Visual Engine placement",
+        "slug": "visual-engine-placement"
+      },
+      {
+        "level": 2,
+        "text": "ZAY Ecosystem Mapping",
+        "slug": "zay-ecosystem-mapping"
+      },
+      {
+        "level": 3,
+        "text": "Layer Ownership Table",
+        "slug": "layer-ownership-table"
+      },
+      {
+        "level": 2,
+        "text": "Recommended Merge Strategy",
+        "slug": "recommended-merge-strategy"
+      },
+      {
+        "level": 3,
+        "text": "Do not choose pure Option A",
+        "slug": "do-not-choose-pure-option-a"
+      },
+      {
+        "level": 3,
+        "text": "Do not choose pure Option B yet",
+        "slug": "do-not-choose-pure-option-b-yet"
+      },
+      {
+        "level": 3,
+        "text": "Do not choose pure Option C",
+        "slug": "do-not-choose-pure-option-c"
+      },
+      {
+        "level": 3,
+        "text": "Choose Option D",
+        "slug": "choose-option-d"
+      },
+      {
+        "level": 2,
+        "text": "Integration Risks",
+        "slug": "integration-risks"
+      },
+      {
+        "level": 2,
+        "text": "Proposed Approval Gate Before Any Integration",
+        "slug": "proposed-approval-gate-before-any-integration"
+      },
+      {
+        "level": 2,
+        "text": "Final Recommendation",
+        "slug": "final-recommendation"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+        "anchor": "alchemist-vialogic-zayvora-visual-engine-merge-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Executive Recommendation",
+        "anchor": "executive-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Discovery Status",
+        "anchor": "discovery-status"
+      },
+      {
+        "level": 2,
+        "title": "Repository Purpose Summary",
+        "anchor": "repository-purpose-summary"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification Matrix",
+        "anchor": "architecture-classification-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Runtime and Deployment Matrix",
+        "anchor": "runtime-and-deployment-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Map",
+        "anchor": "dependency-map"
+      },
+      {
+        "level": 2,
+        "title": "Capability Matrix",
+        "anchor": "capability-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Overlap Detection and Recommendation",
+        "anchor": "overlap-detection-and-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Integration Readiness Assessment",
+        "anchor": "integration-readiness-assessment"
+      },
+      {
+        "level": 3,
+        "title": "ViaLogic placement",
+        "anchor": "vialogic-placement"
+      },
+      {
+        "level": 3,
+        "title": "Visual Engine placement",
+        "anchor": "visual-engine-placement"
+      },
+      {
+        "level": 2,
+        "title": "ZAY Ecosystem Mapping",
+        "anchor": "zay-ecosystem-mapping"
+      },
+      {
+        "level": 3,
+        "title": "Layer Ownership Table",
+        "anchor": "layer-ownership-table"
+      },
+      {
+        "level": 2,
+        "title": "Recommended Merge Strategy",
+        "anchor": "recommended-merge-strategy"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option A",
+        "anchor": "do-not-choose-pure-option-a"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option B yet",
+        "anchor": "do-not-choose-pure-option-b-yet"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option C",
+        "anchor": "do-not-choose-pure-option-c"
+      },
+      {
+        "level": 3,
+        "title": "Choose Option D",
+        "anchor": "choose-option-d"
+      },
+      {
+        "level": 2,
+        "title": "Integration Risks",
+        "anchor": "integration-risks"
+      },
+      {
+        "level": 2,
+        "title": "Proposed Approval Gate Before Any Integration",
+        "anchor": "proposed-approval-gate-before-any-integration"
+      },
+      {
+        "level": 2,
+        "title": "Final Recommendation",
+        "anchor": "final-recommendation"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 11,
+    "wordCount": 2415,
+    "checksum": "1207dc45466cb8c6ef92cd8d13b3dc050a1bcdce5c68f68d1b39acf0461cf7f7"
+  },
+  {
+    "id": "docs-pr-a-core-exec-01-dod",
+    "slug": "docs-pr-a-core-exec-01-dod",
+    "title": "Definition of Done",
+    "path": "docs/pr/A-CORE-EXEC-01/dod.md",
+    "collection": "docs",
+    "category": "pr/A-CORE-EXEC-01",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "-     all 5 control files created\n-     no context duplication\n-     structure is minimal\n-     system task can proceed",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Definition of Done",
+        "slug": "definition-of-done"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Definition of Done",
+        "anchor": "definition-of-done"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 22,
+    "checksum": "81021635e38b2e31a860bd21bedac63bf2b7a73434eda3a9009dc1bfccbb7436"
+  },
+  {
+    "id": "docs-pr-a-core-exec-01-guard",
+    "slug": "docs-pr-a-core-exec-01-guard",
+    "title": "Guard",
+    "path": "docs/pr/A-CORE-EXEC-01/guard.md",
+    "collection": "docs",
+    "category": "pr/A-CORE-EXEC-01",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "- no hallucinated features\n- no multiple outputs\n- no exceeding file limits\n- no breaking swipe UI",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Guard",
+        "slug": "guard"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Guard",
+        "anchor": "guard"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 19,
+    "checksum": "ab71a4b56a38e4c120d469e6c4b3de1da939e86ce43fd3e41a3c963562403563"
+  },
+  {
+    "id": "docs-pr-a-core-exec-01-purpose",
+    "slug": "docs-pr-a-core-exec-01-purpose",
+    "title": "Purpose",
+    "path": "docs/pr/A-CORE-EXEC-01/purpose.md",
+    "collection": "docs",
+    "category": "pr/A-CORE-EXEC-01",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "- enable payment-ready infrastructure\n- maintain WhatsApp-based login flow\n- support deterministic execution via PR system",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 17,
+    "checksum": "8e55731876bfcf39b256f1bffddfac82c111e1877dfd2c5d7088f430df403539"
+  },
+  {
+    "id": "docs-pr-a-core-exec-01-rules",
+    "slug": "docs-pr-a-core-exec-01-rules",
+    "title": "Rules",
+    "path": "docs/pr/A-CORE-EXEC-01/rules.md",
+    "collection": "docs",
+    "category": "pr/A-CORE-EXEC-01",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "- no frontend secret exposure\n- no UI modification\n- no new modules\n- static site compatibility only\n- follow PR-driven execution strictly",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Rules",
+        "slug": "rules"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 24,
+    "checksum": "f78063b9dfe70eb0de95beedde9879ad707eab4208a06ab7a7d02b736318e175"
+  },
+  {
+    "id": "docs-pr-a-core-exec-01-task",
+    "slug": "docs-pr-a-core-exec-01-task",
+    "title": "Task",
+    "path": "docs/pr/A-CORE-EXEC-01/task.md",
+    "collection": "docs",
+    "category": "pr/A-CORE-EXEC-01",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Task\nPrepare Alchemist for Stripe-ready execution system using secure API hooks and PR-driven control",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Task",
+        "slug": "task"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Task",
+        "anchor": "task"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 14,
+    "checksum": "cb2265e857d51f0d53abdf8d53c03b0221ac8eaf3796832172f809c529aab182"
+  },
+  {
+    "id": "docs-publishing-pipeline",
+    "slug": "docs-publishing-pipeline",
+    "title": "Publishing Pipeline",
+    "path": "docs/publishing_pipeline.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "This repository now contains a deterministic publishing pipeline that outputs:",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Publishing Pipeline",
+        "slug": "publishing-pipeline"
+      },
+      {
+        "level": 2,
+        "text": "Overview",
+        "slug": "overview"
+      },
+      {
+        "level": 1,
+        "text": "or",
+        "slug": "or"
+      },
+      {
+        "level": 2,
+        "text": "Content model",
+        "slug": "content-model"
+      },
+      {
+        "level": 2,
+        "text": "Build stages",
+        "slug": "build-stages"
+      },
+      {
+        "level": 2,
+        "text": "Quality checks",
+        "slug": "quality-checks"
+      },
+      {
+        "level": 2,
+        "text": "Regenerating diagrams only",
+        "slug": "regenerating-diagrams-only"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Publishing Pipeline",
+        "anchor": "publishing-pipeline"
+      },
+      {
+        "level": 2,
+        "title": "Overview",
+        "anchor": "overview"
+      },
+      {
+        "level": 1,
+        "title": "or",
+        "anchor": "or"
+      },
+      {
+        "level": 2,
+        "title": "Content model",
+        "anchor": "content-model"
+      },
+      {
+        "level": 2,
+        "title": "Build stages",
+        "anchor": "build-stages"
+      },
+      {
+        "level": 2,
+        "title": "Quality checks",
+        "anchor": "quality-checks"
+      },
+      {
+        "level": 2,
+        "title": "Regenerating diagrams only",
+        "anchor": "regenerating-diagrams-only"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 196,
+    "checksum": "9fc73c966c0bcf07a4b09adebe5e858ad6822ec0d1cf144f37f48fd535b40053"
+  },
+  {
+    "id": "docs-system-alchemist-stripe-ready",
+    "slug": "docs-system-alchemist-stripe-ready",
+    "title": "Purpose",
+    "path": "docs/system/ALCHEMIST_STRIPE_READY.md",
+    "collection": "docs",
+    "category": "system",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\nPrepare Alchemist for secure Stripe integration.",
+    "headings": [
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Flow",
+        "slug": "flow"
+      },
+      {
+        "level": 2,
+        "text": "Security Rules",
+        "slug": "security-rules"
+      },
+      {
+        "level": 2,
+        "text": "Integration Points",
+        "slug": "integration-points"
+      }
+    ],
+    "toc": [
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "Security Rules",
+        "anchor": "security-rules"
+      },
+      {
+        "level": 2,
+        "title": "Integration Points",
+        "anchor": "integration-points"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 60,
+    "checksum": "614c22fd31904cebe7f01ea0ed496a1e42d465596cf924dbf9100f915eb8d0a8"
+  },
+  {
+    "id": "docs-system-codex-bootstrap-enforcer-v1",
+    "slug": "docs-system-codex-bootstrap-enforcer-v1",
+    "title": "CODEX BOOTSTRAP ENFORCER V1",
+    "path": "docs/system/CODEX_BOOTSTRAP_ENFORCER_V1.md",
+    "collection": "docs",
+    "category": "system",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\nEnsure Codex reloads critical instructions and session context on every fresh environment initialization.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "CODEX BOOTSTRAP ENFORCER V1",
+        "slug": "codex-bootstrap-enforcer-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Bootstrap Rule  mandatory",
+        "slug": "bootstrap-rule-mandatory"
+      },
+      {
+        "level": 2,
+        "text": "Instruction Priority",
+        "slug": "instruction-priority"
+      },
+      {
+        "level": 2,
+        "text": "Session Persistence",
+        "slug": "session-persistence"
+      },
+      {
+        "level": 2,
+        "text": "Anti-Refresh Strategy",
+        "slug": "anti-refresh-strategy"
+      },
+      {
+        "level": 2,
+        "text": "Execution Guard",
+        "slug": "execution-guard"
+      },
+      {
+        "level": 2,
+        "text": "Self-Bootstrap PR Control  mandatory",
+        "slug": "self-bootstrap-pr-control-mandatory"
+      },
+      {
+        "level": 2,
+        "text": "Repository Safety Rule",
+        "slug": "repository-safety-rule"
+      },
+      {
+        "level": 2,
+        "text": "Definition of Done",
+        "slug": "definition-of-done"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "CODEX BOOTSTRAP ENFORCER V1",
+        "anchor": "codex-bootstrap-enforcer-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Bootstrap Rule  mandatory",
+        "anchor": "bootstrap-rule-mandatory"
+      },
+      {
+        "level": 2,
+        "title": "Instruction Priority",
+        "anchor": "instruction-priority"
+      },
+      {
+        "level": 2,
+        "title": "Session Persistence",
+        "anchor": "session-persistence"
+      },
+      {
+        "level": 2,
+        "title": "Anti-Refresh Strategy",
+        "anchor": "anti-refresh-strategy"
+      },
+      {
+        "level": 2,
+        "title": "Execution Guard",
+        "anchor": "execution-guard"
+      },
+      {
+        "level": 2,
+        "title": "Self-Bootstrap PR Control  mandatory",
+        "anchor": "self-bootstrap-pr-control-mandatory"
+      },
+      {
+        "level": 2,
+        "title": "Repository Safety Rule",
+        "anchor": "repository-safety-rule"
+      },
+      {
+        "level": 2,
+        "title": "Definition of Done",
+        "anchor": "definition-of-done"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 257,
+    "checksum": "39dbe1cdf532d6115e08fe67fc76fa65d9351ae3ce763e37e07e6359a1c217b9"
+  },
+  {
+    "id": "docs-system-codex-instruction-bootstrap-v1",
+    "slug": "docs-system-codex-instruction-bootstrap-v1",
+    "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+    "path": "docs/system/CODEX_INSTRUCTION_BOOTSTRAP_V1.md",
+    "collection": "docs",
+    "category": "system",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Purpose\nEstablish a persistent instruction bootstrap so Codex does not default to generic behavior and always loads repo-specific rules before execution.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "CODEX INSTRUCTION BOOTSTRAP V1",
+        "slug": "codex-instruction-bootstrap-v1"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Required Files",
+        "slug": "required-files"
+      },
+      {
+        "level": 2,
+        "text": "Execution Flow",
+        "slug": "execution-flow"
+      },
+      {
+        "level": 2,
+        "text": "Hard Rules",
+        "slug": "hard-rules"
+      },
+      {
+        "level": 2,
+        "text": "Auto-Loading Behavior",
+        "slug": "auto-loading-behavior"
+      },
+      {
+        "level": 2,
+        "text": "Verification Output  expected",
+        "slug": "verification-output-expected"
+      },
+      {
+        "level": 2,
+        "text": "DoD Mapping",
+        "slug": "dod-mapping"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+        "anchor": "codex-instruction-bootstrap-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Required Files",
+        "anchor": "required-files"
+      },
+      {
+        "level": 2,
+        "title": "Execution Flow",
+        "anchor": "execution-flow"
+      },
+      {
+        "level": 2,
+        "title": "Hard Rules",
+        "anchor": "hard-rules"
+      },
+      {
+        "level": 2,
+        "title": "Auto-Loading Behavior",
+        "anchor": "auto-loading-behavior"
+      },
+      {
+        "level": 2,
+        "title": "Verification Output  expected",
+        "anchor": "verification-output-expected"
+      },
+      {
+        "level": 2,
+        "title": "DoD Mapping",
+        "anchor": "dod-mapping"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 1,
+    "wordCount": 215,
+    "checksum": "06053627a3060f288feefdd544b4999cf31ca502eaabb26788376178df36f98a"
+  },
+  {
+    "id": "docs-vialogic-audit",
+    "slug": "docs-vialogic-audit",
+    "title": "ViaLogic Repository Architecture Audit",
+    "path": "docs/vialogic_audit.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Date: 2026-06-04\nRepository:  https://github.com/via-decide/ViaLogic.git \nSource inspected: GitHub web/raw views because outbound  git clone  was blocked by the execution environment proxy.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "ViaLogic Repository Architecture Audit",
+        "slug": "vialogic-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "text": "Source Acquisition",
+        "slug": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Classification",
+        "slug": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "text": "Entry Points",
+        "slug": "entry-points"
+      },
+      {
+        "level": 2,
+        "text": "Module Structure",
+        "slug": "module-structure"
+      },
+      {
+        "level": 2,
+        "text": "Data Flow",
+        "slug": "data-flow"
+      },
+      {
+        "level": 2,
+        "text": "Dependency Analysis",
+        "slug": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "text": "Browser/CDN dependencies",
+        "slug": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "text": "npm / Node packages",
+        "slug": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "text": "Python packages",
+        "slug": "python-packages"
+      },
+      {
+        "level": 2,
+        "text": "Deployment Model",
+        "slug": "deployment-model"
+      },
+      {
+        "level": 2,
+        "text": "Capability Inventory",
+        "slug": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Diagram",
+        "slug": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "text": "Risks and Constraints",
+        "slug": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "text": "Audit Conclusion",
+        "slug": "audit-conclusion"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "ViaLogic Repository Architecture Audit",
+        "anchor": "vialogic-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "npm / Node packages",
+        "anchor": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 6,
+    "wordCount": 1199,
+    "checksum": "74164018959a834095b3ab35cdeed14d51b62a34dd7b3e9e8354b3c32cf009fa"
+  },
+  {
+    "id": "docs-visual-engine-audit",
+    "slug": "docs-visual-engine-audit",
+    "title": "Zayvora Visual Engine Repository Architecture Audit",
+    "path": "docs/visual_engine_audit.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Zayvora Visual Engine Repository Architecture Audit",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Zayvora Visual Engine Repository Architecture Audit",
+        "slug": "zayvora-visual-engine-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "text": "Source Acquisition",
+        "slug": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "text": "Purpose",
+        "slug": "purpose"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Classification",
+        "slug": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "text": "Entry Points",
+        "slug": "entry-points"
+      },
+      {
+        "level": 2,
+        "text": "Module Structure",
+        "slug": "module-structure"
+      },
+      {
+        "level": 2,
+        "text": "Data Flow",
+        "slug": "data-flow"
+      },
+      {
+        "level": 3,
+        "text": "Next.js/API generation flow",
+        "slug": "next-js-api-generation-flow"
+      },
+      {
+        "level": 3,
+        "text": "Root  app.js  legacy/static client flow",
+        "slug": "root-app-js-legacy-static-client-flow"
+      },
+      {
+        "level": 3,
+        "text": "Core pipeline flow observed in  core/pipeline.js",
+        "slug": "core-pipeline-flow-observed-in-core-pipeline-js"
+      },
+      {
+        "level": 2,
+        "text": "Dependency Analysis",
+        "slug": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "text": "npm packages",
+        "slug": "npm-packages"
+      },
+      {
+        "level": 3,
+        "text": "Browser/CDN dependencies",
+        "slug": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "text": "Python packages",
+        "slug": "python-packages"
+      },
+      {
+        "level": 3,
+        "text": "External binary/platform dependencies",
+        "slug": "external-binary-platform-dependencies"
+      },
+      {
+        "level": 2,
+        "text": "Deployment Model",
+        "slug": "deployment-model"
+      },
+      {
+        "level": 2,
+        "text": "Capability Inventory",
+        "slug": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "text": "Architecture Diagram",
+        "slug": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "text": "Risks and Constraints",
+        "slug": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "text": "Audit Conclusion",
+        "slug": "audit-conclusion"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Zayvora Visual Engine Repository Architecture Audit",
+        "anchor": "zayvora-visual-engine-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 3,
+        "title": "Next.js/API generation flow",
+        "anchor": "next-js-api-generation-flow"
+      },
+      {
+        "level": 3,
+        "title": "Root  app.js  legacy/static client flow",
+        "anchor": "root-app-js-legacy-static-client-flow"
+      },
+      {
+        "level": 3,
+        "title": "Core pipeline flow observed in  core/pipeline.js",
+        "anchor": "core-pipeline-flow-observed-in-core-pipeline-js"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "npm packages",
+        "anchor": "npm-packages"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 3,
+        "title": "External binary/platform dependencies",
+        "anchor": "external-binary-platform-dependencies"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 8,
+    "wordCount": 1688,
+    "checksum": "bbb89a545bbf090bb829cb2ea9c54b57f8e030e5319f6acd9f9a525b76930dcd"
+  }
+]

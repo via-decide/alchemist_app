@@ -1,0 +1,305 @@
+{
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "nodes": [
+    {
+      "id": "book-chapters-01-introduction",
+      "label": "Foundations of Analytical Systems",
+      "type": "topic",
+      "path": "book/chapters/01-introduction.md",
+      "tags": []
+    },
+    {
+      "id": "book-chapters-02-architecture",
+      "label": "Cloud and Edge Architecture",
+      "type": "topic",
+      "path": "book/chapters/02-architecture.md",
+      "tags": []
+    },
+    {
+      "id": "content-equations-gibbs-free-energy",
+      "label": "Gibbs Free Energy",
+      "type": "equation",
+      "path": "content/equations/gibbs-free-energy.md",
+      "tags": [
+        "equation",
+        "thermodynamics"
+      ]
+    },
+    {
+      "id": "content-people-josiah-willard-gibbs",
+      "label": "Josiah Willard Gibbs",
+      "type": "scientist",
+      "path": "content/people/josiah-willard-gibbs.md",
+      "tags": [
+        "scientist",
+        "history",
+        "thermodynamics"
+      ]
+    },
+    {
+      "id": "content-physical-thermodynamics",
+      "label": "Thermodynamics",
+      "type": "topic",
+      "path": "content/physical/thermodynamics.md",
+      "tags": [
+        "physical-chemistry",
+        "entropy",
+        "energy"
+      ]
+    },
+    {
+      "id": "docs-alchemist-universe-architecture",
+      "label": "Alchemist Universe Architecture",
+      "type": "topic",
+      "path": "docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md",
+      "tags": []
+    },
+    {
+      "id": "docs-architecture-audit",
+      "label": "Alchemist Architecture Audit",
+      "type": "topic",
+      "path": "docs/ARCHITECTURE_AUDIT.md",
+      "tags": []
+    },
+    {
+      "id": "docs-decision-engine-architecture",
+      "label": "Alchemist Decision Engine Architecture",
+      "type": "topic",
+      "path": "docs/DECISION_ENGINE_ARCHITECTURE.md",
+      "tags": []
+    },
+    {
+      "id": "docs-epub-engine-status",
+      "label": "EPUB Engine Status",
+      "type": "topic",
+      "path": "docs/EPUB_ENGINE_STATUS.md",
+      "tags": []
+    },
+    {
+      "id": "docs-payments-and-credits",
+      "label": "Payments and Credits",
+      "type": "topic",
+      "path": "docs/PAYMENTS_AND_CREDITS.md",
+      "tags": []
+    },
+    {
+      "id": "docs-vault-format",
+      "label": "MASTER VAULT Format",
+      "type": "topic",
+      "path": "docs/VAULT_FORMAT.md",
+      "tags": []
+    },
+    {
+      "id": "docs-vialogic-integration",
+      "label": "ViaLogic Integration",
+      "type": "topic",
+      "path": "docs/VIALOGIC_INTEGRATION.md",
+      "tags": []
+    },
+    {
+      "id": "docs-visual-engine-integration",
+      "label": "Visual Engine Integration",
+      "type": "topic",
+      "path": "docs/VISUAL_ENGINE_INTEGRATION.md",
+      "tags": []
+    },
+    {
+      "id": "docs-zay-format-v2",
+      "label": ".ZAY Format V2",
+      "type": "topic",
+      "path": "docs/ZAY_FORMAT_V2.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-3d-block-module-v1",
+      "label": "ALCHEMIST 3D BLOCK MODULE V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_3D_BLOCK_MODULE_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-block-system-v1",
+      "label": "ALCHEMIST BLOCK SYSTEM V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_BLOCK_SYSTEM_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-core-ui-activation-v1",
+      "label": "ALCHEMIST CORE UI ACTIVATION V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_CORE_UI_ACTIVATION_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-credit-vault-system-v1",
+      "label": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_CREDIT_VAULT_SYSTEM_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-ingestion-engine-v1",
+      "label": "ALCHEMIST INGESTION ENGINE V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_INGESTION_ENGINE_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-session-engine-v1",
+      "label": "ALCHEMIST SESSION ENGINE V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_SESSION_ENGINE_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-session-review-mode-v1",
+      "label": "ALCHEMIST SESSION REVIEW MODE V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_SESSION_REVIEW_MODE_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-ui-integration-layer-v1",
+      "label": "ALCHEMIST UI INTEGRATION LAYER V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_UI_INTEGRATION_LAYER_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-alchemist-zay-compiler-v1",
+      "label": "ALCHEMIST ZAY COMPILER V1",
+      "type": "topic",
+      "path": "docs/alchemist/ALCHEMIST_ZAY_COMPILER_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-alchemist-audit",
+      "label": "Alchemist Repository Architecture Audit",
+      "type": "topic",
+      "path": "docs/alchemist_audit.md",
+      "tags": []
+    },
+    {
+      "id": "docs-merge-recommendation",
+      "label": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+      "type": "topic",
+      "path": "docs/merge_recommendation.md",
+      "tags": []
+    },
+    {
+      "id": "docs-pr-a-core-exec-01-dod",
+      "label": "Definition of Done",
+      "type": "topic",
+      "path": "docs/pr/A-CORE-EXEC-01/dod.md",
+      "tags": []
+    },
+    {
+      "id": "docs-pr-a-core-exec-01-guard",
+      "label": "Guard",
+      "type": "topic",
+      "path": "docs/pr/A-CORE-EXEC-01/guard.md",
+      "tags": []
+    },
+    {
+      "id": "docs-pr-a-core-exec-01-purpose",
+      "label": "Purpose",
+      "type": "topic",
+      "path": "docs/pr/A-CORE-EXEC-01/purpose.md",
+      "tags": []
+    },
+    {
+      "id": "docs-pr-a-core-exec-01-rules",
+      "label": "Rules",
+      "type": "topic",
+      "path": "docs/pr/A-CORE-EXEC-01/rules.md",
+      "tags": []
+    },
+    {
+      "id": "docs-pr-a-core-exec-01-task",
+      "label": "Task",
+      "type": "topic",
+      "path": "docs/pr/A-CORE-EXEC-01/task.md",
+      "tags": []
+    },
+    {
+      "id": "docs-publishing-pipeline",
+      "label": "Publishing Pipeline",
+      "type": "topic",
+      "path": "docs/publishing_pipeline.md",
+      "tags": []
+    },
+    {
+      "id": "docs-system-alchemist-stripe-ready",
+      "label": "Purpose",
+      "type": "topic",
+      "path": "docs/system/ALCHEMIST_STRIPE_READY.md",
+      "tags": []
+    },
+    {
+      "id": "docs-system-codex-bootstrap-enforcer-v1",
+      "label": "CODEX BOOTSTRAP ENFORCER V1",
+      "type": "topic",
+      "path": "docs/system/CODEX_BOOTSTRAP_ENFORCER_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-system-codex-instruction-bootstrap-v1",
+      "label": "CODEX INSTRUCTION BOOTSTRAP V1",
+      "type": "topic",
+      "path": "docs/system/CODEX_INSTRUCTION_BOOTSTRAP_V1.md",
+      "tags": []
+    },
+    {
+      "id": "docs-vialogic-audit",
+      "label": "ViaLogic Repository Architecture Audit",
+      "type": "topic",
+      "path": "docs/vialogic_audit.md",
+      "tags": []
+    },
+    {
+      "id": "docs-visual-engine-audit",
+      "label": "Zayvora Visual Engine Repository Architecture Audit",
+      "type": "topic",
+      "path": "docs/visual_engine_audit.md",
+      "tags": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "content-equations-gibbs-free-energy",
+      "target": "josiah-willard-gibbs",
+      "type": "scientist"
+    },
+    {
+      "source": "content-people-josiah-willard-gibbs",
+      "target": "content-physical-thermodynamics",
+      "type": "related"
+    },
+    {
+      "source": "content-physical-thermodynamics",
+      "target": "content-equations-gibbs-free-energy",
+      "type": "links_to"
+    },
+    {
+      "source": "content-physical-thermodynamics",
+      "target": "content-equations-gibbs-free-energy",
+      "type": "prerequisite"
+    },
+    {
+      "source": "content-physical-thermodynamics",
+      "target": "content-people-josiah-willard-gibbs",
+      "type": "links_to"
+    },
+    {
+      "source": "content-physical-thermodynamics",
+      "target": "content-people-josiah-willard-gibbs",
+      "type": "related"
+    },
+    {
+      "source": "content-physical-thermodynamics",
+      "target": "gibbs-free-energy",
+      "type": "equation"
+    }
+  ]
+}

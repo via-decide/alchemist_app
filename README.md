@@ -115,3 +115,46 @@ make publish
 ```
 
 Outputs include `build/epub/book.epub`, `build/pdf/book_print.pdf`, and generated diagram assets.
+
+## Research-grade knowledge platform foundation
+
+Alchemist now includes a local-first Markdown knowledge engine designed to evolve the app into a chemistry Knowledge Operating System. Markdown remains the source of truth and the build is deterministic: generated indexes are reproducible from repository files without cloud services or external search APIs.
+
+### Knowledge build
+
+Run:
+
+```bash
+npm run build:knowledge
+```
+
+The build recursively discovers Markdown in `content/`, `docs/`, `book/`, and `research/`, extracts YAML frontmatter, headings, links, backlinks, equations, Mermaid blocks, reading time, topics, and relationship metadata, then writes:
+
+- `public/knowledge/knowledge-index.json`
+- `public/knowledge/search-index.json`
+- `public/knowledge/graph.json`
+- `public/knowledge/navigation.json`
+- `public/knowledge/toc.json`
+- `public/knowledge/knowledge-stats.json`
+- `graphs/graph.mmd`
+- `docs/generated/README.md`
+- `docs/generated/SUMMARY.md`
+
+### Static REST contract
+
+`api/knowledge-api.js` provides a JSON-first handler for future static/serverless adapters:
+
+- `GET /topics`
+- `GET /topic/{slug}`
+- `GET /search?q=...`
+- `GET /graph`
+- `GET /history`
+- `GET /equations`
+- `GET /people`
+- `GET /references`
+- `GET /export/epub`
+- `GET /export/pdf`
+
+### Mermaid and offline readiness
+
+`core/knowledge/mermaid-renderer.js` upgrades Markdown Mermaid code blocks into renderable `.mermaid` containers when Mermaid is available. The service worker pre-caches generated knowledge indexes so future PWA screens can support offline reading, offline search, and offline graph traversal.
