@@ -1,9 +1,15 @@
-const CACHE_NAME = 'alchemist-static-v1';
+const CACHE_NAME = 'alchemist-static-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './MASTER_VAULT.json',
   './manifest.json',
+  './public/knowledge/knowledge-index.json',
+  './public/knowledge/search-index.json',
+  './public/knowledge/graph.json',
+  './public/knowledge/navigation.json',
+  './public/knowledge/toc.json',
+  './core/knowledge/mermaid-renderer.js',
   './kernel/alchemist/block-system.js',
   './kernel/alchemist/session-engine.js',
   './kernel/alchemist/ingestion-engine.js',

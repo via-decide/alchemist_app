@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "node tests/run-tests.mjs",
-    "validate:vault": "node scripts/validate-vault.mjs"
+    "validate:vault": "node scripts/validate-vault.mjs",
+    "build:knowledge": "node scripts/build-knowledge.mjs"
   }
 }

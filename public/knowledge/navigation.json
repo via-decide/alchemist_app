@@ -1,0 +1,193 @@
+{
+  "chapters": [
+    {
+      "slug": "book-chapters-01-introduction",
+      "title": "Foundations of Analytical Systems",
+      "path": "book/chapters/01-introduction.md"
+    },
+    {
+      "slug": "book-chapters-02-architecture",
+      "title": "Cloud and Edge Architecture",
+      "path": "book/chapters/02-architecture.md"
+    }
+  ],
+  "equations": [
+    {
+      "slug": "content-equations-gibbs-free-energy",
+      "title": "Gibbs Free Energy",
+      "path": "content/equations/gibbs-free-energy.md"
+    }
+  ],
+  "people": [
+    {
+      "slug": "content-people-josiah-willard-gibbs",
+      "title": "Josiah Willard Gibbs",
+      "path": "content/people/josiah-willard-gibbs.md"
+    }
+  ],
+  "physical": [
+    {
+      "slug": "content-physical-thermodynamics",
+      "title": "Thermodynamics",
+      "path": "content/physical/thermodynamics.md"
+    }
+  ],
+  "root": [
+    {
+      "slug": "docs-alchemist-universe-architecture",
+      "title": "Alchemist Universe Architecture",
+      "path": "docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md"
+    },
+    {
+      "slug": "docs-architecture-audit",
+      "title": "Alchemist Architecture Audit",
+      "path": "docs/ARCHITECTURE_AUDIT.md"
+    },
+    {
+      "slug": "docs-epub-engine-status",
+      "title": "EPUB Engine Status",
+      "path": "docs/EPUB_ENGINE_STATUS.md"
+    },
+    {
+      "slug": "docs-payments-and-credits",
+      "title": "Payments and Credits",
+      "path": "docs/PAYMENTS_AND_CREDITS.md"
+    },
+    {
+      "slug": "docs-vault-format",
+      "title": "MASTER VAULT Format",
+      "path": "docs/VAULT_FORMAT.md"
+    },
+    {
+      "slug": "docs-vialogic-integration",
+      "title": "ViaLogic Integration",
+      "path": "docs/VIALOGIC_INTEGRATION.md"
+    },
+    {
+      "slug": "docs-visual-engine-integration",
+      "title": "Visual Engine Integration",
+      "path": "docs/VISUAL_ENGINE_INTEGRATION.md"
+    },
+    {
+      "slug": "docs-zay-format-v2",
+      "title": ".ZAY Format V2",
+      "path": "docs/ZAY_FORMAT_V2.md"
+    },
+    {
+      "slug": "docs-alchemist-audit",
+      "title": "Alchemist Repository Architecture Audit",
+      "path": "docs/alchemist_audit.md"
+    },
+    {
+      "slug": "docs-merge-recommendation",
+      "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+      "path": "docs/merge_recommendation.md"
+    },
+    {
+      "slug": "docs-publishing-pipeline",
+      "title": "Publishing Pipeline",
+      "path": "docs/publishing_pipeline.md"
+    },
+    {
+      "slug": "docs-vialogic-audit",
+      "title": "ViaLogic Repository Architecture Audit",
+      "path": "docs/vialogic_audit.md"
+    },
+    {
+      "slug": "docs-visual-engine-audit",
+      "title": "Zayvora Visual Engine Repository Architecture Audit",
+      "path": "docs/visual_engine_audit.md"
+    }
+  ],
+  "alchemist": [
+    {
+      "slug": "docs-alchemist-alchemist-3d-block-module-v1",
+      "title": "ALCHEMIST 3D BLOCK MODULE V1",
+      "path": "docs/alchemist/ALCHEMIST_3D_BLOCK_MODULE_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-block-system-v1",
+      "title": "ALCHEMIST BLOCK SYSTEM V1",
+      "path": "docs/alchemist/ALCHEMIST_BLOCK_SYSTEM_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-core-ui-activation-v1",
+      "title": "ALCHEMIST CORE UI ACTIVATION V1",
+      "path": "docs/alchemist/ALCHEMIST_CORE_UI_ACTIVATION_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-credit-vault-system-v1",
+      "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+      "path": "docs/alchemist/ALCHEMIST_CREDIT_VAULT_SYSTEM_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-ingestion-engine-v1",
+      "title": "ALCHEMIST INGESTION ENGINE V1",
+      "path": "docs/alchemist/ALCHEMIST_INGESTION_ENGINE_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-session-engine-v1",
+      "title": "ALCHEMIST SESSION ENGINE V1",
+      "path": "docs/alchemist/ALCHEMIST_SESSION_ENGINE_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-session-review-mode-v1",
+      "title": "ALCHEMIST SESSION REVIEW MODE V1",
+      "path": "docs/alchemist/ALCHEMIST_SESSION_REVIEW_MODE_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-ui-integration-layer-v1",
+      "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+      "path": "docs/alchemist/ALCHEMIST_UI_INTEGRATION_LAYER_V1.md"
+    },
+    {
+      "slug": "docs-alchemist-alchemist-zay-compiler-v1",
+      "title": "ALCHEMIST ZAY COMPILER V1",
+      "path": "docs/alchemist/ALCHEMIST_ZAY_COMPILER_V1.md"
+    }
+  ],
+  "pr/A-CORE-EXEC-01": [
+    {
+      "slug": "docs-pr-a-core-exec-01-dod",
+      "title": "Definition of Done",
+      "path": "docs/pr/A-CORE-EXEC-01/dod.md"
+    },
+    {
+      "slug": "docs-pr-a-core-exec-01-guard",
+      "title": "Guard",
+      "path": "docs/pr/A-CORE-EXEC-01/guard.md"
+    },
+    {
+      "slug": "docs-pr-a-core-exec-01-purpose",
+      "title": "Purpose",
+      "path": "docs/pr/A-CORE-EXEC-01/purpose.md"
+    },
+    {
+      "slug": "docs-pr-a-core-exec-01-rules",
+      "title": "Rules",
+      "path": "docs/pr/A-CORE-EXEC-01/rules.md"
+    },
+    {
+      "slug": "docs-pr-a-core-exec-01-task",
+      "title": "Task",
+      "path": "docs/pr/A-CORE-EXEC-01/task.md"
+    }
+  ],
+  "system": [
+    {
+      "slug": "docs-system-alchemist-stripe-ready",
+      "title": "Purpose",
+      "path": "docs/system/ALCHEMIST_STRIPE_READY.md"
+    },
+    {
+      "slug": "docs-system-codex-bootstrap-enforcer-v1",
+      "title": "CODEX BOOTSTRAP ENFORCER V1",
+      "path": "docs/system/CODEX_BOOTSTRAP_ENFORCER_V1.md"
+    },
+    {
+      "slug": "docs-system-codex-instruction-bootstrap-v1",
+      "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+      "path": "docs/system/CODEX_INSTRUCTION_BOOTSTRAP_V1.md"
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+[
+  {
+    "slug": "book-chapters-01-introduction",
+    "title": "Foundations of Analytical Systems",
+    "path": "book/chapters/01-introduction.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Foundations of Analytical Systems",
+      "Why deterministic publishing matters"
+    ],
+    "equations": [],
+    "text": "foundations of analytical systems this handbook describes a deterministic production path for modern analytical systems publications.  foundations of analytical systems why deterministic publishing matters "
+  },
+  {
+    "slug": "book-chapters-02-architecture",
+    "title": "Cloud and Edge Architecture",
+    "path": "book/chapters/02-architecture.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Cloud and Edge Architecture",
+      "Protocol stack"
+    ],
+    "equations": [],
+    "text": "cloud and edge architecture the workflow spans edge data acquisition, protocol transport, cloud processing, and quality-controlled publication outputs.  cloud and edge architecture protocol stack "
+  },
+  {
+    "slug": "content-equations-gibbs-free-energy",
+    "title": "Gibbs Free Energy",
+    "path": "content/equations/gibbs-free-energy.md",
+    "tags": [
+      "equation",
+      "thermodynamics"
+    ],
+    "author": "",
+    "headings": [
+      "Gibbs Free Energy"
+    ],
+    "equations": [
+      "G = H - TS"
+    ],
+    "text": "gibbs free energy gibbs free energy predicts spontaneity for a chemical process at constant pressure and temperature. equation thermodynamics gibbs free energy g = h - ts"
+  },
+  {
+    "slug": "content-people-josiah-willard-gibbs",
+    "title": "Josiah Willard Gibbs",
+    "path": "content/people/josiah-willard-gibbs.md",
+    "tags": [
+      "scientist",
+      "history",
+      "thermodynamics"
+    ],
+    "author": "",
+    "headings": [
+      "Josiah Willard Gibbs"
+    ],
+    "equations": [],
+    "text": "josiah willard gibbs josiah willard gibbs developed mathematical foundations for chemical thermodynamics and phase equilibria. scientist history thermodynamics josiah willard gibbs "
+  },
+  {
+    "slug": "content-physical-thermodynamics",
+    "title": "Thermodynamics",
+    "path": "content/physical/thermodynamics.md",
+    "tags": [
+      "physical-chemistry",
+      "entropy",
+      "energy"
+    ],
+    "author": "",
+    "headings": [
+      "Thermodynamics",
+      "Core equation"
+    ],
+    "equations": [
+      "\\Delta G = \\Delta H - T\\Delta S"
+    ],
+    "text": "thermodynamics thermodynamics studies heat, work, entropy, and free energy in chemical systems. physical-chemistry entropy energy thermodynamics core equation \\delta g = \\delta h - t\\delta s"
+  },
+  {
+    "slug": "docs-alchemist-universe-architecture",
+    "title": "Alchemist Universe Architecture",
+    "path": "docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Alchemist Universe Architecture",
+      "Purpose",
+      "Runtime Contract",
+      "Folder Layout",
+      "Layer Ownership",
+      "Failure Behavior"
+    ],
+    "equations": [],
+    "text": "alchemist universe architecture alchemist universe keeps   alchemist   as the user-facing learning environment while adding browser-safe reasoning and visualization layers.  alchemist universe architecture purpose runtime contract folder layout layer ownership failure behavior "
+  },
+  {
+    "slug": "docs-architecture-audit",
+    "title": "Alchemist Architecture Audit",
+    "path": "docs/ARCHITECTURE_AUDIT.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Alchemist Architecture Audit",
+      "Status labels",
+      "Repository reality map",
+      "Recommended integration order",
+      "Guardrails for future work"
+    ],
+    "equations": [],
+    "text": "alchemist architecture audit -   active   — shipped or directly used by the browser-first app.\n-   partial   — useful code exists, but integration or production requirements are incomplete.\n-   disconnected   — code exists but is not currently reachable from the shippe  alchemist architecture audit status labels repository reality map recommended integration order guardrails for future work "
+  },
+  {
+    "slug": "docs-epub-engine-status",
+    "title": "EPUB Engine Status",
+    "path": "docs/EPUB_ENGINE_STATUS.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "EPUB Engine Status",
+      "Current status: DISCONNECTED",
+      "Export EPUB vs reader EPUB",
+      "Future integration options"
+    ],
+    "equations": [],
+    "text": "epub engine status the  core/  directory contains a standalone epub reader/parser/renderer engine. it is real code, but it currently uses es module syntax such as  export class  and  export default .  epub engine status current status: disconnected export epub vs reader epub future integration options "
+  },
+  {
+    "slug": "docs-payments-and-credits",
+    "title": "Payments and Credits",
+    "path": "docs/PAYMENTS_AND_CREDITS.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Payments and Credits",
+      "Current status: SCAFFOLDING",
+      "Important limitations",
+      "Existing adapters",
+      "Production backend options",
+      "GitHub Pages demo behavior"
+    ],
+    "equations": [],
+    "text": "payments and credits alchemist can run on github pages as a static browser app. github pages cannot securely verify stripe checkout sessions, process webhooks, or update credits server-side.  payments and credits current status: scaffolding important limitations existing adapters production backend options github pages demo behavior "
+  },
+  {
+    "slug": "docs-vault-format",
+    "title": "MASTER VAULT Format",
+    "path": "docs/VAULT_FORMAT.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "MASTER VAULT Format",
+      "Accepted raw fields",
+      "Normalized output shape",
+      "Validation"
+    ],
+    "equations": [],
+    "text": "master vault format master vault.json  is the active chemistry question database for the shipped  index.html  app.  master vault format accepted raw fields normalized output shape validation "
+  },
+  {
+    "slug": "docs-vialogic-integration",
+    "title": "ViaLogic Integration",
+    "path": "docs/VIALOGIC_INTEGRATION.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ViaLogic Integration",
+      "Imported Files",
+      "Browser API",
+      "Session Integration Point",
+      "UI Fallback"
+    ],
+    "equations": [],
+    "text": "vialogic integration reusable reasoning logic is implemented in:  vialogic integration imported files browser api session integration point ui fallback "
+  },
+  {
+    "slug": "docs-visual-engine-integration",
+    "title": "Visual Engine Integration",
+    "path": "docs/VISUAL_ENGINE_INTEGRATION.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Visual Engine Integration",
+      "Imported Files",
+      "Renderer API",
+      "Graph Format",
+      "Render Targets",
+      "Failure Fallback"
+    ],
+    "equations": [],
+    "text": "visual engine integration reusable visualization logic is implemented in:  visual engine integration imported files renderer api graph format render targets failure fallback "
+  },
+  {
+    "slug": "docs-zay-format-v2",
+    "title": ".ZAY Format V2",
+    "path": "docs/ZAY_FORMAT_V2.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      ".ZAY Format V2",
+      "Schema",
+      "Sample Export",
+      "Backward Compatibility"
+    ],
+    "equations": [],
+    "text": ".zay format v2 .zay  v2 keeps legacy  meta ,  content ,  vault , and  state  fields while adding canonical top-level alchemist universe fields.  .zay format v2 schema sample export backward compatibility "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-3d-block-module-v1",
+    "title": "ALCHEMIST 3D BLOCK MODULE V1",
+    "path": "docs/alchemist/ALCHEMIST_3D_BLOCK_MODULE_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST 3D BLOCK MODULE V1",
+      "Purpose",
+      "Block Structure",
+      "Rules",
+      "Public API",
+      "create3DBlock id, model, interaction?",
+      "add3DBlockToSession sessionEngine, block",
+      "STL Loader Reference",
+      "Success Criteria"
+    ],
+    "equations": [],
+    "text": "alchemist 3d block module v1 purpose\n 3d-block.js  defines a lightweight, deterministic 3d block metadata handler for alchemist sessions.  alchemist 3d block module v1 purpose block structure rules public api create3dblock id, model, interaction? add3dblocktosession sessionengine, block stl loader reference success criteria "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-block-system-v1",
+    "title": "ALCHEMIST BLOCK SYSTEM V1",
+    "path": "docs/alchemist/ALCHEMIST_BLOCK_SYSTEM_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST BLOCK SYSTEM V1",
+      "Purpose",
+      "Block Types",
+      "Public API",
+      "createBlock type, content",
+      "validateBlock block",
+      "Rules Enforced",
+      "Success Criteria Mapping"
+    ],
+    "equations": [],
+    "text": "alchemist block system v1 purpose\n block-system.js  converts all user input into deterministic, typed content blocks and rejects untyped or invalid data.  alchemist block system v1 purpose block types public api createblock type, content validateblock block rules enforced success criteria mapping "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-core-ui-activation-v1",
+    "title": "ALCHEMIST CORE UI ACTIVATION V1",
+    "path": "docs/alchemist/ALCHEMIST_CORE_UI_ACTIVATION_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST CORE UI ACTIVATION V1",
+      "Purpose",
+      "Design Philosophy",
+      "System",
+      "Rules",
+      "Reversibility",
+      "Success Criteria"
+    ],
+    "equations": [],
+    "text": "alchemist core ui activation v1 alchemist core ui activation v1\n   purpose\nactivate alchemist session/block/ingestion/review/publish behavior from swipe ui via listeners only.\n   design philosophy\nui is read-only; orchestration is external; communication uses events and h  alchemist core ui activation v1 purpose design philosophy system rules reversibility success criteria "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-credit-vault-system-v1",
+    "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+    "path": "docs/alchemist/ALCHEMIST_CREDIT_VAULT_SYSTEM_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST CREDIT VAULT SYSTEM V1",
+      "Purpose",
+      "Credit Rules",
+      "Publish Reward",
+      "Recovery Logic",
+      "Vault System",
+      "States",
+      "Flow",
+      "API",
+      "creditSystem",
+      "vaultManager",
+      "Rules Enforced",
+      "Integration Notes",
+      "Determinism and Tamper Resistance"
+    ],
+    "equations": [],
+    "text": "alchemist credit vault system v1 purpose\ndefine a deterministic session credit economy with vault decisions and publish rewards.  alchemist credit vault system v1 purpose credit rules publish reward recovery logic vault system states flow api creditsystem vaultmanager rules enforced integration notes determinism and tamper resistance "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-ingestion-engine-v1",
+    "title": "ALCHEMIST INGESTION ENGINE V1",
+    "path": "docs/alchemist/ALCHEMIST_INGESTION_ENGINE_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST INGESTION ENGINE V1",
+      "Purpose",
+      "Flow",
+      "Public API",
+      "parseInput input",
+      "createIngestionEngine { blockSystem, sessionEngine, now }",
+      "ingest input",
+      "Rules",
+      "Success Criteria Mapping"
+    ],
+    "equations": [],
+    "text": "alchemist ingestion engine v1 purpose\n ingestion-engine.js  provides a controlled input pipeline that transforms user input into structured blocks and stores them in the active session lifecycle.  alchemist ingestion engine v1 purpose flow public api parseinput input createingestionengine { blocksystem, sessionengine, now } ingest input rules success criteria mapping "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-session-engine-v1",
+    "title": "ALCHEMIST SESSION ENGINE V1",
+    "path": "docs/alchemist/ALCHEMIST_SESSION_ENGINE_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST SESSION ENGINE V1",
+      "Purpose",
+      "Public API",
+      "startSession name?",
+      "addBlock block",
+      "removeBlock id",
+      "setReviewing",
+      "finalizeSession",
+      "getSession",
+      "reset",
+      "Session States",
+      "Rules Enforced",
+      "Persistence"
+    ],
+    "equations": [],
+    "text": "alchemist session engine v1 purpose\n session-engine.js  provides a deterministic session lifecycle manager for content assembly. it enforces a single non-finalized session, protects block data from outside mutation, and persists state through  localstorage  for reload  alchemist session engine v1 purpose public api startsession name? addblock block removeblock id setreviewing finalizesession getsession reset session states rules enforced persistence "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-session-review-mode-v1",
+    "title": "ALCHEMIST SESSION REVIEW MODE V1",
+    "path": "docs/alchemist/ALCHEMIST_SESSION_REVIEW_MODE_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST SESSION REVIEW MODE V1",
+      "Purpose",
+      "Design Philosophy",
+      "Interaction Model",
+      "Card States",
+      "Gestures",
+      "Visual Feedback  UI Adapter",
+      "System",
+      "Review Controller",
+      "Decision Store",
+      "Rules",
+      "Final Card",
+      "Success Criteria Mapping",
+      "DoD"
+    ],
+    "equations": [],
+    "text": "alchemist session review mode v1 convert final cards into an intuitive decision flow where each card becomes a decision unit for keep/discard/publish.  alchemist session review mode v1 purpose design philosophy interaction model card states gestures visual feedback  ui adapter system review controller decision store rules final card success criteria mapping dod "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-ui-integration-layer-v1",
+    "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+    "path": "docs/alchemist/ALCHEMIST_UI_INTEGRATION_LAYER_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST UI INTEGRATION LAYER V1",
+      "Purpose",
+      "Design Philosophy",
+      "System",
+      "Selection Hook",
+      "Integration Router",
+      "Safe Adapter",
+      "Rules",
+      "Integration Points",
+      "Features Enabled",
+      "Failure Handling",
+      "Success Criteria",
+      "DoD"
+    ],
+    "equations": [],
+    "text": "alchemist ui integration layer v1 bridge swipe/selection ui interactions into alchemist core systems through a non-invasive layer that listens and routes events without touching existing gesture logic.  alchemist ui integration layer v1 purpose design philosophy system selection hook integration router safe adapter rules integration points features enabled failure handling success criteria dod "
+  },
+  {
+    "slug": "docs-alchemist-alchemist-zay-compiler-v1",
+    "title": "ALCHEMIST ZAY COMPILER V1",
+    "path": "docs/alchemist/ALCHEMIST_ZAY_COMPILER_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ALCHEMIST ZAY COMPILER V1",
+      "Purpose",
+      "Input",
+      "Output",
+      "Includes",
+      "Rules",
+      "Success Criteria Mapping",
+      "Module Output"
+    ],
+    "equations": [],
+    "text": "alchemist zay compiler v1 purpose\nconvert a finalized alchemist session into a portable  .zay  package blueprint with deterministic output.  alchemist zay compiler v1 purpose input output includes rules success criteria mapping module output "
+  },
+  {
+    "slug": "docs-alchemist-audit",
+    "title": "Alchemist Repository Architecture Audit",
+    "path": "docs/alchemist_audit.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Alchemist Repository Architecture Audit",
+      "Source Acquisition",
+      "Purpose",
+      "Architecture Classification",
+      "Entry Points",
+      "Module Structure",
+      "Data Flow",
+      "Shipped quiz and export flow",
+      "Kernel integration flow",
+      "Python publishing flow",
+      "Dependency Analysis",
+      "Browser/CDN dependencies",
+      "npm / Node packages",
+      "Python packages",
+      "Other platform files",
+      "Deployment Model",
+      "Capability Inventory",
+      "Architecture Diagram",
+      "Risks and Constraints",
+      "Audit Conclusion"
+    ],
+    "equations": [],
+    "text": "alchemist repository architecture audit date: 2026-06-04\nrepository:  https://github.com/via-decide/alchemist app.git \nlocal source inspected:  /workspace/alchemist app  alchemist repository architecture audit source acquisition purpose architecture classification entry points module structure data flow shipped quiz and export flow kernel integration flow python publishing flow dependency analysis browser/cdn dependencies npm / node packages python packages other platform files deployment model capability inventory architecture diagram risks and constraints audit conclusion "
+  },
+  {
+    "slug": "docs-merge-recommendation",
+    "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+    "path": "docs/merge_recommendation.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+      "Executive Recommendation",
+      "Discovery Status",
+      "Repository Purpose Summary",
+      "Architecture Classification Matrix",
+      "Runtime and Deployment Matrix",
+      "Dependency Map",
+      "Capability Matrix",
+      "Overlap Detection and Recommendation",
+      "Integration Readiness Assessment",
+      "ViaLogic placement",
+      "Visual Engine placement",
+      "ZAY Ecosystem Mapping",
+      "Layer Ownership Table",
+      "Recommended Merge Strategy",
+      "Do not choose pure Option A",
+      "Do not choose pure Option B yet",
+      "Do not choose pure Option C",
+      "Choose Option D",
+      "Integration Risks",
+      "Proposed Approval Gate Before Any Integration",
+      "Final Recommendation"
+    ],
+    "equations": [],
+    "text": "alchemist / vialogic / zayvora visual engine merge recommendation alchemist / vialogic / zayvora visual engine merge recommendation  alchemist / vialogic / zayvora visual engine merge recommendation executive recommendation discovery status repository purpose summary architecture classification matrix runtime and deployment matrix dependency map capability matrix overlap detection and recommendation integration readiness assessment vialogic placement visual engine placement zay ecosystem mapping layer ownership table recommended merge strategy do not choose pure option a do not choose pure option b yet do not choose pure option c choose option d integration risks proposed approval gate before any integration final recommendation "
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-dod",
+    "title": "Definition of Done",
+    "path": "docs/pr/A-CORE-EXEC-01/dod.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Definition of Done"
+    ],
+    "equations": [],
+    "text": "definition of done -     all 5 control files created\n-     no context duplication\n-     structure is minimal\n-     system task can proceed  definition of done "
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-guard",
+    "title": "Guard",
+    "path": "docs/pr/A-CORE-EXEC-01/guard.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Guard"
+    ],
+    "equations": [],
+    "text": "guard - no hallucinated features\n- no multiple outputs\n- no exceeding file limits\n- no breaking swipe ui  guard "
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-purpose",
+    "title": "Purpose",
+    "path": "docs/pr/A-CORE-EXEC-01/purpose.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Purpose"
+    ],
+    "equations": [],
+    "text": "purpose - enable payment-ready infrastructure\n- maintain whatsapp-based login flow\n- support deterministic execution via pr system  purpose "
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-rules",
+    "title": "Rules",
+    "path": "docs/pr/A-CORE-EXEC-01/rules.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Rules"
+    ],
+    "equations": [],
+    "text": "rules - no frontend secret exposure\n- no ui modification\n- no new modules\n- static site compatibility only\n- follow pr-driven execution strictly  rules "
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-task",
+    "title": "Task",
+    "path": "docs/pr/A-CORE-EXEC-01/task.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Task"
+    ],
+    "equations": [],
+    "text": "task task\nprepare alchemist for stripe-ready execution system using secure api hooks and pr-driven control  task "
+  },
+  {
+    "slug": "docs-publishing-pipeline",
+    "title": "Publishing Pipeline",
+    "path": "docs/publishing_pipeline.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Publishing Pipeline",
+      "Overview",
+      "or",
+      "Content model",
+      "Build stages",
+      "Quality checks",
+      "Regenerating diagrams only"
+    ],
+    "equations": [],
+    "text": "publishing pipeline this repository now contains a deterministic publishing pipeline that outputs:  publishing pipeline overview or content model build stages quality checks regenerating diagrams only "
+  },
+  {
+    "slug": "docs-system-alchemist-stripe-ready",
+    "title": "Purpose",
+    "path": "docs/system/ALCHEMIST_STRIPE_READY.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Purpose",
+      "Flow",
+      "Security Rules",
+      "Integration Points"
+    ],
+    "equations": [],
+    "text": "purpose purpose\nprepare alchemist for secure stripe integration.  purpose flow security rules integration points "
+  },
+  {
+    "slug": "docs-system-codex-bootstrap-enforcer-v1",
+    "title": "CODEX BOOTSTRAP ENFORCER V1",
+    "path": "docs/system/CODEX_BOOTSTRAP_ENFORCER_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "CODEX BOOTSTRAP ENFORCER V1",
+      "Purpose",
+      "Bootstrap Rule  mandatory",
+      "Instruction Priority",
+      "Session Persistence",
+      "Anti-Refresh Strategy",
+      "Execution Guard",
+      "Self-Bootstrap PR Control  mandatory",
+      "Repository Safety Rule",
+      "Definition of Done"
+    ],
+    "equations": [],
+    "text": "codex bootstrap enforcer v1 purpose\nensure codex reloads critical instructions and session context on every fresh environment initialization.  codex bootstrap enforcer v1 purpose bootstrap rule  mandatory instruction priority session persistence anti-refresh strategy execution guard self-bootstrap pr control  mandatory repository safety rule definition of done "
+  },
+  {
+    "slug": "docs-system-codex-instruction-bootstrap-v1",
+    "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+    "path": "docs/system/CODEX_INSTRUCTION_BOOTSTRAP_V1.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "CODEX INSTRUCTION BOOTSTRAP V1",
+      "Purpose",
+      "Required Files",
+      "Execution Flow",
+      "Hard Rules",
+      "Auto-Loading Behavior",
+      "Verification Output  expected",
+      "DoD Mapping"
+    ],
+    "equations": [],
+    "text": "codex instruction bootstrap v1 purpose\nestablish a persistent instruction bootstrap so codex does not default to generic behavior and always loads repo-specific rules before execution.  codex instruction bootstrap v1 purpose required files execution flow hard rules auto-loading behavior verification output  expected dod mapping "
+  },
+  {
+    "slug": "docs-vialogic-audit",
+    "title": "ViaLogic Repository Architecture Audit",
+    "path": "docs/vialogic_audit.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "ViaLogic Repository Architecture Audit",
+      "Source Acquisition",
+      "Purpose",
+      "Architecture Classification",
+      "Entry Points",
+      "Module Structure",
+      "Data Flow",
+      "Dependency Analysis",
+      "Browser/CDN dependencies",
+      "npm / Node packages",
+      "Python packages",
+      "Deployment Model",
+      "Capability Inventory",
+      "Architecture Diagram",
+      "Risks and Constraints",
+      "Audit Conclusion"
+    ],
+    "equations": [],
+    "text": "vialogic repository architecture audit date: 2026-06-04\nrepository:  https://github.com/via-decide/vialogic.git \nsource inspected: github web/raw views because outbound  git clone  was blocked by the execution environment proxy.  vialogic repository architecture audit source acquisition purpose architecture classification entry points module structure data flow dependency analysis browser/cdn dependencies npm / node packages python packages deployment model capability inventory architecture diagram risks and constraints audit conclusion "
+  },
+  {
+    "slug": "docs-visual-engine-audit",
+    "title": "Zayvora Visual Engine Repository Architecture Audit",
+    "path": "docs/visual_engine_audit.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Zayvora Visual Engine Repository Architecture Audit",
+      "Source Acquisition",
+      "Purpose",
+      "Architecture Classification",
+      "Entry Points",
+      "Module Structure",
+      "Data Flow",
+      "Next.js/API generation flow",
+      "Root  app.js  legacy/static client flow",
+      "Core pipeline flow observed in  core/pipeline.js",
+      "Dependency Analysis",
+      "npm packages",
+      "Browser/CDN dependencies",
+      "Python packages",
+      "External binary/platform dependencies",
+      "Deployment Model",
+      "Capability Inventory",
+      "Architecture Diagram",
+      "Risks and Constraints",
+      "Audit Conclusion"
+    ],
+    "equations": [],
+    "text": "zayvora visual engine repository architecture audit zayvora visual engine repository architecture audit  zayvora visual engine repository architecture audit source acquisition purpose architecture classification entry points module structure data flow next.js/api generation flow root  app.js  legacy/static client flow core pipeline flow observed in  core/pipeline.js dependency analysis npm packages browser/cdn dependencies python packages external binary/platform dependencies deployment model capability inventory architecture diagram risks and constraints audit conclusion "
+  }
+]
