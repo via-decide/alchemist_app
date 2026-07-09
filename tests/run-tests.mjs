@@ -79,6 +79,7 @@ const kernelTests = [
   'tests/knowledge-engine.test.mjs',
   'tests/decision-engine.test.js',
   'tests/knowledge-os-compat.test.js'
+  'tests/decision-engine.test.js'
 ];
 for (const test of kernelTests) {
   const result = spawnSync('node', [test], { encoding: 'utf8' });
