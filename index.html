@@ -8,6 +8,14 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="core/decision-engine/state-machine.js"></script>
+<script src="core/decision-engine/confidence-engine.js"></script>
+<script src="core/decision-engine/mastery-engine.js"></script>
+<script src="core/decision-engine/history-engine.js"></script>
+<script src="core/decision-engine/progress-engine.js"></script>
+<script src="core/decision-engine/analytics-engine.js"></script>
+<script src="core/decision-engine/interaction-router.js"></script>
+<script src="core/decision-engine/decision-engine.js"></script>
 <script src="kernel/alchemist/block-system.js"></script>
 <script src="kernel/alchemist/session-engine.js"></script>
 <script src="kernel/alchemist/ingestion-engine.js"></script>
@@ -2951,6 +2959,7 @@ let RAW_DATA = [], POOL = [], WRONG = [], SESSION_ALL = [];
 let SET_CURSOR = 0, ACTIVE_SET = null, XP = 0, VOLUME_LIMIT = null;
 let ATTEMPTED = new Set();
 let ALCHEMIST = null;
+let DECISION_ENGINE = null;
 const emitAlchemy=(name,detail)=>document.dispatchEvent(new CustomEvent(name,{detail})); 
 
 // --- TELEMETRY ---
@@ -3367,6 +3376,7 @@ function startQuiz(){
  base = shuffle(base); 
  if(VOLUME_LIMIT && VOLUME_LIMIT < base.length) base = base.slice(0, VOLUME_LIMIT);
  POOL=base; WRONG=[]; SESSION_ALL=[]; XP=0; ATTEMPTED=new Set(); CURRENT_SESSION_MODEL=null;
+ DECISION_ENGINE = window.AlchemistDecisionEngine && typeof window.AlchemistDecisionEngine.createDecisionEngine === "function" ? window.AlchemistDecisionEngine.createDecisionEngine() : null;
  CURRENT_SES_ID = null; 
  SESSION_LOG = []; 
  nextQ();
@@ -3391,10 +3401,21 @@ function nextQ(){
   const isCorrect = String(picked).trim().toLowerCase() === String(cText).trim().toLowerCase();
   
   const latency = Date.now() - Q_START_TIME;
-  SESSION_LOG.push({ id: d.id, res: isCorrect ? "WIN" : "LOSS", latency: latency });
+  const wasAttempted = ATTEMPTED.has(d.id);
+  const decision = DECISION_ENGINE ? DECISION_ENGINE.decide({
+    interactionType: "SWIPE",
+    topic: d.dom || d.domain || d.topic || "chemistry",
+    concept: d.topic || d.id,
+    correct: isCorrect,
+    duration: latency,
+    repeat: wasAttempted,
+    payload: { selected: picked, answer: cText, direction: dir, knowledgeUnit: { id: d.topic || d.id, title: d.q, category: d.dom || d.domain || "topic", difficulty: d.level || "unknown", tags: d.tags || [], references: d.ref ? [d.ref] : [] } }
+  }) : null;
+  SESSION_LOG.push({ id: d.id, res: isCorrect ? "WIN" : "LOSS", latency: latency, decision: decision ? decision.event : null });
 
-  if(!isCorrect){ WRONG.push(d); } else { if(!ATTEMPTED.has(d.id)){ XP+=1; } }
+  if(!isCorrect){ WRONG.push(d); }
   ATTEMPTED.add(d.id);
+  XP = DECISION_ENGINE ? Object.keys(DECISION_ENGINE.getMastery()).reduce((sum,key)=>sum+(DECISION_ENGINE.getMastery()[key].xp||0),0) : XP + (isCorrect && !wasAttempted ? 1 : 0);
   UI.xp.textContent=`${XP} / ${SESSION_ALL.length}`;
   UI.bar.style.width = ((SESSION_ALL.length - POOL.length) / SESSION_ALL.length) * 100 + "%";
   nextQ();

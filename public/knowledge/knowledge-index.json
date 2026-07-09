@@ -499,6 +499,110 @@
     "checksum": "e2bc2158cf7264d2e8658da6acbdf02938ce6def62f9fd802e08bf69cbc3f2b5"
   },
   {
+    "id": "docs-decision-engine-architecture",
+    "slug": "docs-decision-engine-architecture",
+    "title": "Alchemist Decision Engine Architecture",
+    "path": "docs/DECISION_ENGINE_ARCHITECTURE.md",
+    "collection": "docs",
+    "category": "root",
+    "frontmatter": {},
+    "tags": [],
+    "author": "",
+    "summary": "Alchemist no longer treats swipe as the learning model. Swipe is now one possible interaction source that emits a normalized  DecisionEvent  into an interaction-agnostic backend engine.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Alchemist Decision Engine Architecture",
+        "slug": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "text": "Layering",
+        "slug": "layering"
+      },
+      {
+        "level": 2,
+        "text": "DecisionEvent",
+        "slug": "decisionevent"
+      },
+      {
+        "level": 2,
+        "text": "KnowledgeUnit",
+        "slug": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "text": "State machine",
+        "slug": "state-machine"
+      },
+      {
+        "level": 2,
+        "text": "API surface",
+        "slug": "api-surface"
+      },
+      {
+        "level": 2,
+        "text": "Migration note",
+        "slug": "migration-note"
+      }
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Decision Engine Architecture",
+        "anchor": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Layering",
+        "anchor": "layering"
+      },
+      {
+        "level": 2,
+        "title": "DecisionEvent",
+        "anchor": "decisionevent"
+      },
+      {
+        "level": 2,
+        "title": "KnowledgeUnit",
+        "anchor": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "title": "State machine",
+        "anchor": "state-machine"
+      },
+      {
+        "level": 2,
+        "title": "API surface",
+        "anchor": "api-surface"
+      },
+      {
+        "level": 2,
+        "title": "Migration note",
+        "anchor": "migration-note"
+      }
+    ],
+    "links": [],
+    "backlinks": [],
+    "relationships": {
+      "prerequisite": [],
+      "related": [],
+      "scientist": [],
+      "equation": [],
+      "experiment": [],
+      "industrial_application": [],
+      "laboratory_method": [],
+      "compound": [],
+      "process": []
+    },
+    "equations": [],
+    "mermaid": [],
+    "readingTimeMinutes": 2,
+    "wordCount": 315,
+    "checksum": "24327a63a787750d3ae85084360d7a88773bb7f0a9e1b89205c9cb344e5a944b"
+  },
+  {
     "id": "docs-epub-engine-status",
     "slug": "docs-epub-engine-status",
     "title": "EPUB Engine Status",

@@ -1,6 +1,6 @@
 {
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "topicCount": 35,
+  "topicCount": 36,
   "edgeCount": 7,
   "markdownFiles": [
     "book/chapters/01-introduction.md",
@@ -10,6 +10,7 @@
     "content/physical/thermodynamics.md",
     "docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md",
     "docs/ARCHITECTURE_AUDIT.md",
+    "docs/DECISION_ENGINE_ARCHITECTURE.md",
     "docs/EPUB_ENGINE_STATUS.md",
     "docs/PAYMENTS_AND_CREDITS.md",
     "docs/VAULT_FORMAT.md",

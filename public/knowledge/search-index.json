@@ -111,6 +111,24 @@
     "text": "alchemist architecture audit -   active   — shipped or directly used by the browser-first app.\n-   partial   — useful code exists, but integration or production requirements are incomplete.\n-   disconnected   — code exists but is not currently reachable from the shippe  alchemist architecture audit status labels repository reality map recommended integration order guardrails for future work "
   },
   {
+    "slug": "docs-decision-engine-architecture",
+    "title": "Alchemist Decision Engine Architecture",
+    "path": "docs/DECISION_ENGINE_ARCHITECTURE.md",
+    "tags": [],
+    "author": "",
+    "headings": [
+      "Alchemist Decision Engine Architecture",
+      "Layering",
+      "DecisionEvent",
+      "KnowledgeUnit",
+      "State machine",
+      "API surface",
+      "Migration note"
+    ],
+    "equations": [],
+    "text": "alchemist decision engine architecture alchemist no longer treats swipe as the learning model. swipe is now one possible interaction source that emits a normalized  decisionevent  into an interaction-agnostic backend engine.  alchemist decision engine architecture layering decisionevent knowledgeunit state machine api surface migration note "
+  },
+  {
     "slug": "docs-epub-engine-status",
     "title": "EPUB Engine Status",
     "path": "docs/EPUB_ENGINE_STATUS.md",

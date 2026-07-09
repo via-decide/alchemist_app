@@ -44,6 +44,11 @@
       "path": "docs/ARCHITECTURE_AUDIT.md"
     },
     {
+      "slug": "docs-decision-engine-architecture",
+      "title": "Alchemist Decision Engine Architecture",
+      "path": "docs/DECISION_ENGINE_ARCHITECTURE.md"
+    },
+    {
       "slug": "docs-epub-engine-status",
       "title": "EPUB Engine Status",
       "path": "docs/EPUB_ENGINE_STATUS.md"

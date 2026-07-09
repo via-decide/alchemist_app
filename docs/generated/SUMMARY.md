@@ -21,6 +21,7 @@
 
 - [Alchemist Universe Architecture](../../docs/ALCHEMIST_UNIVERSE_ARCHITECTURE.md)
 - [Alchemist Architecture Audit](../../docs/ARCHITECTURE_AUDIT.md)
+- [Alchemist Decision Engine Architecture](../../docs/DECISION_ENGINE_ARCHITECTURE.md)
 - [EPUB Engine Status](../../docs/EPUB_ENGINE_STATUS.md)
 - [Payments and Credits](../../docs/PAYMENTS_AND_CREDITS.md)
 - [MASTER VAULT Format](../../docs/VAULT_FORMAT.md)

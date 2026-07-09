@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alchemist-static-v2';
+const CACHE_NAME = 'alchemist-static-v3';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,14 @@ const STATIC_ASSETS = [
   './public/knowledge/navigation.json',
   './public/knowledge/toc.json',
   './core/knowledge/mermaid-renderer.js',
+  './core/decision-engine/state-machine.js',
+  './core/decision-engine/confidence-engine.js',
+  './core/decision-engine/mastery-engine.js',
+  './core/decision-engine/history-engine.js',
+  './core/decision-engine/progress-engine.js',
+  './core/decision-engine/analytics-engine.js',
+  './core/decision-engine/interaction-router.js',
+  './core/decision-engine/decision-engine.js',
   './kernel/alchemist/block-system.js',
   './kernel/alchemist/session-engine.js',
   './kernel/alchemist/ingestion-engine.js',

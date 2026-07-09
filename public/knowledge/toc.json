@@ -137,6 +137,47 @@
     ]
   },
   {
+    "slug": "docs-decision-engine-architecture",
+    "title": "Alchemist Decision Engine Architecture",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Decision Engine Architecture",
+        "anchor": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Layering",
+        "anchor": "layering"
+      },
+      {
+        "level": 2,
+        "title": "DecisionEvent",
+        "anchor": "decisionevent"
+      },
+      {
+        "level": 2,
+        "title": "KnowledgeUnit",
+        "anchor": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "title": "State machine",
+        "anchor": "state-machine"
+      },
+      {
+        "level": 2,
+        "title": "API surface",
+        "anchor": "api-surface"
+      },
+      {
+        "level": 2,
+        "title": "Migration note",
+        "anchor": "migration-note"
+      }
+    ]
+  },
+  {
     "slug": "docs-epub-engine-status",
     "title": "EPUB Engine Status",
     "toc": [

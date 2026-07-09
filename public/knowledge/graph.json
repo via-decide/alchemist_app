@@ -62,6 +62,13 @@
       "tags": []
     },
     {
+      "id": "docs-decision-engine-architecture",
+      "label": "Alchemist Decision Engine Architecture",
+      "type": "topic",
+      "path": "docs/DECISION_ENGINE_ARCHITECTURE.md",
+      "tags": []
+    },
+    {
       "id": "docs-epub-engine-status",
       "label": "EPUB Engine Status",
       "type": "topic",
