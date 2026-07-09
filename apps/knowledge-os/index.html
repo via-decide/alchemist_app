@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-contrast="normal" data-motion="normal">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alchemist v1 — Scientific Knowledge OS</title>
+<script src="../../core/knowledge-os/browser-compat.js"></script>
+<style>
+:root{color-scheme:light dark;--surface:#fff;--surface-2:#fafbfd;--surface-3:#f2f4f8;--text:#111827;--muted:#647084;--line:#d9dee8;--navy:#0b1220;--gold:#b08d32;--focus:#315cff;--bottomnav-h:64px;--topbar-h:56px;--radius-md:13px;--radius-lg:18px;--shadow:0 16px 40px rgba(16,24,40,.08)}
+html[data-theme="dark"]{--surface:#0e1624;--surface-2:#111b2b;--surface-3:#172236;--text:#e8eef8;--muted:#9aa8bc;--line:#263449;--navy:#030712;--gold:#d0aa45;--shadow:0 20px 46px rgba(0,0,0,.28)}
+html{height:100%;scroll-behavior:smooth}body{margin:0;min-height:100%;background:#f3f5f9;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,sans-serif}html[data-theme="dark"] body{background:#060b13}
+html[data-motion="reduced"] *,html[data-motion="reduced"] *::before,html[data-motion="reduced"] *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}.shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--surface);border-right:1px solid var(--line);padding:16px}.main{padding:24px}.topbar{position:sticky;top:0;z-index:2;min-height:var(--topbar-h);display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}
+html[data-theme="dark"] .topbar{background:rgba(14,22,36,.96)}@supports (backdrop-filter:blur(1px)){.topbar{background:rgba(255,255,255,.86);backdrop-filter:blur(14px)}html[data-theme="dark"] .topbar{background:rgba(14,22,36,.86)}}
+.nav-link{display:block;padding:9px 10px;border-radius:9px;color:var(--muted);text-decoration:none}.nav-link.active,.nav-link[aria-current="page"]{background:var(--surface-3);color:var(--text);font-weight:700}.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:0 1px 0 rgba(0,0,0,.02);padding:20px;margin-bottom:16px}.button{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:9px;min-height:36px;padding:0 12px}.button.primary{background:var(--navy);color:#fff}.chip{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 9px;background:#f2f4f8;background:var(--surface-3);color:var(--muted);font-size:.78rem}.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}.tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:10px 12px}.tab[aria-selected="true"]{border-bottom-color:var(--gold);color:var(--text);font-weight:700}.graph-svg{width:100%;height:260px;border:1px solid var(--line);border-radius:var(--radius-md);background:#111827}.graph-svg text{fill:#e8eef8}.graph-fallback{margin-top:12px}.dialog{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:20px}.dialog::backdrop{background:rgba(5,10,18,.48)}@media (max-width:800px){.shell{display:block;padding-bottom:calc(var(--bottomnav-h) + env(safe-area-inset-bottom))}.sidebar{position:static}.main{padding:16px}.inspector-sheet{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar"><h1>Alchemist</h1><nav id="nav"><a class="nav-link" data-nav="home" href="#home">Home</a><a class="nav-link" data-nav="entity" href="#entity/atomic-structure">Atomic Structure</a><a class="nav-link" data-nav="graph" href="#graph">Graph</a></nav></aside>
+  <div><header class="topbar"><button class="button" id="systemButton">Runtime package status</button><button class="button" id="copyButton">Copy reference</button></header><main class="main" id="main" tabindex="-1"></main></div>
+</div>
+<dialog class="dialog" id="systemDialog"><h2>Runtime Package Status</h2><p>Static, local-first Knowledge OS shell.</p><div class="table-wrap"><table><thead><tr><th>Layer</th><th>Status</th></tr></thead><tbody><tr><td>UI Shell</td><td>Implemented</td></tr><tr><td>Decision Protocol</td><td>Implemented</td></tr></tbody></table></div><button class="button primary" id="closeDialog">Close</button></dialog>
+<script>
+(function(){
+  const Compat = window.AlchemistBrowserCompat;
+  const registry = {entities:{'atomic-structure':true},domains:{chemistry:true}};
+  const pages = {
+    home: () => `<section class="panel"><h2>Scientific Knowledge OS</h2><p>Robust static prototype with valid reduced-motion CSS, valid table structure, dialog fallback, clipboard error handling, and ARIA navigation semantics.</p><div class="tabs" role="tablist"><button class="tab" data-tab="overview" aria-controls="tab-overview">Overview</button><button class="tab" data-tab="research" aria-controls="tab-research">Research</button></div><div id="tab-overview" class="card">Overview content</div></section>`,
+    entity: () => `<article class="panel"><h2>Atomic Structure</h2><p>Unknown routes now render an explicit 404 instead of silently falling back.</p><svg class="graph-svg" role="img" aria-labelledby="graphTitle graphDesc"><title id="graphTitle">Atomic structure relationship graph</title><desc id="graphDesc">Atomic Structure connects to Quantum Mechanics and Spectroscopy.</desc><circle cx="140" cy="120" r="28" fill="#b08d32"></circle><text x="178" y="125">Atomic Structure</text></svg><ul class="graph-fallback"><li>Atomic Structure depends on Quantum Mechanics.</li><li>Atomic Structure is measured by Spectroscopy.</li></ul></article>`,
+    graph: () => `<section class="panel"><h2>Knowledge Graph</h2><p>Screen-reader fallback lists relationships while SVG text color is applied through CSS.</p>${pages.entity()}</section>`,
+    notFound: (route) => `<section class="panel"><h2>404 Entity</h2><p>Unknown route: <code>${route}</code></p><a href="#home">Return home</a></section>`
+  };
+  const debouncedRender = Compat.debounce(render, 150);
+  function rootFromRoute(route){ return route.root === '404' ? '404' : route.root; }
+  function render(){
+    const route = Compat.validateRoute(location.hash || '#home', registry);
+    const root = rootFromRoute(route);
+    Compat.setActiveNavigation(document.querySelectorAll('[data-nav]'), root === 'entity' ? 'entity' : root);
+    document.getElementById('main').innerHTML = route.ok ? (pages[root] || pages.home)() : pages.notFound(route.route);
+    Compat.setTabs(document.querySelectorAll('[data-tab]'), 'overview');
+    document.getElementById('main').focus({preventScroll:true});
+  }
+  document.getElementById('systemButton').addEventListener('click', () => Compat.safeShowDialog(document.getElementById('systemDialog')));
+  document.getElementById('closeDialog').addEventListener('click', () => Compat.safeCloseDialog(document.getElementById('systemDialog')));
+  document.getElementById('copyButton').addEventListener('click', () => Compat.copyText('Alchemist:atomic-structure'));
+  window.addEventListener('hashchange', debouncedRender);
+  if(!location.hash) location.hash = 'home';
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1528 @@
+[
+  {
+    "slug": "book-chapters-01-introduction",
+    "title": "Foundations of Analytical Systems",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Foundations of Analytical Systems",
+        "anchor": "foundations-of-analytical-systems"
+      },
+      {
+        "level": 2,
+        "title": "Why deterministic publishing matters",
+        "anchor": "why-deterministic-publishing-matters"
+      }
+    ]
+  },
+  {
+    "slug": "book-chapters-02-architecture",
+    "title": "Cloud and Edge Architecture",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Cloud and Edge Architecture",
+        "anchor": "cloud-and-edge-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Protocol stack",
+        "anchor": "protocol-stack"
+      }
+    ]
+  },
+  {
+    "slug": "content-equations-gibbs-free-energy",
+    "title": "Gibbs Free Energy",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Gibbs Free Energy",
+        "anchor": "gibbs-free-energy"
+      }
+    ]
+  },
+  {
+    "slug": "content-people-josiah-willard-gibbs",
+    "title": "Josiah Willard Gibbs",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Josiah Willard Gibbs",
+        "anchor": "josiah-willard-gibbs"
+      }
+    ]
+  },
+  {
+    "slug": "content-physical-thermodynamics",
+    "title": "Thermodynamics",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Thermodynamics",
+        "anchor": "thermodynamics"
+      },
+      {
+        "level": 2,
+        "title": "Core equation",
+        "anchor": "core-equation"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-universe-architecture",
+    "title": "Alchemist Universe Architecture",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Universe Architecture",
+        "anchor": "alchemist-universe-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Runtime Contract",
+        "anchor": "runtime-contract"
+      },
+      {
+        "level": 2,
+        "title": "Folder Layout",
+        "anchor": "folder-layout"
+      },
+      {
+        "level": 2,
+        "title": "Layer Ownership",
+        "anchor": "layer-ownership"
+      },
+      {
+        "level": 2,
+        "title": "Failure Behavior",
+        "anchor": "failure-behavior"
+      }
+    ]
+  },
+  {
+    "slug": "docs-architecture-audit",
+    "title": "Alchemist Architecture Audit",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Architecture Audit",
+        "anchor": "alchemist-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Status labels",
+        "anchor": "status-labels"
+      },
+      {
+        "level": 2,
+        "title": "Repository reality map",
+        "anchor": "repository-reality-map"
+      },
+      {
+        "level": 2,
+        "title": "Recommended integration order",
+        "anchor": "recommended-integration-order"
+      },
+      {
+        "level": 2,
+        "title": "Guardrails for future work",
+        "anchor": "guardrails-for-future-work"
+      }
+    ]
+  },
+  {
+    "slug": "docs-decision-engine-architecture",
+    "title": "Alchemist Decision Engine Architecture",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Decision Engine Architecture",
+        "anchor": "alchemist-decision-engine-architecture"
+      },
+      {
+        "level": 2,
+        "title": "Layering",
+        "anchor": "layering"
+      },
+      {
+        "level": 2,
+        "title": "DecisionEvent",
+        "anchor": "decisionevent"
+      },
+      {
+        "level": 2,
+        "title": "KnowledgeUnit",
+        "anchor": "knowledgeunit"
+      },
+      {
+        "level": 2,
+        "title": "State machine",
+        "anchor": "state-machine"
+      },
+      {
+        "level": 2,
+        "title": "API surface",
+        "anchor": "api-surface"
+      },
+      {
+        "level": 2,
+        "title": "Migration note",
+        "anchor": "migration-note"
+      }
+    ]
+  },
+  {
+    "slug": "docs-epub-engine-status",
+    "title": "EPUB Engine Status",
+    "toc": [
+      {
+        "level": 1,
+        "title": "EPUB Engine Status",
+        "anchor": "epub-engine-status"
+      },
+      {
+        "level": 2,
+        "title": "Current status: DISCONNECTED",
+        "anchor": "current-status-disconnected"
+      },
+      {
+        "level": 2,
+        "title": "Export EPUB vs reader EPUB",
+        "anchor": "export-epub-vs-reader-epub"
+      },
+      {
+        "level": 2,
+        "title": "Future integration options",
+        "anchor": "future-integration-options"
+      }
+    ]
+  },
+  {
+    "slug": "docs-payments-and-credits",
+    "title": "Payments and Credits",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Payments and Credits",
+        "anchor": "payments-and-credits"
+      },
+      {
+        "level": 2,
+        "title": "Current status: SCAFFOLDING",
+        "anchor": "current-status-scaffolding"
+      },
+      {
+        "level": 2,
+        "title": "Important limitations",
+        "anchor": "important-limitations"
+      },
+      {
+        "level": 2,
+        "title": "Existing adapters",
+        "anchor": "existing-adapters"
+      },
+      {
+        "level": 2,
+        "title": "Production backend options",
+        "anchor": "production-backend-options"
+      },
+      {
+        "level": 2,
+        "title": "GitHub Pages demo behavior",
+        "anchor": "github-pages-demo-behavior"
+      }
+    ]
+  },
+  {
+    "slug": "docs-vault-format",
+    "title": "MASTER VAULT Format",
+    "toc": [
+      {
+        "level": 1,
+        "title": "MASTER VAULT Format",
+        "anchor": "master-vault-format"
+      },
+      {
+        "level": 2,
+        "title": "Accepted raw fields",
+        "anchor": "accepted-raw-fields"
+      },
+      {
+        "level": 2,
+        "title": "Normalized output shape",
+        "anchor": "normalized-output-shape"
+      },
+      {
+        "level": 2,
+        "title": "Validation",
+        "anchor": "validation"
+      }
+    ]
+  },
+  {
+    "slug": "docs-vialogic-integration",
+    "title": "ViaLogic Integration",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ViaLogic Integration",
+        "anchor": "vialogic-integration"
+      },
+      {
+        "level": 2,
+        "title": "Imported Files",
+        "anchor": "imported-files"
+      },
+      {
+        "level": 2,
+        "title": "Browser API",
+        "anchor": "browser-api"
+      },
+      {
+        "level": 2,
+        "title": "Session Integration Point",
+        "anchor": "session-integration-point"
+      },
+      {
+        "level": 2,
+        "title": "UI Fallback",
+        "anchor": "ui-fallback"
+      }
+    ]
+  },
+  {
+    "slug": "docs-visual-engine-integration",
+    "title": "Visual Engine Integration",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Visual Engine Integration",
+        "anchor": "visual-engine-integration"
+      },
+      {
+        "level": 2,
+        "title": "Imported Files",
+        "anchor": "imported-files"
+      },
+      {
+        "level": 2,
+        "title": "Renderer API",
+        "anchor": "renderer-api"
+      },
+      {
+        "level": 2,
+        "title": "Graph Format",
+        "anchor": "graph-format"
+      },
+      {
+        "level": 2,
+        "title": "Render Targets",
+        "anchor": "render-targets"
+      },
+      {
+        "level": 2,
+        "title": "Failure Fallback",
+        "anchor": "failure-fallback"
+      }
+    ]
+  },
+  {
+    "slug": "docs-zay-format-v2",
+    "title": ".ZAY Format V2",
+    "toc": [
+      {
+        "level": 1,
+        "title": ".ZAY Format V2",
+        "anchor": "zay-format-v2"
+      },
+      {
+        "level": 2,
+        "title": "Schema",
+        "anchor": "schema"
+      },
+      {
+        "level": 2,
+        "title": "Sample Export",
+        "anchor": "sample-export"
+      },
+      {
+        "level": 2,
+        "title": "Backward Compatibility",
+        "anchor": "backward-compatibility"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-3d-block-module-v1",
+    "title": "ALCHEMIST 3D BLOCK MODULE V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST 3D BLOCK MODULE V1",
+        "anchor": "alchemist-3d-block-module-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Block Structure",
+        "anchor": "block-structure"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "create3DBlock id, model, interaction?",
+        "anchor": "create3dblock-id-model-interaction"
+      },
+      {
+        "level": 3,
+        "title": "add3DBlockToSession sessionEngine, block",
+        "anchor": "add3dblocktosession-sessionengine-block"
+      },
+      {
+        "level": 2,
+        "title": "STL Loader Reference",
+        "anchor": "stl-loader-reference"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-block-system-v1",
+    "title": "ALCHEMIST BLOCK SYSTEM V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST BLOCK SYSTEM V1",
+        "anchor": "alchemist-block-system-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Block Types",
+        "anchor": "block-types"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "createBlock type, content",
+        "anchor": "createblock-type-content"
+      },
+      {
+        "level": 3,
+        "title": "validateBlock block",
+        "anchor": "validateblock-block"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-core-ui-activation-v1",
+    "title": "ALCHEMIST CORE UI ACTIVATION V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST CORE UI ACTIVATION V1",
+        "anchor": "alchemist-core-ui-activation-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Reversibility",
+        "anchor": "reversibility"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-credit-vault-system-v1",
+    "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST CREDIT VAULT SYSTEM V1",
+        "anchor": "alchemist-credit-vault-system-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Credit Rules",
+        "anchor": "credit-rules"
+      },
+      {
+        "level": 2,
+        "title": "Publish Reward",
+        "anchor": "publish-reward"
+      },
+      {
+        "level": 2,
+        "title": "Recovery Logic",
+        "anchor": "recovery-logic"
+      },
+      {
+        "level": 2,
+        "title": "Vault System",
+        "anchor": "vault-system"
+      },
+      {
+        "level": 3,
+        "title": "States",
+        "anchor": "states"
+      },
+      {
+        "level": 3,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "API",
+        "anchor": "api"
+      },
+      {
+        "level": 3,
+        "title": "creditSystem",
+        "anchor": "creditsystem"
+      },
+      {
+        "level": 3,
+        "title": "vaultManager",
+        "anchor": "vaultmanager"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Integration Notes",
+        "anchor": "integration-notes"
+      },
+      {
+        "level": 2,
+        "title": "Determinism and Tamper Resistance",
+        "anchor": "determinism-and-tamper-resistance"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-ingestion-engine-v1",
+    "title": "ALCHEMIST INGESTION ENGINE V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST INGESTION ENGINE V1",
+        "anchor": "alchemist-ingestion-engine-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "parseInput input",
+        "anchor": "parseinput-input"
+      },
+      {
+        "level": 3,
+        "title": "createIngestionEngine { blockSystem, sessionEngine, now }",
+        "anchor": "createingestionengine-blocksystem-sessionengine-now"
+      },
+      {
+        "level": 3,
+        "title": "ingest input",
+        "anchor": "ingest-input"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-session-engine-v1",
+    "title": "ALCHEMIST SESSION ENGINE V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST SESSION ENGINE V1",
+        "anchor": "alchemist-session-engine-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Public API",
+        "anchor": "public-api"
+      },
+      {
+        "level": 3,
+        "title": "startSession name?",
+        "anchor": "startsession-name"
+      },
+      {
+        "level": 3,
+        "title": "addBlock block",
+        "anchor": "addblock-block"
+      },
+      {
+        "level": 3,
+        "title": "removeBlock id",
+        "anchor": "removeblock-id"
+      },
+      {
+        "level": 3,
+        "title": "setReviewing",
+        "anchor": "setreviewing"
+      },
+      {
+        "level": 3,
+        "title": "finalizeSession",
+        "anchor": "finalizesession"
+      },
+      {
+        "level": 3,
+        "title": "getSession",
+        "anchor": "getsession"
+      },
+      {
+        "level": 3,
+        "title": "reset",
+        "anchor": "reset"
+      },
+      {
+        "level": 2,
+        "title": "Session States",
+        "anchor": "session-states"
+      },
+      {
+        "level": 2,
+        "title": "Rules Enforced",
+        "anchor": "rules-enforced"
+      },
+      {
+        "level": 2,
+        "title": "Persistence",
+        "anchor": "persistence"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-session-review-mode-v1",
+    "title": "ALCHEMIST SESSION REVIEW MODE V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST SESSION REVIEW MODE V1",
+        "anchor": "alchemist-session-review-mode-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "Interaction Model",
+        "anchor": "interaction-model"
+      },
+      {
+        "level": 3,
+        "title": "Card States",
+        "anchor": "card-states"
+      },
+      {
+        "level": 3,
+        "title": "Gestures",
+        "anchor": "gestures"
+      },
+      {
+        "level": 3,
+        "title": "Visual Feedback  UI Adapter",
+        "anchor": "visual-feedback-ui-adapter"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 3,
+        "title": "Review Controller",
+        "anchor": "review-controller"
+      },
+      {
+        "level": 3,
+        "title": "Decision Store",
+        "anchor": "decision-store"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Final Card",
+        "anchor": "final-card"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "title": "DoD",
+        "anchor": "dod"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-ui-integration-layer-v1",
+    "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST UI INTEGRATION LAYER V1",
+        "anchor": "alchemist-ui-integration-layer-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Design Philosophy",
+        "anchor": "design-philosophy"
+      },
+      {
+        "level": 2,
+        "title": "System",
+        "anchor": "system"
+      },
+      {
+        "level": 3,
+        "title": "Selection Hook",
+        "anchor": "selection-hook"
+      },
+      {
+        "level": 3,
+        "title": "Integration Router",
+        "anchor": "integration-router"
+      },
+      {
+        "level": 3,
+        "title": "Safe Adapter",
+        "anchor": "safe-adapter"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Integration Points",
+        "anchor": "integration-points"
+      },
+      {
+        "level": 2,
+        "title": "Features Enabled",
+        "anchor": "features-enabled"
+      },
+      {
+        "level": 2,
+        "title": "Failure Handling",
+        "anchor": "failure-handling"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria",
+        "anchor": "success-criteria"
+      },
+      {
+        "level": 2,
+        "title": "DoD",
+        "anchor": "dod"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-alchemist-zay-compiler-v1",
+    "title": "ALCHEMIST ZAY COMPILER V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ALCHEMIST ZAY COMPILER V1",
+        "anchor": "alchemist-zay-compiler-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Input",
+        "anchor": "input"
+      },
+      {
+        "level": 2,
+        "title": "Output",
+        "anchor": "output"
+      },
+      {
+        "level": 2,
+        "title": "Includes",
+        "anchor": "includes"
+      },
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      },
+      {
+        "level": 2,
+        "title": "Success Criteria Mapping",
+        "anchor": "success-criteria-mapping"
+      },
+      {
+        "level": 2,
+        "title": "Module Output",
+        "anchor": "module-output"
+      }
+    ]
+  },
+  {
+    "slug": "docs-alchemist-audit",
+    "title": "Alchemist Repository Architecture Audit",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist Repository Architecture Audit",
+        "anchor": "alchemist-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 3,
+        "title": "Shipped quiz and export flow",
+        "anchor": "shipped-quiz-and-export-flow"
+      },
+      {
+        "level": 3,
+        "title": "Kernel integration flow",
+        "anchor": "kernel-integration-flow"
+      },
+      {
+        "level": 3,
+        "title": "Python publishing flow",
+        "anchor": "python-publishing-flow"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "npm / Node packages",
+        "anchor": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 3,
+        "title": "Other platform files",
+        "anchor": "other-platform-files"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ]
+  },
+  {
+    "slug": "docs-merge-recommendation",
+    "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Alchemist / ViaLogic / Zayvora Visual Engine Merge Recommendation",
+        "anchor": "alchemist-vialogic-zayvora-visual-engine-merge-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Executive Recommendation",
+        "anchor": "executive-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Discovery Status",
+        "anchor": "discovery-status"
+      },
+      {
+        "level": 2,
+        "title": "Repository Purpose Summary",
+        "anchor": "repository-purpose-summary"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification Matrix",
+        "anchor": "architecture-classification-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Runtime and Deployment Matrix",
+        "anchor": "runtime-and-deployment-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Map",
+        "anchor": "dependency-map"
+      },
+      {
+        "level": 2,
+        "title": "Capability Matrix",
+        "anchor": "capability-matrix"
+      },
+      {
+        "level": 2,
+        "title": "Overlap Detection and Recommendation",
+        "anchor": "overlap-detection-and-recommendation"
+      },
+      {
+        "level": 2,
+        "title": "Integration Readiness Assessment",
+        "anchor": "integration-readiness-assessment"
+      },
+      {
+        "level": 3,
+        "title": "ViaLogic placement",
+        "anchor": "vialogic-placement"
+      },
+      {
+        "level": 3,
+        "title": "Visual Engine placement",
+        "anchor": "visual-engine-placement"
+      },
+      {
+        "level": 2,
+        "title": "ZAY Ecosystem Mapping",
+        "anchor": "zay-ecosystem-mapping"
+      },
+      {
+        "level": 3,
+        "title": "Layer Ownership Table",
+        "anchor": "layer-ownership-table"
+      },
+      {
+        "level": 2,
+        "title": "Recommended Merge Strategy",
+        "anchor": "recommended-merge-strategy"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option A",
+        "anchor": "do-not-choose-pure-option-a"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option B yet",
+        "anchor": "do-not-choose-pure-option-b-yet"
+      },
+      {
+        "level": 3,
+        "title": "Do not choose pure Option C",
+        "anchor": "do-not-choose-pure-option-c"
+      },
+      {
+        "level": 3,
+        "title": "Choose Option D",
+        "anchor": "choose-option-d"
+      },
+      {
+        "level": 2,
+        "title": "Integration Risks",
+        "anchor": "integration-risks"
+      },
+      {
+        "level": 2,
+        "title": "Proposed Approval Gate Before Any Integration",
+        "anchor": "proposed-approval-gate-before-any-integration"
+      },
+      {
+        "level": 2,
+        "title": "Final Recommendation",
+        "anchor": "final-recommendation"
+      }
+    ]
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-dod",
+    "title": "Definition of Done",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Definition of Done",
+        "anchor": "definition-of-done"
+      }
+    ]
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-guard",
+    "title": "Guard",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Guard",
+        "anchor": "guard"
+      }
+    ]
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-purpose",
+    "title": "Purpose",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      }
+    ]
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-rules",
+    "title": "Rules",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Rules",
+        "anchor": "rules"
+      }
+    ]
+  },
+  {
+    "slug": "docs-pr-a-core-exec-01-task",
+    "title": "Task",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Task",
+        "anchor": "task"
+      }
+    ]
+  },
+  {
+    "slug": "docs-publishing-pipeline",
+    "title": "Publishing Pipeline",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Publishing Pipeline",
+        "anchor": "publishing-pipeline"
+      },
+      {
+        "level": 2,
+        "title": "Overview",
+        "anchor": "overview"
+      },
+      {
+        "level": 1,
+        "title": "or",
+        "anchor": "or"
+      },
+      {
+        "level": 2,
+        "title": "Content model",
+        "anchor": "content-model"
+      },
+      {
+        "level": 2,
+        "title": "Build stages",
+        "anchor": "build-stages"
+      },
+      {
+        "level": 2,
+        "title": "Quality checks",
+        "anchor": "quality-checks"
+      },
+      {
+        "level": 2,
+        "title": "Regenerating diagrams only",
+        "anchor": "regenerating-diagrams-only"
+      }
+    ]
+  },
+  {
+    "slug": "docs-system-alchemist-stripe-ready",
+    "title": "Purpose",
+    "toc": [
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Flow",
+        "anchor": "flow"
+      },
+      {
+        "level": 2,
+        "title": "Security Rules",
+        "anchor": "security-rules"
+      },
+      {
+        "level": 2,
+        "title": "Integration Points",
+        "anchor": "integration-points"
+      }
+    ]
+  },
+  {
+    "slug": "docs-system-codex-bootstrap-enforcer-v1",
+    "title": "CODEX BOOTSTRAP ENFORCER V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "CODEX BOOTSTRAP ENFORCER V1",
+        "anchor": "codex-bootstrap-enforcer-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Bootstrap Rule  mandatory",
+        "anchor": "bootstrap-rule-mandatory"
+      },
+      {
+        "level": 2,
+        "title": "Instruction Priority",
+        "anchor": "instruction-priority"
+      },
+      {
+        "level": 2,
+        "title": "Session Persistence",
+        "anchor": "session-persistence"
+      },
+      {
+        "level": 2,
+        "title": "Anti-Refresh Strategy",
+        "anchor": "anti-refresh-strategy"
+      },
+      {
+        "level": 2,
+        "title": "Execution Guard",
+        "anchor": "execution-guard"
+      },
+      {
+        "level": 2,
+        "title": "Self-Bootstrap PR Control  mandatory",
+        "anchor": "self-bootstrap-pr-control-mandatory"
+      },
+      {
+        "level": 2,
+        "title": "Repository Safety Rule",
+        "anchor": "repository-safety-rule"
+      },
+      {
+        "level": 2,
+        "title": "Definition of Done",
+        "anchor": "definition-of-done"
+      }
+    ]
+  },
+  {
+    "slug": "docs-system-codex-instruction-bootstrap-v1",
+    "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+    "toc": [
+      {
+        "level": 1,
+        "title": "CODEX INSTRUCTION BOOTSTRAP V1",
+        "anchor": "codex-instruction-bootstrap-v1"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Required Files",
+        "anchor": "required-files"
+      },
+      {
+        "level": 2,
+        "title": "Execution Flow",
+        "anchor": "execution-flow"
+      },
+      {
+        "level": 2,
+        "title": "Hard Rules",
+        "anchor": "hard-rules"
+      },
+      {
+        "level": 2,
+        "title": "Auto-Loading Behavior",
+        "anchor": "auto-loading-behavior"
+      },
+      {
+        "level": 2,
+        "title": "Verification Output  expected",
+        "anchor": "verification-output-expected"
+      },
+      {
+        "level": 2,
+        "title": "DoD Mapping",
+        "anchor": "dod-mapping"
+      }
+    ]
+  },
+  {
+    "slug": "docs-vialogic-audit",
+    "title": "ViaLogic Repository Architecture Audit",
+    "toc": [
+      {
+        "level": 1,
+        "title": "ViaLogic Repository Architecture Audit",
+        "anchor": "vialogic-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "npm / Node packages",
+        "anchor": "npm-node-packages"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ]
+  },
+  {
+    "slug": "docs-visual-engine-audit",
+    "title": "Zayvora Visual Engine Repository Architecture Audit",
+    "toc": [
+      {
+        "level": 1,
+        "title": "Zayvora Visual Engine Repository Architecture Audit",
+        "anchor": "zayvora-visual-engine-repository-architecture-audit"
+      },
+      {
+        "level": 2,
+        "title": "Source Acquisition",
+        "anchor": "source-acquisition"
+      },
+      {
+        "level": 2,
+        "title": "Purpose",
+        "anchor": "purpose"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Classification",
+        "anchor": "architecture-classification"
+      },
+      {
+        "level": 2,
+        "title": "Entry Points",
+        "anchor": "entry-points"
+      },
+      {
+        "level": 2,
+        "title": "Module Structure",
+        "anchor": "module-structure"
+      },
+      {
+        "level": 2,
+        "title": "Data Flow",
+        "anchor": "data-flow"
+      },
+      {
+        "level": 3,
+        "title": "Next.js/API generation flow",
+        "anchor": "next-js-api-generation-flow"
+      },
+      {
+        "level": 3,
+        "title": "Root  app.js  legacy/static client flow",
+        "anchor": "root-app-js-legacy-static-client-flow"
+      },
+      {
+        "level": 3,
+        "title": "Core pipeline flow observed in  core/pipeline.js",
+        "anchor": "core-pipeline-flow-observed-in-core-pipeline-js"
+      },
+      {
+        "level": 2,
+        "title": "Dependency Analysis",
+        "anchor": "dependency-analysis"
+      },
+      {
+        "level": 3,
+        "title": "npm packages",
+        "anchor": "npm-packages"
+      },
+      {
+        "level": 3,
+        "title": "Browser/CDN dependencies",
+        "anchor": "browser-cdn-dependencies"
+      },
+      {
+        "level": 3,
+        "title": "Python packages",
+        "anchor": "python-packages"
+      },
+      {
+        "level": 3,
+        "title": "External binary/platform dependencies",
+        "anchor": "external-binary-platform-dependencies"
+      },
+      {
+        "level": 2,
+        "title": "Deployment Model",
+        "anchor": "deployment-model"
+      },
+      {
+        "level": 2,
+        "title": "Capability Inventory",
+        "anchor": "capability-inventory"
+      },
+      {
+        "level": 2,
+        "title": "Architecture Diagram",
+        "anchor": "architecture-diagram"
+      },
+      {
+        "level": 2,
+        "title": "Risks and Constraints",
+        "anchor": "risks-and-constraints"
+      },
+      {
+        "level": 2,
+        "title": "Audit Conclusion",
+        "anchor": "audit-conclusion"
+      }
+    ]
+  }
+]
